@@ -7,7 +7,7 @@ from app.agent.trace import TraceRepository
 from app.agent.workflow import run_agent
 from app.api.schemas import CandidateReviewRequest, FeedbackSubmitRequest
 from app.feedback.models import PolicyCandidate
-from app.feedback.policy import CandidateConfigValidator
+from app.feedback.policy import CandidateConfigValidator, latency_within_budget
 from app.feedback.repository import CandidateRepository, FeedbackRepository
 from app.feedback.service import ControlledFeedbackLoop
 from evaluation.feedback_loop_eval import run_feedback_loop_evaluation
@@ -89,6 +89,12 @@ def test_candidate_replay_improves_linked_cases_without_regression():
     assert evaluation["regression_case_count"] == 193
     assert evaluation["regressed_case_count"] == 0
     assert all(evaluation["gates"].values())
+
+
+def test_latency_gate_tolerates_ci_noise_but_blocks_material_regression():
+    assert latency_within_budget(1.0, 1.4)
+    assert latency_within_budget(10.0, 11.5)
+    assert not latency_within_budget(1.0, 2.0)
 
 
 def test_human_review_does_not_activate_candidate_and_activation_is_blocked():

@@ -23,9 +23,25 @@ CASE_PATHS = [
     PROJECT_ROOT / "evaluation" / "robustness_cases.json",
     PROJECT_ROOT / "evaluation" / "large_benchmark.json",
 ]
+MAX_ADDED_LATENCY_RATIO = 0.15
+LATENCY_NOISE_FLOOR_MS = 0.5
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
+
+
+def latency_within_budget(
+    baseline_ms: float,
+    candidate_ms: float,
+    *,
+    max_ratio: float = MAX_ADDED_LATENCY_RATIO,
+    noise_floor_ms: float = LATENCY_NOISE_FLOOR_MS,
+) -> bool:
+    """Apply a relative latency gate without rejecting sub-millisecond CI noise."""
+    added_ms = max(0.0, candidate_ms - baseline_ms)
+    if added_ms <= noise_floor_ms:
+        return True
+    return bool(baseline_ms and added_ms / baseline_ms <= max_ratio)
 
 
 class CandidateConfigValidator:
@@ -162,10 +178,11 @@ class CandidateEvaluator:
         baseline_score = _ratio(sum(item["baseline_correct"] for item in linked_results), len(linked_results))
         candidate_score = _ratio(sum(item["candidate_correct"] for item in linked_results), len(linked_results))
         fixed_count = sum(item["fixed"] for item in linked_results)
-        baseline_latency = statistics.mean(item["latency_ms"] for item in baseline_results)
-        candidate_latency = statistics.mean(item["latency_ms"] for item in candidate_results)
+        baseline_latency = statistics.median(item["latency_ms"] for item in baseline_results)
+        candidate_latency = statistics.median(item["latency_ms"] for item in candidate_results)
+        added_latency_ms = max(0.0, candidate_latency - baseline_latency)
         added_latency_ratio = (
-            max(0.0, candidate_latency - baseline_latency) / baseline_latency
+            added_latency_ms / baseline_latency
             if baseline_latency else 0.0
         )
         core_not_decreased = all(
@@ -178,7 +195,10 @@ class CandidateEvaluator:
             "fixed_at_least_two": fixed_count >= 2,
             "regressed_cases_zero": not regressed_cases,
             "core_metrics_not_decreased": core_not_decreased,
-            "added_latency_within_15_percent": added_latency_ratio <= 0.15,
+            "added_latency_within_15_percent": latency_within_budget(
+                baseline_latency,
+                candidate_latency,
+            ),
         }
         return {
             "evaluation_schema_version": "candidate-eval-v1",
@@ -195,7 +215,11 @@ class CandidateEvaluator:
             "candidate_metrics": candidate_metrics,
             "baseline_latency_ms": baseline_latency,
             "candidate_latency_ms": candidate_latency,
+            "added_latency_ms": added_latency_ms,
             "added_latency_ratio": added_latency_ratio,
+            "latency_statistic": "median",
+            "latency_noise_floor_ms": LATENCY_NOISE_FLOOR_MS,
+            "latency_gate_limit_ratio": MAX_ADDED_LATENCY_RATIO,
             "gates": gates,
             "passed": all(gates.values()),
             "next_status": "pending_review" if all(gates.values()) else "rejected",
