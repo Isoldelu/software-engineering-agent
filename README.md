@@ -1,5 +1,7 @@
 # AI Software Engineering Agent
 
+[![software-agent-ci](https://github.com/Isoldelu/software-engineering-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Isoldelu/software-engineering-agent/actions/workflows/ci.yml)
+
 A reproducible AI4SE demo for software asset retrieval and analysis, built with simulated data, multi-tool Agent planning, RAG retrieval, trajectory logging, and benchmark experiments.
 
 This project does not contain, copy, or depend on internal enterprise data. It uses public-style simulated software asset data to reproduce the Agent methodology in a compliant way.
@@ -87,7 +89,7 @@ Control-plane experiment: two independent Store/Repository instances passed all 
 
 Step 27 local operations experiment: 60/60 concurrent requests succeeded across two observed Uvicorn Workers with 0 server errors. After one Worker was killed, its replacement was observed and the recovery load passed 40/40. Migration, Key rotation, Audit, retention, CAS/lease, and transaction rollback gates passed. Real PostgreSQL load and database outage gates are configured in CI and remain pending execution on this disk-constrained workstation.
 
-Step 28 local disaster-recovery drill verified, deleted, and restored 2/2 control-plane records from a SHA-256 logical backup; corruption rejection and independent Audit export after an injected database failure passed. PostgreSQL pooling, official Prometheus multiprocess aggregation, and retained CI artifacts are implemented but remain pending because this workspace has no Git repository, remote, or GitHub CLI credentials.
+Step 28 local disaster-recovery drill verified, deleted, and restored 2/2 control-plane records from a SHA-256 logical backup. GitHub Actions Run `32738626804` then passed all test, Docker, and PostgreSQL jobs. Real PostgreSQL load completed 100/100 requests across two Workers with 0 server errors; after one Worker was killed and replaced, recovery load completed 40/40. Pool, Prometheus multiprocess, independent Audit, backup/restore, and database outage recovery gates all passed.
 
 The baselines are offline proxy baselines. They are used to avoid paid LLM API costs and nondeterministic outputs while keeping experiments reproducible.
 

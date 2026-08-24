@@ -2,7 +2,9 @@
 
 ## Execution Decision
 
-The preferred Step 28 action was to execute the PostgreSQL GitHub Actions job and retain its evidence. The current workspace has no `.git` directory, no GitHub remote, and no authenticated `gh` CLI, so a real Actions run cannot be triggered from this machine. The workflow remains executable and now uploads evidence as `software-agent-step28-postgres-evidence`.
+The workspace initially had no Git repository or GitHub remote. It was initialized, committed with a GitHub noreply author, uploaded to the private `Isoldelu/software-engineering-agent` repository, and authenticated through Git Credential Manager.
+
+GitHub Actions Run `32738626804` completed successfully on commit `53405f1`. All three jobs passed: test-and-evaluate, docker-build, and postgres-integration. Artifact `software-agent-step28-postgres-evidence` has ID `9524236638` and expires on 2026-11-22.
 
 ## PostgreSQL Connection Pool
 
@@ -83,9 +85,27 @@ The PostgreSQL job writes and uploads:
 
 Artifact upload uses `if: always()` so partial evidence remains available after a failed gate.
 
+Real PostgreSQL results from Run `32738626804`:
+
+| Gate | Result |
+|---|---:|
+| PostgreSQL schema | control-plane-v3, up to date |
+| Shared record and exclusive lease | Passed |
+| Transaction/lease fault gates | 6/6 passed |
+| Initial load | 100/100, 0 server errors |
+| Initial latency | p50 145.74 ms, p95 456.14 ms |
+| Initial Workers | PID 2583 and 2584 |
+| Recovery load after Worker kill | 40/40, 0 server errors |
+| Recovery latency | p50 85.99 ms, p95 279.13 ms |
+| Replacement Worker | PID 2667 replaced PID 2583 |
+| PostgreSQL Pool | enabled, max 8, waiting 0 |
+| Backup/restore | 2 deleted and 2 restored |
+| Database outage | ready 503, recovered 200 |
+| Audit | 142/142 schema-valid lines, no Key/Query leak |
+| Prometheus | request and pool metrics present, no Query leak |
+
 ## Remaining Boundary
 
-- GitHub Actions has not run because this folder is not a Git repository and has no GitHub credentials.
-- PostgreSQL pool behavior, multiprocess Prometheus aggregation, and database outage recovery are implemented CI gates, not local measurements.
-- Local backup/restore and audit tests use SQLite WAL.
+- The local workstation still does not run PostgreSQL or Docker; real PostgreSQL evidence comes from the linked GitHub-hosted runner.
+- CI latency is a short functional load gate, not a capacity limit or production SLA.
 - Production still needs encrypted physical backups, restore-point objectives, off-host retention, alert rules, dashboard provisioning, and a managed audit destination.
