@@ -6,28 +6,53 @@ A reproducible AI4SE demo for software asset retrieval and analysis, built with 
 
 This project does not contain, copy, or depend on internal enterprise data. It uses public-style simulated software asset data to reproduce the Agent methodology in a compliant way.
 
+## At A Glance
+
+| Layer | Capability |
+|---|---|
+| Agent | Deterministic/optional LLM planning, five tools, hybrid workflows, multi-turn context |
+| Knowledge | Structured software assets plus Legacy/BM25/Hybrid RAG |
+| Trust | Evidence, Citation, Verifier, partial success, replayable privacy-bounded Trace |
+| Optimization | Benchmark, Bad Case loop, offline candidate generation, human review |
+| Delivery | Policy versioning, gray rollout, rollback, FastAPI, Docker, PostgreSQL |
+| Operations | Auth, Key rotation, Audit, retention, pooling, Prometheus, backup/restore |
+
+## Verified Evidence
+
+| Gate | Result |
+|---|---:|
+| Automated tests | 124 passed |
+| Frozen evaluation baseline | 193 compatible cases |
+| Real PostgreSQL initial load | 100/100, 0 server errors |
+| Load after Worker replacement | 40/40, 0 server errors |
+| Transaction/lease fault injection | 6/6 passed |
+| Database outage recovery | readiness 503 -> 200 |
+
+Evidence: [GitHub Actions Run 32738626804](https://github.com/Isoldelu/software-engineering-agent/actions/runs/32738626804) and [v1.0.0 evidence summary](release/v1.0.0-evidence.json).
+
+## Try It
+
+```bash
+python -m pip install -r requirements-runtime.txt
+python main.py "1214 release packages and their dependencies"
+```
+
+Run the API:
+
+```bash
+uvicorn app.api.server:app --host 127.0.0.1 --port 8000
+```
+
+Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
+
 ## Highlights
 
-- Multi-tool Agent for package, dependency, version, component, and document analysis
-- Hybrid planning for complex tasks such as release package dependency analysis
-- Configurable Legacy/BM25/Hybrid RAG over simulated release notes and manuals
-- Trajectory logging for Agent execution traces
-- Session-scoped multi-turn entity inheritance and replayable privacy-bounded Trace
-- Trace-linked controlled Feedback, configuration-only candidates, and human review gates
-- Versioned policies, deterministic session-level gray rollout, monitoring, and rollback
-- Optional OpenAI structured-plan provider with zero-cost offline default and safe fallback
-- Offline failure mining, root-cause clustering, and human-gated shadow optimization
-- Optional PostgreSQL control-plane persistence, API Key roles, CAS, and database leases
-- Checksum-protected schema migrations, shared Key rotation, redacted audit, and trace retention
-- PostgreSQL per-Worker pooling, Prometheus multiprocess metrics, logical backup/restore, and JSONL audit export
-- Reproducible compatibility baseline with Tool/API contracts and Workflow golden outputs
-- Structured Evidence/Citation with stable IDs and Hybrid evidence deduplication
-- Deterministic online Verifier with four-state execution semantics and one-time repair
-- Stable document Chunk IDs, RRF fusion, deterministic reranking, and Recall/MRR evaluation
-- FastAPI service, browser demo, and evaluation dashboard
-- 193 total evaluation cases across standard, challenge, robustness, and large benchmark suites
-- Offline baseline experiment comparing DirectLLMProxy, RAGOnlyProxy, and Agent
-- Bad-case-driven optimization improving tool accuracy from 61.76% to 100%
+- Multi-tool Agent with hybrid planning across structured tools and RAG.
+- Stable Evidence/Citation, deterministic verification, replay, and partial-success semantics.
+- Controlled Feedback and offline self-evolution that stop at human review.
+- Versioned policy rollout, monitoring, rollback, and exact Trace attribution.
+- Real PostgreSQL multi-Worker CI with fault injection and retained evidence.
+- Zero-cost offline default; real online Provider calls require explicit credentials and budget.
 
 ## Results
 
