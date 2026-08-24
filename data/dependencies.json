@@ -1,0 +1,26 @@
+[
+  {
+    "package": "openssl",
+    "dependencies": [
+      "libssl.so",
+      "libcrypto.so"
+    ]
+  },
+  {
+    "package": "ethtool",
+    "dependencies": []
+  },
+  {
+    "package": "nginx",
+    "dependencies": [
+      "openssl",
+      "libhttp.so"
+    ]
+  },
+  {
+    "package": "tcpdump",
+    "dependencies": [
+      "libpcap.so"
+    ]
+  }
+]

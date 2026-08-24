@@ -1,0 +1,60 @@
+[
+  {
+    "query": "1215 release packages and their dependencies",
+    "expected_status": "not_found",
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis"
+    ],
+    "expected_answer_contains": [
+      "1215",
+      "No package records"
+    ]
+  },
+  {
+    "query": "which package owns legacycrypto.so",
+    "expected_status": "not_found",
+    "expected_tool": "component_mapping",
+    "expected_answer_contains": [
+      "legacycrypto.so",
+      "No package owns"
+    ]
+  },
+  {
+    "query": "compare ethtool version changes",
+    "expected_tool": "version_compare",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ]
+  },
+  {
+    "query": "according to release note, what dependencies do openssl have in 1213",
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis"
+    ],
+    "expected_answer_contains": [
+      "Release",
+      "openssl",
+      "libssl.so",
+      "libcrypto.so"
+    ]
+  },
+  {
+    "query": "1214 release packages and their version changes",
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare",
+      "version_compare"
+    ],
+    "expected_answer_contains": [
+      "nginx",
+      "tcpdump",
+      "packet capture filter compatibility"
+    ]
+  }
+]

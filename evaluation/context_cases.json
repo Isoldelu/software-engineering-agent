@@ -1,0 +1,19 @@
+{
+  "conversations": [
+    {"id":"ctx-001","turns":[{"query":"query openssl package info","answer_contains":["openssl","3.0.8"]},{"query":"它的依赖是什么","expected_inherited":{"package":"openssl"},"answer_contains":["openssl","libssl.so"]},{"query":"再比较版本","expected_inherited":{"package":"openssl"},"answer_contains":["1.1","3.0.8"]}]},
+    {"id":"ctx-002","turns":[{"query":"query nginx package info","answer_contains":["nginx","1.24"]},{"query":"这个包依赖什么","expected_inherited":{"package":"nginx"},"answer_contains":["nginx","openssl"]},{"query":"compare this package version","expected_inherited":{"package":"nginx"},"answer_contains":["1.20","1.24"]}]},
+    {"id":"ctx-003","turns":[{"query":"query tcpdump package info","answer_contains":["tcpdump","4.99"]},{"query":"它的依赖","expected_inherited":{"package":"tcpdump"},"answer_contains":["libpcap.so"]}]},
+    {"id":"ctx-004","turns":[{"query":"query ethtool package info","answer_contains":["ethtool","5.15"]},{"query":"再比较版本变化","expected_inherited":{"package":"ethtool"},"answer_contains":["5.10","5.15"]}]},
+    {"id":"ctx-005","turns":[{"query":"which package owns libssl.so","answer_contains":["openssl"]},{"query":"这个包的版本变化","expected_inherited":{"package":"openssl"},"answer_contains":["1.1","3.0.8"]}]},
+    {"id":"ctx-006","turns":[{"query":"抓包工具的软件包信息","answer_contains":["tcpdump"]},{"query":"它的版本有什么变化","expected_inherited":{"package":"tcpdump"},"answer_contains":["4.95","4.99"]}]},
+    {"id":"ctx-007","turns":[{"query":"安全通信库的软件包信息","answer_contains":["openssl"]},{"query":"它依赖哪些组件","expected_inherited":{"package":"openssl"},"answer_contains":["libcrypto.so"]}]},
+    {"id":"ctx-008","turns":[{"query":"release 1214 package list","answer_contains":["nginx","tcpdump"]},{"query":"这个版本的发布说明","expected_inherited":{"release":"1214"},"answer_contains":["Release 1214"]}]}
+  ],
+  "isolation_cases": [
+    {"seed_query":"query openssl package info","probe_query":"它的依赖是什么","forbidden_entity":"openssl"},
+    {"seed_query":"query nginx package info","probe_query":"再比较版本","forbidden_entity":"nginx"},
+    {"seed_query":"query tcpdump package info","probe_query":"这个包依赖什么","forbidden_entity":"tcpdump"},
+    {"seed_query":"query ethtool package info","probe_query":"compare this package version","forbidden_entity":"ethtool"},
+    {"seed_query":"which package owns libssl.so","probe_query":"这个包的版本变化","forbidden_entity":"openssl"}
+  ]
+}

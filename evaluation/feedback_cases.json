@@ -1,0 +1,5 @@
+[
+  {"id":"feedback-001","query":"openssl prerequisites","expected_tool":"dependency_analysis","expected_answer_contains":["openssl","libssl.so"]},
+  {"id":"feedback-002","query":"nginx prerequisites","expected_tool":"dependency_analysis","expected_answer_contains":["nginx","openssl"]},
+  {"id":"feedback-003","query":"tcpdump prerequisites","expected_tool":"dependency_analysis","expected_answer_contains":["tcpdump","libpcap.so"]}
+]

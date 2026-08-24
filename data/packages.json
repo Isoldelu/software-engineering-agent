@@ -1,0 +1,45 @@
+[
+  {
+    "package": "openssl",
+    "version": "3.0.8",
+    "architecture": "arm64",
+    "release": "1213",
+    "description": "SSL encryption library for secure communication in network devices.",
+    "files": [
+      "libssl.so",
+      "libcrypto.so"
+    ]
+  },
+  {
+    "package": "ethtool",
+    "version": "5.15",
+    "architecture": "arm64",
+    "release": "1213",
+    "description": "Ethernet configuration and diagnostics tool.",
+    "files": [
+      "ethtool"
+    ]
+  },
+  {
+    "package": "nginx",
+    "version": "1.24",
+    "architecture": "arm64",
+    "release": "1214",
+    "description": "Web server component used for management-plane service simulation.",
+    "files": [
+      "nginx",
+      "libhttp.so"
+    ]
+  },
+  {
+    "package": "tcpdump",
+    "version": "4.99",
+    "architecture": "arm64",
+    "release": "1214",
+    "description": "Network packet capture and analysis utility.",
+    "files": [
+      "tcpdump",
+      "libpcap.so"
+    ]
+  }
+]

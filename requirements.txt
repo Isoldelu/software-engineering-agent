@@ -1,0 +1,13 @@
+# Core runtime used by the current offline demo.
+numpy
+pydantic
+pytest
+
+# Planned integrations for later phases.
+openai
+langchain
+langgraph
+faiss-cpu
+sentence-transformers
+fastapi
+uvicorn

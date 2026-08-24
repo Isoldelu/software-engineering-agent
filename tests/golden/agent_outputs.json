@@ -1,0 +1,380 @@
+{
+  "cases": [
+    {
+      "query": "query openssl version",
+      "result": {
+        "answer": "openssl version 3.0.8 (release 1213, arm64) includes files: libssl.so, libcrypto.so.",
+        "arguments": {
+          "package": "openssl",
+          "release": null
+        },
+        "confidence": "high",
+        "evidence": [
+          "<PROJECT_ROOT>/data/packages.json"
+        ],
+        "intent": "package_search",
+        "plan": [
+          {
+            "arguments": {
+              "package": "openssl",
+              "query": "query openssl version",
+              "release": null
+            },
+            "reason": "The query asks for package or release metadata.",
+            "tool": "package_search"
+          }
+        ],
+        "planner_source": "deterministic_planner",
+        "query": "query openssl version",
+        "selected_tool": "package_search",
+        "success": true,
+        "tool_call_count": 1,
+        "tool_schema_version": "prompt_v1",
+        "trajectory": [
+          {
+            "arguments": {
+              "package": "openssl",
+              "release": null
+            },
+            "intent": "package_search",
+            "plan": [
+              {
+                "arguments": {
+                  "package": "openssl",
+                  "query": "query openssl version",
+                  "release": null
+                },
+                "reason": "The query asks for package or release metadata.",
+                "tool": "package_search"
+              }
+            ],
+            "planner_source": "deterministic_rule",
+            "selected_tool": "package_search",
+            "stage": "planning",
+            "step": 1,
+            "thought": "The query asks for package or release metadata.",
+            "tool_schema_version": "prompt_v1"
+          },
+          {
+            "observation": {
+              "evidence": "<PROJECT_ROOT>/data/packages.json",
+              "query": "query openssl package info",
+              "result": {
+                "architecture": "arm64",
+                "description": "SSL encryption library for secure communication in network devices.",
+                "files": [
+                  "libssl.so",
+                  "libcrypto.so"
+                ],
+                "package": "openssl",
+                "release": "1213",
+                "version": "3.0.8"
+              },
+              "result_type": "package",
+              "status": "success",
+              "tool": "package_search"
+            },
+            "reason": "The query asks for package or release metadata.",
+            "stage": "tool_execution",
+            "step": 2,
+            "tool": "package_search"
+          },
+          {
+            "answer": "openssl version 3.0.8 (release 1213, arm64) includes files: libssl.so, libcrypto.so.",
+            "stage": "answer_generation",
+            "step": 3
+          }
+        ],
+        "used_tools": [
+          "package_search"
+        ]
+      }
+    },
+    {
+      "query": "1214 release packages and their dependencies",
+      "result": {
+        "answer": "Release 1214 contains: nginx 1.24, tcpdump 4.99. Dependency analysis: nginx depends on: openssl, libhttp.so; tcpdump depends on: libpcap.so. Document evidence: [Release 1214] Added software packages: - nginx 1.24 - tcpdump 4.99 nginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis. Compatibility note: - nginx 1.24 depends on openssl. - tcpdump requires libpcap.so.",
+        "arguments": {
+          "package": null,
+          "release": "1214"
+        },
+        "confidence": "high",
+        "evidence": [
+          "<PROJECT_ROOT>/data/dependencies.json",
+          "<PROJECT_ROOT>/data/documents/release_note.md",
+          "<PROJECT_ROOT>/data/packages.json"
+        ],
+        "intent": "hybrid_release_dependency_analysis",
+        "plan": [
+          {
+            "arguments": {
+              "query": "1214 release packages and their dependencies"
+            },
+            "reason": "Retrieve release note evidence for the requested release.",
+            "tool": "rag_retrieval"
+          },
+          {
+            "arguments": {
+              "query": "1214 release packages and their dependencies"
+            },
+            "reason": "Find packages associated with the requested release or package.",
+            "tool": "package_search"
+          },
+          {
+            "arguments": {
+              "from_previous_packages": true,
+              "package": null
+            },
+            "reason": "Analyze dependencies for the target package or release packages.",
+            "tool": "dependency_analysis"
+          }
+        ],
+        "planner_source": "deterministic_planner",
+        "query": "1214 release packages and their dependencies",
+        "selected_tool": "hybrid_plan",
+        "success": true,
+        "tool_call_count": 4,
+        "tool_schema_version": "prompt_v1",
+        "trajectory": [
+          {
+            "arguments": {
+              "package": null,
+              "release": "1214"
+            },
+            "intent": "hybrid_release_dependency_analysis",
+            "plan": [
+              {
+                "arguments": {
+                  "query": "1214 release packages and their dependencies"
+                },
+                "reason": "Retrieve release note evidence for the requested release.",
+                "tool": "rag_retrieval"
+              },
+              {
+                "arguments": {
+                  "query": "1214 release packages and their dependencies"
+                },
+                "reason": "Find packages associated with the requested release or package.",
+                "tool": "package_search"
+              },
+              {
+                "arguments": {
+                  "from_previous_packages": true,
+                  "package": null
+                },
+                "reason": "Analyze dependencies for the target package or release packages.",
+                "tool": "dependency_analysis"
+              }
+            ],
+            "planner_source": "deterministic_rule",
+            "selected_tool": "hybrid_plan",
+            "stage": "planning",
+            "step": 1,
+            "thought": "The query needs release/document evidence plus package dependency analysis.",
+            "tool_schema_version": "prompt_v1"
+          },
+          {
+            "observation": {
+              "evidence": [
+                "<PROJECT_ROOT>/data/documents/release_note.md"
+              ],
+              "message": null,
+              "query": "1214 release packages and their dependencies",
+              "results": [
+                {
+                  "content": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so.",
+                  "matched_terms": [
+                    "1214",
+                    "and",
+                    "packages",
+                    "release"
+                  ],
+                  "score": 13,
+                  "source": "<PROJECT_ROOT>/data/documents/release_note.md",
+                  "title": "Release 1214"
+                }
+              ],
+              "status": "success",
+              "tool": "rag_retrieval"
+            },
+            "reason": "Retrieve release note evidence for the requested release.",
+            "stage": "tool_execution",
+            "step": 2,
+            "tool": "rag_retrieval"
+          },
+          {
+            "observation": {
+              "evidence": "<PROJECT_ROOT>/data/packages.json",
+              "message": null,
+              "query": "release 1214 package list",
+              "release": "1214",
+              "result": [
+                {
+                  "architecture": "arm64",
+                  "description": "Web server component used for management-plane service simulation.",
+                  "files": [
+                    "nginx",
+                    "libhttp.so"
+                  ],
+                  "package": "nginx",
+                  "release": "1214",
+                  "version": "1.24"
+                },
+                {
+                  "architecture": "arm64",
+                  "description": "Network packet capture and analysis utility.",
+                  "files": [
+                    "tcpdump",
+                    "libpcap.so"
+                  ],
+                  "package": "tcpdump",
+                  "release": "1214",
+                  "version": "4.99"
+                }
+              ],
+              "result_type": "release_packages",
+              "status": "success",
+              "tool": "package_search"
+            },
+            "reason": "Find packages associated with the requested release or package.",
+            "stage": "tool_execution",
+            "step": 3,
+            "tool": "package_search"
+          },
+          {
+            "observation": {
+              "dependencies": [
+                "openssl",
+                "libhttp.so"
+              ],
+              "dependency_tree": "nginx\n|-- openssl\n|-- libhttp.so",
+              "evidence": "<PROJECT_ROOT>/data/dependencies.json",
+              "package": "nginx",
+              "query": "nginx dependencies",
+              "status": "success",
+              "tool": "dependency_analysis"
+            },
+            "reason": "Analyze dependencies for the target package or release packages.",
+            "stage": "tool_execution",
+            "step": 4,
+            "tool": "dependency_analysis"
+          },
+          {
+            "observation": {
+              "dependencies": [
+                "libpcap.so"
+              ],
+              "dependency_tree": "tcpdump\n|-- libpcap.so",
+              "evidence": "<PROJECT_ROOT>/data/dependencies.json",
+              "package": "tcpdump",
+              "query": "tcpdump dependencies",
+              "status": "success",
+              "tool": "dependency_analysis"
+            },
+            "reason": "Analyze dependencies for the target package or release packages.",
+            "stage": "tool_execution",
+            "step": 5,
+            "tool": "dependency_analysis"
+          },
+          {
+            "answer": "Release 1214 contains: nginx 1.24, tcpdump 4.99. Dependency analysis: nginx depends on: openssl, libhttp.so; tcpdump depends on: libpcap.so. Document evidence: [Release 1214] Added software packages: - nginx 1.24 - tcpdump 4.99 nginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis. Compatibility note: - nginx 1.24 depends on openssl. - tcpdump requires libpcap.so.",
+            "stage": "answer_generation",
+            "step": 6
+          }
+        ],
+        "used_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ]
+      }
+    },
+    {
+      "query": "query package metadata for nonexistent",
+      "result": {
+        "answer": "No package name or release id matched the simulated package dataset.",
+        "arguments": {
+          "package": null,
+          "release": null
+        },
+        "confidence": "low",
+        "evidence": [
+          "<PROJECT_ROOT>/data/packages.json"
+        ],
+        "intent": "package_search",
+        "plan": [
+          {
+            "arguments": {
+              "package": null,
+              "query": "query package metadata for nonexistent",
+              "release": null
+            },
+            "reason": "The query asks for package metadata or release package lists.",
+            "tool": "package_search"
+          }
+        ],
+        "planner_source": "deterministic_planner",
+        "query": "query package metadata for nonexistent",
+        "selected_tool": "package_search",
+        "success": false,
+        "tool_call_count": 1,
+        "tool_schema_version": "prompt_v1",
+        "trajectory": [
+          {
+            "arguments": {
+              "package": null,
+              "release": null
+            },
+            "intent": "package_search",
+            "plan": [
+              {
+                "arguments": {
+                  "package": null,
+                  "query": "query package metadata for nonexistent",
+                  "release": null
+                },
+                "reason": "The query asks for package metadata or release package lists.",
+                "tool": "package_search"
+              }
+            ],
+            "planner_source": "deterministic_rule",
+            "selected_tool": "package_search",
+            "stage": "planning",
+            "step": 1,
+            "thought": "The query asks for package metadata or release package lists.",
+            "tool_schema_version": "prompt_v1"
+          },
+          {
+            "observation": {
+              "available_packages": [
+                "openssl",
+                "ethtool",
+                "nginx",
+                "tcpdump"
+              ],
+              "evidence": "<PROJECT_ROOT>/data/packages.json",
+              "message": "No package name or release id matched the simulated package dataset.",
+              "query": "query package metadata for nonexistent",
+              "status": "not_found",
+              "tool": "package_search"
+            },
+            "reason": "The query asks for package metadata or release package lists.",
+            "stage": "tool_execution",
+            "step": 2,
+            "tool": "package_search"
+          },
+          {
+            "answer": "No package name or release id matched the simulated package dataset.",
+            "stage": "answer_generation",
+            "step": 3
+          }
+        ],
+        "used_tools": [
+          "package_search"
+        ]
+      }
+    }
+  ],
+  "schema_version": "workflow-golden-v1"
+}

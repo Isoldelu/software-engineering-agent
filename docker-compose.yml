@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: software_agent
+      POSTGRES_USER: software_agent
+      POSTGRES_PASSWORD: ${SOFTWARE_AGENT_DB_PASSWORD:?set SOFTWARE_AGENT_DB_PASSWORD}
+    volumes:
+      - software-agent-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U software_agent -d software_agent"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  software-agent:
+    build: .
+    command: ["python", "-m", "uvicorn", "app.api.server:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      SOFTWARE_AGENT_DATABASE_URL: postgresql://software_agent:${SOFTWARE_AGENT_DB_PASSWORD}@postgres:5432/software_agent
+      SOFTWARE_AGENT_AUTH_ENABLED: ${SOFTWARE_AGENT_AUTH_ENABLED:-true}
+      SOFTWARE_AGENT_READER_API_KEY: ${SOFTWARE_AGENT_READER_API_KEY:-}
+      SOFTWARE_AGENT_OPERATOR_API_KEY: ${SOFTWARE_AGENT_OPERATOR_API_KEY:-}
+      SOFTWARE_AGENT_ADMIN_API_KEY: ${SOFTWARE_AGENT_ADMIN_API_KEY:-}
+      SOFTWARE_AGENT_DB_POOL_ENABLED: ${SOFTWARE_AGENT_DB_POOL_ENABLED:-true}
+      SOFTWARE_AGENT_DB_POOL_MIN_SIZE: ${SOFTWARE_AGENT_DB_POOL_MIN_SIZE:-1}
+      SOFTWARE_AGENT_DB_POOL_MAX_SIZE: ${SOFTWARE_AGENT_DB_POOL_MAX_SIZE:-10}
+      SOFTWARE_AGENT_AUDIT_LOG_PATH: /app/data/audit/events.jsonl
+      PROMETHEUS_MULTIPROC_DIR: /tmp/software-agent-prometheus
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  software-agent-postgres:

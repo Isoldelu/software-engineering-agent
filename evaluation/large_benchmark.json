@@ -1,0 +1,1692 @@
+[
+  {
+    "category": "package_query",
+    "query": "query openssl version",
+    "expected_answer_contains": [
+      "openssl",
+      "3.0.8"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "show package metadata for ethtool",
+    "expected_answer_contains": [
+      "ethtool",
+      "5.15"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "what release contains nginx",
+    "expected_answer_contains": [
+      "nginx",
+      "1.24"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "查询 tcpdump 的版本",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "secure communication library package info",
+    "expected_answer_contains": [
+      "openssl",
+      "3.0.8"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "release 1213 package list",
+    "expected_answer_contains": [
+      "1213"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "1214 版本有哪些软件包",
+    "expected_answer_contains": [
+      "1214"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "which files are included in tcpdump",
+    "expected_answer_contains": [
+      "tcpdump"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "query openssl version",
+    "expected_answer_contains": [
+      "openssl",
+      "3.0.8"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "show package metadata for ethtool",
+    "expected_answer_contains": [
+      "ethtool",
+      "5.15"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "what release contains nginx",
+    "expected_answer_contains": [
+      "nginx",
+      "1.24"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "查询 tcpdump 的版本",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "secure communication library package info",
+    "expected_answer_contains": [
+      "openssl",
+      "3.0.8"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "release 1213 package list",
+    "expected_answer_contains": [
+      "1213"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "1214 版本有哪些软件包",
+    "expected_answer_contains": [
+      "1214"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "which files are included in tcpdump",
+    "expected_answer_contains": [
+      "tcpdump"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "query openssl version",
+    "expected_answer_contains": [
+      "openssl",
+      "3.0.8"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "show package metadata for ethtool",
+    "expected_answer_contains": [
+      "ethtool",
+      "5.15"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "what release contains nginx",
+    "expected_answer_contains": [
+      "nginx",
+      "1.24"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "查询 tcpdump 的版本",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "secure communication library package info",
+    "expected_answer_contains": [
+      "openssl",
+      "3.0.8"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "release 1213 package list",
+    "expected_answer_contains": [
+      "1213"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "1214 版本有哪些软件包",
+    "expected_answer_contains": [
+      "1214"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "which files are included in tcpdump",
+    "expected_answer_contains": [
+      "tcpdump"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "query openssl version",
+    "expected_answer_contains": [
+      "openssl",
+      "3.0.8"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "show package metadata for ethtool",
+    "expected_answer_contains": [
+      "ethtool",
+      "5.15"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "what release contains nginx",
+    "expected_answer_contains": [
+      "nginx",
+      "1.24"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "查询 tcpdump 的版本",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "secure communication library package info",
+    "expected_answer_contains": [
+      "openssl",
+      "3.0.8"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "package_query",
+    "query": "release 1213 package list",
+    "expected_answer_contains": [
+      "1213"
+    ],
+    "expected_tool": "package_search"
+  },
+  {
+    "category": "dependency",
+    "query": "openssl dependencies",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "what does nginx depend on",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "查看 tcpdump 依赖",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "secure communication library depends on what",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "nginx requires which components",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "dependency tree for tcpdump",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "openssl dependencies",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "what does nginx depend on",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "查看 tcpdump 依赖",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "secure communication library depends on what",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "nginx requires which components",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "dependency tree for tcpdump",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "openssl dependencies",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "what does nginx depend on",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "查看 tcpdump 依赖",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "secure communication library depends on what",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "nginx requires which components",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "dependency tree for tcpdump",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "openssl dependencies",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "what does nginx depend on",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "查看 tcpdump 依赖",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "secure communication library depends on what",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "nginx requires which components",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "dependency tree for tcpdump",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "openssl dependencies",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "what does nginx depend on",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "查看 tcpdump 依赖",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "secure communication library depends on what",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "nginx requires which components",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "dependency",
+    "query": "dependency tree for tcpdump",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tool": "dependency_analysis"
+  },
+  {
+    "category": "version_compare",
+    "query": "compare openssl version changes",
+    "expected_answer_contains": [
+      "openssl",
+      "deprecated API"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "what changed after ethtool upgrade",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "nginx upgrade impact",
+    "expected_answer_contains": [
+      "nginx",
+      "HTTP performance"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "查看 tcpdump 版本变化",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "secure communication library 升级后有什么变化",
+    "expected_answer_contains": [
+      "openssl",
+      "deprecated API"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "ethtool changed from old version to new version",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "compare nginx version changes",
+    "expected_answer_contains": [
+      "nginx",
+      "HTTP performance"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "what changed after tcpdump upgrade",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "openssl upgrade impact",
+    "expected_answer_contains": [
+      "openssl",
+      "deprecated API"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "查看 ethtool 版本变化",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "management-plane web service 升级后有什么变化",
+    "expected_answer_contains": [
+      "nginx",
+      "HTTP performance"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "tcpdump changed from old version to new version",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "compare openssl version changes",
+    "expected_answer_contains": [
+      "openssl",
+      "deprecated API"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "what changed after ethtool upgrade",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "nginx upgrade impact",
+    "expected_answer_contains": [
+      "nginx",
+      "HTTP performance"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "查看 tcpdump 版本变化",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "secure communication library 升级后有什么变化",
+    "expected_answer_contains": [
+      "openssl",
+      "deprecated API"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "ethtool changed from old version to new version",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "compare nginx version changes",
+    "expected_answer_contains": [
+      "nginx",
+      "HTTP performance"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "what changed after tcpdump upgrade",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "openssl upgrade impact",
+    "expected_answer_contains": [
+      "openssl",
+      "deprecated API"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "查看 ethtool 版本变化",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "management-plane web service 升级后有什么变化",
+    "expected_answer_contains": [
+      "nginx",
+      "HTTP performance"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "tcpdump changed from old version to new version",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "compare openssl version changes",
+    "expected_answer_contains": [
+      "openssl",
+      "deprecated API"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "what changed after ethtool upgrade",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "nginx upgrade impact",
+    "expected_answer_contains": [
+      "nginx",
+      "HTTP performance"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "查看 tcpdump 版本变化",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "secure communication library 升级后有什么变化",
+    "expected_answer_contains": [
+      "openssl",
+      "deprecated API"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "version_compare",
+    "query": "ethtool changed from old version to new version",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ],
+    "expected_tool": "version_compare"
+  },
+  {
+    "category": "component_mapping",
+    "query": "which package owns libssl.so",
+    "expected_answer_contains": [
+      "libssl.so",
+      "openssl"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "libcrypto.so belongs to which package",
+    "expected_answer_contains": [
+      "libcrypto.so",
+      "openssl"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "ethtool 属于哪个软件包",
+    "expected_answer_contains": [
+      "ethtool",
+      "ethtool"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "owner package for nginx",
+    "expected_answer_contains": [
+      "nginx",
+      "nginx"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "which package owns libhttp.so",
+    "expected_answer_contains": [
+      "libhttp.so",
+      "nginx"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "tcpdump belongs to which package",
+    "expected_answer_contains": [
+      "tcpdump",
+      "tcpdump"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "libpcap.so 属于哪个软件包",
+    "expected_answer_contains": [
+      "libpcap.so",
+      "tcpdump"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "owner package for libssl.so",
+    "expected_answer_contains": [
+      "libssl.so",
+      "openssl"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "which package owns libcrypto.so",
+    "expected_answer_contains": [
+      "libcrypto.so",
+      "openssl"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "ethtool belongs to which package",
+    "expected_answer_contains": [
+      "ethtool",
+      "ethtool"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "nginx 属于哪个软件包",
+    "expected_answer_contains": [
+      "nginx",
+      "nginx"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "owner package for libhttp.so",
+    "expected_answer_contains": [
+      "libhttp.so",
+      "nginx"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "which package owns tcpdump",
+    "expected_answer_contains": [
+      "tcpdump",
+      "tcpdump"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "libpcap.so belongs to which package",
+    "expected_answer_contains": [
+      "libpcap.so",
+      "tcpdump"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "libssl.so 属于哪个软件包",
+    "expected_answer_contains": [
+      "libssl.so",
+      "openssl"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "owner package for libcrypto.so",
+    "expected_answer_contains": [
+      "libcrypto.so",
+      "openssl"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "which package owns ethtool",
+    "expected_answer_contains": [
+      "ethtool",
+      "ethtool"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "nginx belongs to which package",
+    "expected_answer_contains": [
+      "nginx",
+      "nginx"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "libhttp.so 属于哪个软件包",
+    "expected_answer_contains": [
+      "libhttp.so",
+      "nginx"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "component_mapping",
+    "query": "owner package for tcpdump",
+    "expected_answer_contains": [
+      "tcpdump",
+      "tcpdump"
+    ],
+    "expected_tool": "component_mapping"
+  },
+  {
+    "category": "rag_query",
+    "query": "release note says what was added in 1214",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "software manual describes tcpdump as what",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "according to release note, what is in 1213",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "manual explains openssl as what",
+    "expected_answer_contains": [
+      "openssl",
+      "secure communication"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "1214 发布说明新增了什么",
+    "expected_answer_contains": [
+      "Release 1214",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "文档里 tcpdump 是做什么的",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "release note says what was added in 1214",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "software manual describes tcpdump as what",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "according to release note, what is in 1213",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "manual explains openssl as what",
+    "expected_answer_contains": [
+      "openssl",
+      "secure communication"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "1214 发布说明新增了什么",
+    "expected_answer_contains": [
+      "Release 1214",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "文档里 tcpdump 是做什么的",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "release note says what was added in 1214",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "software manual describes tcpdump as what",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "according to release note, what is in 1213",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "manual explains openssl as what",
+    "expected_answer_contains": [
+      "openssl",
+      "secure communication"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "1214 发布说明新增了什么",
+    "expected_answer_contains": [
+      "Release 1214",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "文档里 tcpdump 是做什么的",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "release note says what was added in 1214",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "software manual describes tcpdump as what",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "according to release note, what is in 1213",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "manual explains openssl as what",
+    "expected_answer_contains": [
+      "openssl",
+      "secure communication"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "1214 发布说明新增了什么",
+    "expected_answer_contains": [
+      "Release 1214",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "文档里 tcpdump 是做什么的",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "release note says what was added in 1214",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "software manual describes tcpdump as what",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "according to release note, what is in 1213",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "manual explains openssl as what",
+    "expected_answer_contains": [
+      "openssl",
+      "secure communication"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "1214 发布说明新增了什么",
+    "expected_answer_contains": [
+      "Release 1214",
+      "tcpdump"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "rag_query",
+    "query": "文档里 tcpdump 是做什么的",
+    "expected_answer_contains": [
+      "tcpdump",
+      "packet capture"
+    ],
+    "expected_tool": "rag_retrieval"
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "according to release note, what dependencies do tcpdump have in 1214",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their version changes",
+    "expected_answer_contains": [
+      "nginx",
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "查一下 nginx 的版本变化和依赖",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl",
+      "HTTP performance"
+    ],
+    "expected_tools": [
+      "package_search",
+      "dependency_analysis",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1213 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 里面抓包工具升级了啥",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "according to release note, what dependencies do tcpdump have in 1214",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their version changes",
+    "expected_answer_contains": [
+      "nginx",
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "查一下 nginx 的版本变化和依赖",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl",
+      "HTTP performance"
+    ],
+    "expected_tools": [
+      "package_search",
+      "dependency_analysis",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1213 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 里面抓包工具升级了啥",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "according to release note, what dependencies do tcpdump have in 1214",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their version changes",
+    "expected_answer_contains": [
+      "nginx",
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "查一下 nginx 的版本变化和依赖",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl",
+      "HTTP performance"
+    ],
+    "expected_tools": [
+      "package_search",
+      "dependency_analysis",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1213 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 里面抓包工具升级了啥",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "according to release note, what dependencies do tcpdump have in 1214",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their version changes",
+    "expected_answer_contains": [
+      "nginx",
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "查一下 nginx 的版本变化和依赖",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl",
+      "HTTP performance"
+    ],
+    "expected_tools": [
+      "package_search",
+      "dependency_analysis",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1213 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 里面抓包工具升级了啥",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1214",
+      "nginx",
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "according to release note, what dependencies do tcpdump have in 1214",
+    "expected_answer_contains": [
+      "tcpdump",
+      "libpcap.so"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 release packages and their version changes",
+    "expected_answer_contains": [
+      "nginx",
+      "tcpdump",
+      "packet capture filter compatibility"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "查一下 nginx 的版本变化和依赖",
+    "expected_answer_contains": [
+      "nginx",
+      "openssl",
+      "HTTP performance"
+    ],
+    "expected_tools": [
+      "package_search",
+      "dependency_analysis",
+      "version_compare"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1213 release packages and their dependencies",
+    "expected_answer_contains": [
+      "Release 1213",
+      "openssl",
+      "ethtool"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "dependency_analysis",
+      "dependency_analysis"
+    ]
+  },
+  {
+    "category": "hybrid_task",
+    "query": "1214 里面抓包工具升级了啥",
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99"
+    ],
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare"
+    ]
+  }
+]

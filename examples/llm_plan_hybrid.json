@@ -1,0 +1,34 @@
+{
+  "intent": "hybrid_release_dependency_analysis",
+  "tool": "hybrid_plan",
+  "arguments": {
+    "package": null,
+    "release": "1214"
+  },
+  "confidence": "high",
+  "reason": "The query requires release evidence, package lookup, and dependency analysis.",
+  "steps": [
+    {
+      "tool": "rag_retrieval",
+      "arguments": {
+        "query": "1214 release packages and their dependencies"
+      },
+      "reason": "Retrieve release note evidence for release 1214."
+    },
+    {
+      "tool": "package_search",
+      "arguments": {
+        "query": "1214 release packages"
+      },
+      "reason": "Find packages included in release 1214."
+    },
+    {
+      "tool": "dependency_analysis",
+      "arguments": {
+        "package": null,
+        "from_previous_packages": true
+      },
+      "reason": "Analyze dependencies for packages returned by package search."
+    }
+  ]
+}

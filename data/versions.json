@@ -1,0 +1,39 @@
+[
+  {
+    "package": "openssl",
+    "old_version": "1.1",
+    "new_version": "3.0.8",
+    "changes": [
+      "add libcrypto.so",
+      "upgrade encryption algorithm",
+      "remove deprecated API"
+    ]
+  },
+  {
+    "package": "nginx",
+    "old_version": "1.20",
+    "new_version": "1.24",
+    "changes": [
+      "improve HTTP performance",
+      "update dependency openssl"
+    ]
+  },
+  {
+    "package": "ethtool",
+    "old_version": "5.10",
+    "new_version": "5.15",
+    "changes": [
+      "add extended NIC diagnostics",
+      "improve Ethernet link reporting"
+    ]
+  },
+  {
+    "package": "tcpdump",
+    "old_version": "4.95",
+    "new_version": "4.99",
+    "changes": [
+      "improve packet capture filter compatibility",
+      "update dependency libpcap.so"
+    ]
+  }
+]

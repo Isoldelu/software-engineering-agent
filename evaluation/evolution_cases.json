@@ -1,0 +1,34 @@
+[
+  {
+    "id": "evo-router-001",
+    "query": "openssl prerequisites",
+    "expected_tool": "dependency_analysis",
+    "expected_answer_contains": ["openssl", "libssl.so"]
+  },
+  {
+    "id": "evo-router-002",
+    "query": "nginx prerequisites",
+    "expected_tool": "dependency_analysis",
+    "expected_answer_contains": ["nginx", "openssl"]
+  },
+  {
+    "id": "evo-router-003",
+    "query": "tcpdump prerequisites",
+    "expected_tool": "dependency_analysis",
+    "expected_answer_contains": ["tcpdump", "libpcap.so"]
+  },
+  {
+    "id": "evo-alias-001",
+    "query": "tls toolkit package metadata",
+    "expected_tool": "package_search",
+    "expected_package": "openssl",
+    "expected_answer_contains": ["openssl", "3.0.8"]
+  },
+  {
+    "id": "evo-alias-002",
+    "query": "show tls toolkit version",
+    "expected_tool": "package_search",
+    "expected_package": "openssl",
+    "expected_answer_contains": ["openssl", "3.0.8"]
+  }
+]

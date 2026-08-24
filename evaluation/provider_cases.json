@@ -1,0 +1,14 @@
+[
+  "查询 openssl 的软件版本",
+  "openssl 依赖哪些组件",
+  "比较 openssl 两个版本变化",
+  "1213 版本有哪些网络工具",
+  "tcpdump 需要哪些依赖",
+  "nginx 从 1.20 到 1.24 有什么变化",
+  "libssl.so 属于哪个软件包",
+  "which package owns libpcap.so",
+  "release note says what was added in 1214",
+  "software manual describes tcpdump as what",
+  "1214 release packages and their dependencies",
+  "according to release note, what dependencies do tcpdump have in 1214"
+]

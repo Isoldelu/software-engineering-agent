@@ -1,0 +1,155 @@
+name: software-agent-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install runtime and development dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Unit contract and integration tests
+        run: python -B -m pytest -q -p no:cacheprovider
+      - name: Syntax and undefined-name check
+        run: python -m ruff check --no-cache --select E9,F63,F7,F82 app evaluation tests
+      - name: Control-plane and Agent boundary type check
+        run: python -m mypy --cache-dir "${RUNNER_TEMP}/software-agent-mypy" --follow-imports=skip app/policy app/feedback app/providers app/evolution app/storage app/security
+      - name: Evaluation smoke
+        run: python -B evaluation/smoke.py
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build API image
+        run: docker build -t software-agent:ci .
+
+  postgres-integration:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: software_agent
+          POSTGRES_USER: software_agent
+          POSTGRES_PASSWORD: software_agent_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U software_agent -d software_agent"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      SOFTWARE_AGENT_DATABASE_URL: postgresql://software_agent:software_agent_ci@127.0.0.1:5432/software_agent
+      SOFTWARE_AGENT_AUTH_ENABLED: "true"
+      SOFTWARE_AGENT_READER_API_KEY: step27-reader-ci
+      SOFTWARE_AGENT_OPERATOR_API_KEY: step27-operator-ci
+      SOFTWARE_AGENT_ADMIN_API_KEY: step27-admin-ci
+      SOFTWARE_AGENT_DB_POOL_ENABLED: "true"
+      SOFTWARE_AGENT_DB_POOL_MIN_SIZE: "1"
+      SOFTWARE_AGENT_DB_POOL_MAX_SIZE: "8"
+      SOFTWARE_AGENT_AUDIT_LOG_PATH: ${{ github.workspace }}/artifacts/step28/audit.jsonl
+      PROMETHEUS_MULTIPROC_DIR: /tmp/software-agent-prometheus
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install runtime dependencies
+        run: python -m pip install -r requirements-runtime.txt
+      - name: Prepare Step 28 evidence directory
+        run: |
+          mkdir -p artifacts/step28
+          rm -rf /tmp/software-agent-prometheus
+          mkdir -p /tmp/software-agent-prometheus
+      - name: PostgreSQL persistence and lease smoke
+        run: python -B evaluation/postgres_smoke.py | tee artifacts/step28/postgres-smoke.json
+      - name: PostgreSQL transaction and lease fault injection
+        run: python -B evaluation/step27_fault_eval.py | tee artifacts/step28/fault-injection.json
+      - name: PostgreSQL logical backup and restore drill
+        run: python -B evaluation/backup_restore_drill.py | tee artifacts/step28/backup-restore.json
+      - name: Start two-worker API
+        run: |
+          uvicorn app.api.server:app --host 127.0.0.1 --port 8010 --workers 2 > /tmp/software-agent.log 2>&1 &
+          echo $! > /tmp/software-agent.pid
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8010/ready > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/software-agent.log
+          exit 1
+      - name: PostgreSQL two-worker concurrent load
+        run: |
+          python -B evaluation/step27_load.py \
+            --base-url http://127.0.0.1:8010 \
+            --api-key step27-operator-ci \
+            --requests 100 \
+            --concurrency 16 | tee artifacts/step28/load-before-worker-fault.json
+          curl --silent --fail \
+            --header 'X-API-Key: step27-reader-ci' \
+            http://127.0.0.1:8010/storage/status \
+            | tee artifacts/step28/storage-status.json
+          python -c "import json; assert json.load(open('artifacts/step28/storage-status.json'))['pool']['enabled'] is True"
+          curl --silent --fail \
+            --header 'X-API-Key: step27-reader-ci' \
+            http://127.0.0.1:8010/metrics \
+            | tee artifacts/step28/prometheus-metrics.txt
+          grep -q 'software_agent_http_requests_total' artifacts/step28/prometheus-metrics.txt
+      - name: Kill one worker and verify supervisor recovery
+        run: |
+          PARENT=$(cat /tmp/software-agent.pid)
+          WORKER=$(ps --ppid "$PARENT" -o pid=,args= | awk '/spawn_main/ {print $1; exit}')
+          test -n "$WORKER"
+          kill -9 "$WORKER"
+          for attempt in $(seq 1 20); do
+            COUNT=$(ps --ppid "$PARENT" -o args= | grep -c spawn_main || true)
+            if test "$COUNT" -ge 2; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/software-agent.log
+          exit 1
+      - name: Load after worker recovery
+        run: |
+          python -B evaluation/step27_load.py \
+            --base-url http://127.0.0.1:8010 \
+            --api-key step27-operator-ci \
+            --requests 40 \
+            --concurrency 8 | tee artifacts/step28/load-after-worker-fault.json
+      - name: PostgreSQL outage and readiness recovery
+        run: |
+          POSTGRES_ID=$(docker ps --filter ancestor=postgres:16-alpine --format '{{.ID}}' | head -n 1)
+          test -n "$POSTGRES_ID"
+          docker stop "$POSTGRES_ID"
+          STATUS=$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:8010/ready || true)
+          echo "database_down_ready_status=$STATUS" | tee artifacts/step28/database-outage.txt
+          test "$STATUS" = "503"
+          docker start "$POSTGRES_ID"
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8010/ready > /dev/null; then
+              echo "database_recovered_ready_status=200" | tee -a artifacts/step28/database-outage.txt
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/software-agent.log
+          exit 1
+      - name: Validate independent audit outlet
+        run: |
+          test -s artifacts/step28/audit.jsonl
+          grep -q '"schema_version":"audit-event-v1"' artifacts/step28/audit.jsonl
+          if grep -q 'step27-operator-ci' artifacts/step28/audit.jsonl; then exit 1; fi
+      - name: Upload PostgreSQL Step 28 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: software-agent-step28-postgres-evidence
+          path: artifacts/step28/
+          if-no-files-found: warn

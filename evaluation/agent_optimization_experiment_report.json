@@ -1,0 +1,3918 @@
+{
+  "benchmark": "Software-Agent-Large-Bench",
+  "total": 170,
+  "summary": {
+    "benchmark_cases": 170,
+    "methods": [
+      {
+        "method": "DirectLLMProxy",
+        "task_success_rate": 0.22941176470588234,
+        "answer_accuracy": 0.22941176470588234,
+        "tool_accuracy": null,
+        "average_tool_calls": 0.0
+      },
+      {
+        "method": "RAGOnlyProxy",
+        "task_success_rate": 0.5705882352941176,
+        "answer_accuracy": 0.5705882352941176,
+        "tool_accuracy": null,
+        "average_tool_calls": 0.0
+      },
+      {
+        "method": "Agent",
+        "task_success_rate": 1.0,
+        "answer_accuracy": 1.0,
+        "tool_accuracy": 1.0,
+        "average_tool_calls": 1.4411764705882353
+      }
+    ],
+    "optimization": {
+      "legacy_keyword_router_tool_accuracy": 0.6176470588235294,
+      "optimized_agent_tool_accuracy": 1.0,
+      "absolute_improvement": 0.38235294117647056
+    }
+  },
+  "baseline_details": {
+    "direct_llm_proxy": [
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "compare nginx version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after tcpdump upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "openssl upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 ethtool 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "management-plane web service 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "version_compare",
+        "query": "tcpdump changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "compare nginx version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after tcpdump upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "openssl upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 ethtool 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "management-plane web service 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "version_compare",
+        "query": "tcpdump changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libssl.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libssl.so belongs to openssl"
+      },
+      {
+        "category": "component_mapping",
+        "query": "libcrypto.so belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libcrypto.so belongs to openssl"
+      },
+      {
+        "category": "component_mapping",
+        "query": "ethtool 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libhttp.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libhttp.so belongs to nginx"
+      },
+      {
+        "category": "component_mapping",
+        "query": "tcpdump belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "component_mapping",
+        "query": "libpcap.so 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libpcap.so belongs to tcpdump"
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libssl.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libssl.so belongs to openssl"
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libcrypto.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libcrypto.so belongs to openssl"
+      },
+      {
+        "category": "component_mapping",
+        "query": "ethtool belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "component_mapping",
+        "query": "nginx 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libhttp.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libhttp.so belongs to nginx"
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "component_mapping",
+        "query": "libpcap.so belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libpcap.so belongs to tcpdump"
+      },
+      {
+        "category": "component_mapping",
+        "query": "libssl.so 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libssl.so belongs to openssl"
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libcrypto.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libcrypto.so belongs to openssl"
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool 5.15 1213"
+      },
+      {
+        "category": "component_mapping",
+        "query": "nginx belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "component_mapping",
+        "query": "libhttp.so 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "libhttp.so belongs to nginx"
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl 3.0.8 1213"
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump 4.99 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx 1.24 1214"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "No reliable answer without tools."
+      }
+    ],
+    "rag_only_proxy": [
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information."
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so"
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information."
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so"
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information."
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so"
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information."
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so"
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "compare nginx version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after tcpdump upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "openssl upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 ethtool 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "management-plane web service 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so"
+      },
+      {
+        "category": "version_compare",
+        "query": "tcpdump changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "compare nginx version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after tcpdump upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "openssl upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 ethtool 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "management-plane web service 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so"
+      },
+      {
+        "category": "version_compare",
+        "query": "tcpdump changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libssl.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "libcrypto.so belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "ethtool 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for nginx",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libhttp.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "tcpdump belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "component_mapping",
+        "query": "libpcap.so 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libssl.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libcrypto.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "ethtool belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "component_mapping",
+        "query": "nginx 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libhttp.so",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "component_mapping",
+        "query": "libpcap.so belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "libssl.so 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libcrypto.so",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns ethtool",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "ethtool is used to query and configure network interface parameters, including link status, speed, duplex mode, and driver information. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "component_mapping",
+        "query": "nginx belongs to which package",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "component_mapping",
+        "query": "libhttp.so 属于哪个软件包",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so"
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for tcpdump",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration."
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. tcpdump is used for network packet capture and protocol-level traffic analysis.\n\nMain components:\n\n- tcpdump\n- libpcap.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "nginx provides HTTP service capability in this simulated network device software environment.\n\nMain components:\n\n- nginx\n- libhttp.so Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "answer_correct": false,
+        "task_success": false,
+        "answer": "Included software packages:\n\n- openssl 3.0.8\n- ethtool 5.15\n\nopenssl is used for secure communication in network devices. ethtool is used for Ethernet interface inspection and configuration. Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so. openssl provides TLS encryption capabilities for secure management and data-plane communication.\n\nMain components:\n\n- libssl.so\n- libcrypto.so"
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "answer_correct": true,
+        "task_success": true,
+        "answer": "Added software packages:\n\n- nginx 1.24\n- tcpdump 4.99\n\nnginx is used to simulate a lightweight management-plane web service. tcpdump is used for packet capture and network traffic analysis.\n\nCompatibility note:\n\n- nginx 1.24 depends on openssl.\n- tcpdump requires libpcap.so."
+      }
+    ],
+    "legacy_router_proxy": [
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "1214 版本有哪些软件包",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "which files are included in tcpdump",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "query openssl version",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "show package metadata for ethtool",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "what release contains nginx",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "查询 tcpdump 的版本",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "secure communication library package info",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "package_query",
+        "query": "release 1213 package list",
+        "selected_tool": "package_search",
+        "expected_tool": "package_search",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "openssl dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "what does nginx depend on",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "查看 tcpdump 依赖",
+        "selected_tool": "package_search",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "dependency",
+        "query": "secure communication library depends on what",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "nginx requires which components",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "dependency",
+        "query": "dependency tree for tcpdump",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": "dependency_analysis",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "compare nginx version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after tcpdump upgrade",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "openssl upgrade impact",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 ethtool 版本变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "management-plane web service 升级后有什么变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "tcpdump changed from old version to new version",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "compare nginx version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after tcpdump upgrade",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "openssl upgrade impact",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 ethtool 版本变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "management-plane web service 升级后有什么变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "tcpdump changed from old version to new version",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "compare openssl version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "what changed after ethtool upgrade",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "nginx upgrade impact",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "version_compare",
+        "query": "查看 tcpdump 版本变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "secure communication library 升级后有什么变化",
+        "selected_tool": "package_search",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "version_compare",
+        "query": "ethtool changed from old version to new version",
+        "selected_tool": "version_compare",
+        "expected_tool": "version_compare",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libssl.so",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "libcrypto.so belongs to which package",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "ethtool 属于哪个软件包",
+        "selected_tool": "package_search",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for nginx",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libhttp.so",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "tcpdump belongs to which package",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "libpcap.so 属于哪个软件包",
+        "selected_tool": "package_search",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libssl.so",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns libcrypto.so",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "ethtool belongs to which package",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "nginx 属于哪个软件包",
+        "selected_tool": "package_search",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libhttp.so",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns tcpdump",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "libpcap.so belongs to which package",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "libssl.so 属于哪个软件包",
+        "selected_tool": "package_search",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for libcrypto.so",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "which package owns ethtool",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "nginx belongs to which package",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "component_mapping",
+        "query": "libhttp.so 属于哪个软件包",
+        "selected_tool": "package_search",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "component_mapping",
+        "query": "owner package for tcpdump",
+        "selected_tool": "component_mapping",
+        "expected_tool": "component_mapping",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "release note says what was added in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "software manual describes tcpdump as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "according to release note, what is in 1213",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "manual explains openssl as what",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": true
+      },
+      {
+        "category": "rag_query",
+        "query": "1214 发布说明新增了什么",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "rag_query",
+        "query": "文档里 tcpdump 是做什么的",
+        "selected_tool": "package_search",
+        "expected_tool": "rag_retrieval",
+        "expected_tools": null,
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "according to release note, what dependencies do tcpdump have in 1214",
+        "selected_tool": "rag_retrieval",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 release packages and their version changes",
+        "selected_tool": "version_compare",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "查一下 nginx 的版本变化和依赖",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1213 release packages and their dependencies",
+        "selected_tool": "dependency_analysis",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "tool_correct": false
+      },
+      {
+        "category": "hybrid_task",
+        "query": "1214 里面抓包工具升级了啥",
+        "selected_tool": "package_search",
+        "expected_tool": null,
+        "expected_tools": [
+          "rag_retrieval",
+          "package_search",
+          "version_compare"
+        ],
+        "tool_correct": false
+      }
+    ]
+  }
+}

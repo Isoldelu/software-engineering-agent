@@ -1,0 +1,61 @@
+[
+  {
+    "query": "安全通信库依赖什么？",
+    "expected_tool": "dependency_analysis",
+    "expected_answer_contains": [
+      "openssl",
+      "libssl.so",
+      "libcrypto.so"
+    ]
+  },
+  {
+    "query": "1214 里面抓包工具升级了啥？",
+    "expected_tools": [
+      "rag_retrieval",
+      "package_search",
+      "version_compare"
+    ],
+    "expected_answer_contains": [
+      "tcpdump",
+      "4.99",
+      "packet capture filter compatibility"
+    ]
+  },
+  {
+    "query": "网口诊断工具升级后有什么变化？",
+    "expected_tool": "version_compare",
+    "expected_answer_contains": [
+      "ethtool",
+      "extended NIC diagnostics"
+    ]
+  },
+  {
+    "query": "libpcap.so 是谁依赖引入的？",
+    "expected_tool": "dependency_analysis",
+    "expected_answer_contains": [
+      "libpcap.so",
+      "tcpdump"
+    ]
+  },
+  {
+    "query": "查一下 nginx 的版本变化和依赖",
+    "expected_tools": [
+      "package_search",
+      "dependency_analysis",
+      "version_compare"
+    ],
+    "expected_answer_contains": [
+      "nginx",
+      "openssl",
+      "HTTP performance"
+    ]
+  },
+  {
+    "query": "1216 发布里新增了什么？",
+    "expected_status": "not_found",
+    "expected_tool": "rag_retrieval",
+    "expected_answer_contains": [
+      "1216"
+    ]
+  }
+]

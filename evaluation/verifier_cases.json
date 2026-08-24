@@ -1,0 +1,69 @@
+[
+  {
+    "id": "fabricated_version",
+    "query": "query openssl version",
+    "mutation": "fabricated_version",
+    "expected_issue": "unsupported_version_claim"
+  },
+  {
+    "id": "wrong_dependency_direction",
+    "query": "tcpdump dependencies",
+    "mutation": "wrong_dependency_direction",
+    "expected_issue": "wrong_dependency_direction"
+  },
+  {
+    "id": "invalid_citation",
+    "query": "query openssl version",
+    "mutation": "invalid_citation",
+    "expected_issue": "invalid_citation_reference"
+  },
+  {
+    "id": "missing_tool_step",
+    "query": "1214 release packages and their version changes",
+    "mutation": "missing_tool_step",
+    "expected_issue": "missing_tool"
+  },
+  {
+    "id": "execution_status_mismatch",
+    "query": "query openssl version",
+    "mutation": "execution_status_mismatch",
+    "expected_issue": "execution_status_mismatch"
+  },
+  {
+    "id": "empty_answer",
+    "query": "query openssl version",
+    "mutation": "empty_answer",
+    "expected_issue": "answer_empty"
+  },
+  {
+    "id": "not_found_with_evidence",
+    "query": "which package owns legacycrypto.so",
+    "mutation": "not_found_with_evidence",
+    "expected_issue": "not_found_has_evidence"
+  },
+  {
+    "id": "hybrid_answer_incomplete",
+    "query": "partial success verifier demo",
+    "plan_kind": "partial",
+    "mutation": "hybrid_answer_incomplete",
+    "expected_issue": "answer_incomplete"
+  },
+  {
+    "id": "missing_citation",
+    "query": "query openssl version",
+    "mutation": "missing_citation",
+    "expected_issue": "missing_citation"
+  },
+  {
+    "id": "missing_arguments",
+    "query": "query openssl version",
+    "mutation": "missing_arguments",
+    "expected_issue": "missing_arguments"
+  },
+  {
+    "id": "successful_observation_without_evidence",
+    "query": "query openssl version",
+    "mutation": "drop_observation_evidence",
+    "expected_issue": "missing_success_evidence"
+  }
+]

@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+data/trajectories.jsonl
+data/audit/
+backups/
+artifacts/
+test-run-*.log
