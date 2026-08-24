@@ -8,7 +8,7 @@ jobs:
   test-and-evaluate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -27,7 +27,7 @@ jobs:
   docker-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build API image
         run: docker build -t software-agent:ci .
 
@@ -59,7 +59,7 @@ jobs:
       SOFTWARE_AGENT_AUDIT_LOG_PATH: ${{ github.workspace }}/artifacts/step28/audit.jsonl
       PROMETHEUS_MULTIPROC_DIR: /tmp/software-agent-prometheus
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
