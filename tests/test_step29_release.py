@@ -31,9 +31,10 @@ def test_v1_release_evidence_matches_verified_ci_results():
     )
 
     assert evidence["release"] == "v1.0.0"
-    assert evidence["github_actions"]["run_id"] == 32738626804
+    assert evidence["github_actions"]["run_id"] == 32742656550
+    assert evidence["github_actions"]["artifact_id"] == 9525774190
     assert set(evidence["github_actions"]["jobs"].values()) == {"success"}
-    assert evidence["quality"]["automated_tests"] == 124
+    assert evidence["quality"]["automated_tests"] == 128
     assert evidence["quality"]["frozen_evaluation_cases"] == 193
     assert evidence["postgresql_load"]["initial"]["success_rate"] == 1.0
     assert evidence["postgresql_load"]["after_worker_replacement"]["server_errors"] == 0

@@ -13,6 +13,6 @@ All notable changes to this project are documented here.
 - Optional structured OpenAI Planner Provider with deterministic fallback and zero-cost offline default.
 - FastAPI service, role-aware API Keys, PostgreSQL shared control plane, CAS, TTL leases, and schema migrations.
 - Key rotation, Audit, retention, PostgreSQL pooling, Prometheus metrics, and checksum-protected backup/restore.
-- 124 automated tests, 193 frozen evaluation cases, Docker build, and real PostgreSQL CI fault/load gates.
+- 128 automated tests, 193 frozen evaluation cases, Docker build, and real PostgreSQL CI fault/load gates.
 
 [1.0.0]: https://github.com/Isoldelu/software-engineering-agent/releases/tag/v1.0.0

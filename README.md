@@ -21,14 +21,14 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 
 | Gate | Result |
 |---|---:|
-| Automated tests | 124 passed |
+| Automated tests | 128 passed |
 | Frozen evaluation baseline | 193 compatible cases |
 | Real PostgreSQL initial load | 100/100, 0 server errors |
 | Load after Worker replacement | 40/40, 0 server errors |
 | Transaction/lease fault injection | 6/6 passed |
 | Database outage recovery | readiness 503 -> 200 |
 
-Evidence: [GitHub Actions Run 32738626804](https://github.com/Isoldelu/software-engineering-agent/actions/runs/32738626804) and [v1.0.0 evidence summary](release/v1.0.0-evidence.json).
+Evidence: [GitHub Actions Run 32742656550](https://github.com/Isoldelu/software-engineering-agent/actions/runs/32742656550) and [v1.0.0 evidence summary](release/v1.0.0-evidence.json).
 
 ## Try It
 
@@ -114,7 +114,7 @@ Control-plane experiment: two independent Store/Repository instances passed all 
 
 Step 27 local operations experiment: 60/60 concurrent requests succeeded across two observed Uvicorn Workers with 0 server errors. After one Worker was killed, its replacement was observed and the recovery load passed 40/40. Migration, Key rotation, Audit, retention, CAS/lease, and transaction rollback gates passed. Real PostgreSQL load and database outage gates are configured in CI and remain pending execution on this disk-constrained workstation.
 
-Step 28 local disaster-recovery drill verified, deleted, and restored 2/2 control-plane records from a SHA-256 logical backup. GitHub Actions Run `32738626804` then passed all test, Docker, and PostgreSQL jobs. Real PostgreSQL load completed 100/100 requests across two Workers with 0 server errors; after one Worker was killed and replaced, recovery load completed 40/40. Pool, Prometheus multiprocess, independent Audit, backup/restore, and database outage recovery gates all passed.
+Step 28 local disaster-recovery drill verified, deleted, and restored 2/2 control-plane records from a SHA-256 logical backup. GitHub Actions Run `32742656550` then passed all test, Docker, and PostgreSQL jobs. Real PostgreSQL load completed 100/100 requests across two Workers with 0 server errors; after one Worker was killed and replaced, recovery load completed 40/40. Pool, Prometheus multiprocess, independent Audit, backup/restore, and database outage recovery gates all passed.
 
 The baselines are offline proxy baselines. They are used to avoid paid LLM API costs and nondeterministic outputs while keeping experiments reproducible.
 

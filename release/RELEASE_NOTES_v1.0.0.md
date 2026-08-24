@@ -11,7 +11,7 @@ The first reproducible release of the simulated-data AI4SE Agent.
 
 ## Verified Results
 
-- 124 automated tests passed.
+- 128 automated tests passed.
 - 193 frozen evaluation cases remained compatible.
 - Real PostgreSQL CI completed 100/100 initial requests and 40/40 recovery requests with zero server errors.
 - Six transaction/lease fault gates passed.
@@ -19,7 +19,7 @@ The first reproducible release of the simulated-data AI4SE Agent.
 - Backup verification and 2/2 record restore passed.
 - Prometheus and 142-line Audit evidence contained no raw query or API Key.
 
-Evidence is bound to commit `53405f1f65cdb5963f2515bde3c477e94a202539` and GitHub Actions Run `32738626804`.
+Evidence is bound to commit `01a47379d3d3cd975fababf3c133beae99702eec` and GitHub Actions Run `32742656550`.
 
 ## Boundaries
 

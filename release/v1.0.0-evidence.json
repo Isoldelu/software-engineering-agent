@@ -1,9 +1,10 @@
 {
   "release": "v1.0.0",
-  "source_commit": "53405f1f65cdb5963f2515bde3c477e94a202539",
+  "source_commit": "01a47379d3d3cd975fababf3c133beae99702eec",
+  "postgres_evidence_commit": "01a47379d3d3cd975fababf3c133beae99702eec",
   "github_actions": {
-    "run_id": 32738626804,
-    "artifact_id": 9524236638,
+    "run_id": 32742656550,
+    "artifact_id": 9525774190,
     "jobs": {
       "test_and_evaluate": "success",
       "docker_build": "success",
@@ -11,7 +12,7 @@
     }
   },
   "quality": {
-    "automated_tests": 124,
+    "automated_tests": 128,
     "frozen_evaluation_cases": 193,
     "fault_gates_passed": 6,
     "fault_gates_total": 6
@@ -21,16 +22,16 @@
       "requests": 100,
       "success_rate": 1.0,
       "server_errors": 0,
-      "p50_latency_ms": 145.74,
-      "p95_latency_ms": 456.14,
+      "p50_latency_ms": 146.6,
+      "p95_latency_ms": 590.49,
       "workers_observed": 2
     },
     "after_worker_replacement": {
       "requests": 40,
       "success_rate": 1.0,
       "server_errors": 0,
-      "p50_latency_ms": 85.99,
-      "p95_latency_ms": 279.13,
+      "p50_latency_ms": 74.12,
+      "p95_latency_ms": 311.36,
       "workers_observed": 2
     }
   },
