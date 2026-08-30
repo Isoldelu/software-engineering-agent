@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:25,000
+这是一个基于公开风格模拟数据复现的 AI4SE Agent，不包含华为内部数据。
+
+2
+00:00:25,000 --> 00:01:05,000
+Query 经过 Context、Planner 与 Router，组合五个领域工具，并生成 Evidence、Citation、Verifier 与可回放 Trace。
+
+3
+00:01:05,000 --> 00:01:45,000
+nginx 复合问题会触发 Package、Dependency 和 Version 三个工具，把任务拆成可验证子问题。
+
+4
+00:01:45,000 --> 00:02:20,000
+Router 从 61.76% 优化到冻结集 100%；DirectLLMProxy 与 RAGOnlyProxy 只是离线可复现基线。
+
+5
+00:02:20,000 --> 00:03:00,000
+受控自进化挖掘 9 个失败，生成 3 类配置候选，Shadow 修复 9 个且零回归，但不能修改源码或自动激活。
+
+6
+00:03:00,000 --> 00:03:30,000
+GitHub Actions 已验证 134 项测试、Docker 和 PostgreSQL。真实 Provider A/B 尚未执行。

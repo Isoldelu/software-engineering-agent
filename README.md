@@ -52,7 +52,11 @@ Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
 - [5-slide interview deck](docs/Software-Agent-Interview-Deck.pptx)
 - [Slide-by-slide interview script](docs/interview-deck-script.md)
 - [Reproducible deck builder](docs/deck/build_interview_deck.mjs)
+- [90-second and 3.5-minute mock interview guide](docs/mock-interview-guide.md)
+- [Recording runbook and subtitle timeline](docs/recording-runbook.md)
+- [Controlled self-evolution capability matrix](docs/evolution-capability-matrix.md)
 - [Executable API demo](examples/interview_demo.py)
+- [Interactive rehearsal timer](examples/interview_rehearsal.py)
 - [Interview talking points and Q&A](docs/interview_talking_points.md)
 - [v1.0.0 release evidence](release/v1.0.0-evidence.json)
 
@@ -60,6 +64,7 @@ With the API running:
 
 ```bash
 python examples/interview_demo.py --skip-evaluation
+python examples/interview_rehearsal.py --mode standard
 ```
 
 ### Demo Preview
