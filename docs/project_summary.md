@@ -89,7 +89,16 @@ Step 26 adds a shared control plane for Session, Trace, Feedback, Evolution, and
 
 Step 27 adds production operations around that control plane. Three versioned migrations are protected by checksums and a PostgreSQL advisory lock. API Keys can be rotated or revoked through a shared hashed Registry, protected actions create redacted Audit events, and configurable bounded retention covers Session, Trace, Feedback, Evolution, and Audit data. Local two-Worker load passed 60/60 requests; after killing one Worker, its replacement passed 40/40 recovery requests. Real PostgreSQL load, Worker recovery, and database stop/readiness/restart gates are implemented in CI and remain pending execution outside this disk-constrained workstation.
 
-Step 28 adds per-Worker PostgreSQL connection pools, official Prometheus multiprocess metrics with a constant-memory local fallback, an independent redacted JSONL Audit outlet, and checksum-protected logical backup/restore. The local recovery drill restored 2/2 records and rejected a corrupted snapshot. GitHub Actions Run `32738626804` passed test, Docker, and PostgreSQL jobs: 100/100 initial and 40/40 post-Worker-kill requests succeeded with zero server errors; Pool, Audit, Metrics, backup/restore, and database stop/recovery gates passed. The evidence is retained in artifact `software-agent-step28-postgres-evidence`.
+Step 28 adds per-Worker PostgreSQL connection pools, official Prometheus multiprocess metrics with a constant-memory local fallback, an independent redacted JSONL Audit outlet, and checksum-protected logical backup/restore. The local recovery drill restored 2/2 records and rejected a corrupted snapshot. GitHub Actions Run `32742656550` passed 128 tests plus Docker and PostgreSQL jobs: 100/100 initial and 40/40 post-Worker-kill requests succeeded with zero server errors; Pool, Audit, Metrics, backup/restore, and database stop/recovery gates passed. The evidence is retained in the v1.0.0 Release and Actions artifact.
+
+Step 29 packages the project as a reproducible v1.0.0 release with open-source governance,
+public-risk audit, release notes, machine-readable evidence, and a fixed evidence asset. A real
+release-candidate latency-gate failure was diagnosed and fixed with median statistics plus a bounded
+noise floor instead of being hidden by a retry.
+
+Step 30 provides an interview delivery layer: a one-page architecture and evidence showcase, a
+2-3 minute demo runbook, an executable API demo client, current interview Q&A, and browser-verified
+screenshots. This layer changes presentation, not the frozen Agent behavior.
 
 Latest summary:
 

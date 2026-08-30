@@ -8,4 +8,5 @@ data/trajectories.jsonl
 data/audit/
 backups/
 artifacts/
+.playwright-cli/
 test-run-*.log

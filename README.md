@@ -45,6 +45,26 @@ uvicorn app.api.server:app --host 127.0.0.1 --port 8000
 
 Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
 
+## Interview-Ready Package
+
+- [One-page project showcase](docs/project-showcase.md)
+- [2-3 minute demo runbook](docs/demo-runbook.md)
+- [Executable API demo](examples/interview_demo.py)
+- [Interview talking points and Q&A](docs/interview_talking_points.md)
+- [v1.0.0 release evidence](release/v1.0.0-evidence.json)
+
+With the API running:
+
+```bash
+python examples/interview_demo.py --skip-evaluation
+```
+
+### Demo Preview
+
+![Multi-tool Agent demo](docs/assets/agent-demo.png)
+
+![Evaluation dashboard](docs/assets/evaluation-dashboard.png)
+
 ## Highlights
 
 - Multi-tool Agent with hybrid planning across structured tools and RAG.
@@ -442,6 +462,8 @@ The baseline normalizes the local project path while preserving routing decision
 
 ## Documentation
 
+- [Project Showcase](docs/project-showcase.md)
+- [2-3 Minute Demo Runbook](docs/demo-runbook.md)
 - [Project Summary](docs/project_summary.md)
 - [Architecture V2 Baseline](docs/architecture-v2.md)
 - [API Contract V1](docs/api-contract.md)
@@ -480,7 +502,7 @@ Built a simulated-data Software Engineering Agent prototype to validate Agent me
 
 ## Roadmap
 
-- Replace the current lightweight retriever with a FAISS-backed retriever
-- Connect the LLM Router adapter to real Function Calling or LangGraph
-- Add partial-success scoring for more realistic hybrid tasks
-- Add more noisy, long-form engineering queries to the robustness suite
+- Run a budget-capped real Provider A/B for plan validity, task success, latency, tokens, and cost
+- Add an external public software-asset evaluation set to measure out-of-distribution behavior
+- Add production alert rules and a longer PostgreSQL capacity/soak experiment
+- Evaluate whether FAISS or a managed vector store improves retrieval beyond the current small corpus

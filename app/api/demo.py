@@ -6,6 +6,7 @@ DEMO_HTML = """
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:," />
   <title>AI Software Engineering Agent Demo</title>
   <style>
     :root {
@@ -54,6 +55,7 @@ DEMO_HTML = """
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 18px;
+      min-width: 0;
     }
     h2 {
       margin: 0 0 14px;
@@ -120,7 +122,7 @@ DEMO_HTML = """
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
       margin-bottom: 14px;
     }
@@ -150,6 +152,8 @@ DEMO_HTML = """
       max-height: 520px;
       font-size: 12px;
       line-height: 1.5;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
     }
     .answer {
       border: 1px solid var(--line);
@@ -158,6 +162,7 @@ DEMO_HTML = """
       margin-bottom: 14px;
       line-height: 1.55;
       background: #fbfcfe;
+      overflow-wrap: anywhere;
     }
     @media (max-width: 840px) {
       main { grid-template-columns: 1fr; padding: 16px; }
@@ -221,7 +226,7 @@ DEMO_HTML = """
         <div class="metric"><span>Provider</span><strong id="provider">-</strong></div>
       </div>
       <div class="answer" id="answer">Run a query to inspect the Agent answer.</div>
-      <h2>Plan And Trajectory</h2>
+      <h2>Plan, Evidence And Trace</h2>
       <pre id="details">{}</pre>
     </section>
   </main>
@@ -310,8 +315,15 @@ DEMO_HTML = """
         detailsEl.textContent = JSON.stringify({
           used_tools: data.used_tools,
           plan: data.plan,
-          evidence: data.evidence,
-          evidence_items: data.evidence_items,
+          evidence_items: (data.evidence_items || []).map((item) => ({
+            evidence_id: item.evidence_id,
+            source_type: item.source_type,
+            source_id: item.source_id,
+            title: item.title,
+            tool_name: item.tool_name,
+            confidence: item.confidence,
+            metadata: item.metadata
+          })),
           citations: data.citations,
           evidence_count: data.evidence_count,
           execution_status: data.execution_status,
@@ -322,12 +334,17 @@ DEMO_HTML = """
           resolved_query: data.resolved_query,
           inherited_context: data.inherited_context,
           context: data.context,
-          trace: data.trace,
+          trace_summary: {
+            trace_schema_version: data.trace?.trace_schema_version,
+            trace_id: data.trace?.trace_id,
+            steps: data.trace?.steps,
+            metrics: data.trace?.metrics,
+            privacy: data.trace?.privacy
+          },
           policy_version: data.policy_version,
           policy_assignment: data.policy_assignment,
           policy_monitor_event: data.policy_monitor_event,
-          provider: data.provider,
-          trajectory: data.trajectory
+          provider: data.provider
         }, null, 2);
       } catch (error) {
         answerEl.textContent = String(error);

@@ -93,7 +93,7 @@ async def application_lifespan(_app: FastAPI):
 app = FastAPI(
     title="AI Software Engineering Agent",
     description="A demo Agent service for package analysis, dependency reasoning, RAG, and hybrid tool planning.",
-    version="0.1.0",
+    version="1.0.0",
     lifespan=application_lifespan,
 )
 

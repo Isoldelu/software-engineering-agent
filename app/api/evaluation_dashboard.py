@@ -6,6 +6,7 @@ EVALUATION_DASHBOARD_HTML = """
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:," />
   <title>Software-Agent Evaluation Dashboard</title>
   <style>
     :root {
@@ -55,6 +56,11 @@ EVALUATION_DASHBOARD_HTML = """
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 16px;
+    }
+    section {
+      min-width: 0;
+      max-width: 100%;
+      overflow-x: auto;
     }
     .metric span {
       display: block;
@@ -261,7 +267,7 @@ EVALUATION_DASHBOARD_HTML = """
         </tr>
       `).join("");
 
-      document.getElementById("highlights").innerHTML = data.interview_highlights
+      document.getElementById("highlights").innerHTML = data.interview_highlights.slice(0, 6)
         .map((item) => `<p>${item}</p>`)
         .join("");
       document.getElementById("methodRows").innerHTML = data.experiment.methods.map((method) => `
