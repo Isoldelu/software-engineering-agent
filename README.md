@@ -49,6 +49,9 @@ Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
 
 - [One-page project showcase](docs/project-showcase.md)
 - [2-3 minute demo runbook](docs/demo-runbook.md)
+- [5-slide interview deck](docs/Software-Agent-Interview-Deck.pptx)
+- [Slide-by-slide interview script](docs/interview-deck-script.md)
+- [Reproducible deck builder](docs/deck/build_interview_deck.mjs)
 - [Executable API demo](examples/interview_demo.py)
 - [Interview talking points and Q&A](docs/interview_talking_points.md)
 - [v1.0.0 release evidence](release/v1.0.0-evidence.json)
@@ -64,6 +67,10 @@ python examples/interview_demo.py --skip-evaluation
 ![Multi-tool Agent demo](docs/assets/agent-demo.png)
 
 ![Evaluation dashboard](docs/assets/evaluation-dashboard.png)
+
+### Interview Deck Preview
+
+![Five-slide interview deck](docs/assets/interview-deck-preview.png)
 
 ## Highlights
 
