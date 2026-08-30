@@ -68,5 +68,5 @@ def test_recording_subtitles_end_at_standard_plan_duration():
     ).read_text(encoding="utf-8")
     assert subtitles.count("-->") == 6
     assert "00:03:30,000" in subtitles
-    assert "134 项测试" in subtitles
+    assert "138 项测试" in subtitles
     assert "自动激活" in subtitles

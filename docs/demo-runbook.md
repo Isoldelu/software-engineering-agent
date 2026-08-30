@@ -16,7 +16,7 @@ Open these tabs before the interview:
 
 - `http://127.0.0.1:8000/demo`
 - `http://127.0.0.1:8000/evaluation-dashboard`
-- `https://github.com/Isoldelu/software-engineering-agent/actions/runs/33311037079`
+- `https://github.com/Isoldelu/software-engineering-agent/actions/runs/33314875879`
 
 Optional command-line preflight:
 

@@ -56,7 +56,7 @@ PLANS: dict[Mode, RehearsalPlan] = {
             Segment(
                 "工程边界",
                 10,
-                "CI 已验证 134 项测试、Docker 和 PostgreSQL；真实 Provider A/B 尚未执行。",
+                "CI 已验证 138 项测试、Docker 和 PostgreSQL；真实 Provider A/B 尚未执行。",
             ),
         ),
     ),
@@ -93,7 +93,7 @@ PLANS: dict[Mode, RehearsalPlan] = {
             Segment(
                 "工程证据与边界",
                 30,
-                "GitHub Actions 验证 134 项测试、Docker 和真实 PostgreSQL 多 Worker 门禁。项目已有灰度与回滚，但 Evolution Candidate 到发布候选仍缺直接桥接；真实 Provider A/B 尚未执行。",
+                "GitHub Actions 验证 138 项测试、Docker 和真实 PostgreSQL 多 Worker 门禁。项目已有灰度与回滚，但 Evolution Candidate 到发布候选仍缺直接桥接；真实 Provider A/B 尚未执行。",
             ),
         ),
     ),

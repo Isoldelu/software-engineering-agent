@@ -2,7 +2,7 @@
 
 ## 90 秒版本
 
-> 这是一个基于公开风格模拟数据复现的 AI4SE Agent，不包含华为内部数据。系统面向 Package、Dependency、Version、Component 和研发文档检索，由 Planner 组合五个领域工具，结果统一进入 Evidence、Citation、Verifier 和可回放 Trace。以 nginx 版本变化和依赖为例，Planner 会组合三个工具，而不是只做一次 RAG。项目建立了 193 条冻结评测和离线 Proxy Baseline，关键词 Router 在挑战集上为 61.76%，优化后达到冻结集 100%。我还实现了受控自进化：离线挖掘 9 个失败，生成 Router、Alias 和 Retriever 三类配置候选，Shadow 修复 9 个且零回归，但候选不能修改源码或自动激活。GitHub Actions 已验证 134 项测试、Docker 和 PostgreSQL 多 Worker 门禁。真实 Provider A/B 尚未执行。
+> 这是一个基于公开风格模拟数据复现的 AI4SE Agent，不包含华为内部数据。系统面向 Package、Dependency、Version、Component 和研发文档检索，由 Planner 组合五个领域工具，结果统一进入 Evidence、Citation、Verifier 和可回放 Trace。以 nginx 版本变化和依赖为例，Planner 会组合三个工具，而不是只做一次 RAG。项目建立了 193 条冻结评测和离线 Proxy Baseline，关键词 Router 在挑战集上为 61.76%，优化后达到冻结集 100%。我还实现了受控自进化：离线挖掘 9 个失败，生成 Router、Alias 和 Retriever 三类配置候选，Shadow 修复 9 个且零回归，但候选不能修改源码或自动激活。GitHub Actions 已验证 138 项测试、Docker 和 PostgreSQL 多 Worker 门禁。真实 Provider A/B 尚未执行。
 
 ## 3 分 30 秒版本
 
@@ -28,7 +28,7 @@ OfflineFailureMiner 重跑标注用例，识别 Router、Alias 和 Retriever 三
 
 ### 6. 工程交付与边界
 
-FastAPI、PostgreSQL、鉴权、审计、Prometheus、备份恢复、Docker 和多 Worker 路径已经建立。GitHub Actions 当前验证 134 项测试。策略层另有版本化、灰度和自动回滚，但 Evolution Candidate 到可发布 Policy Candidate 还缺显式桥接。真实 Provider A/B 仍等待 API Key 与预算。
+FastAPI、PostgreSQL、鉴权、审计、Prometheus、备份恢复、Docker 和多 Worker 路径已经建立。GitHub Actions 当前验证 138 项测试。策略层另有版本化、灰度和自动回滚，但 Evolution Candidate 到可发布 Policy Candidate 还缺显式桥接。真实 Provider A/B 仍等待 API Key 与预算。
 
 ## 高频技术追问
 
