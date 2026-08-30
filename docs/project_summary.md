@@ -98,7 +98,8 @@ noise floor instead of being hidden by a retry.
 
 Step 30 provides an interview delivery layer: a one-page architecture and evidence showcase, a
 2-3 minute demo runbook, an executable API demo client, current interview Q&A, and browser-verified
-screenshots. This layer changes presentation, not the frozen Agent behavior.
+screenshots. GitHub Actions Run `33309988987` passed 131 tests plus Docker and PostgreSQL jobs.
+This layer changes presentation, not the frozen Agent behavior.
 
 Latest summary:
 

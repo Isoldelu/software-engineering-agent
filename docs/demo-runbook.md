@@ -16,7 +16,7 @@ Open these tabs before the interview:
 
 - `http://127.0.0.1:8000/demo`
 - `http://127.0.0.1:8000/evaluation-dashboard`
-- `https://github.com/Isoldelu/software-engineering-agent/actions/runs/32742656550`
+- `https://github.com/Isoldelu/software-engineering-agent/actions/runs/33309988987`
 
 Optional command-line preflight:
 
@@ -108,4 +108,3 @@ End with the engineering lesson:
 
 > 这个项目的重点不是把 LLM 接到搜索框，而是把工具选择、事实证据、失败语义、执行轨迹、
 > 优化候选和策略发布都变成可测试的工程契约。
-

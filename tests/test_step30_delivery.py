@@ -29,7 +29,7 @@ def test_step30_delivery_files_cover_showcase_demo_and_interview():
 
     showcase = (ROOT / "docs" / "project-showcase.md").read_text(encoding="utf-8")
     runbook = (ROOT / "docs" / "demo-runbook.md").read_text(encoding="utf-8")
-    assert "32742656550" in showcase
+    assert "33309988987" in showcase
     assert "193/193" in showcase
     assert "simulated" in showcase.lower()
     assert "2-3 Minute" in runbook
