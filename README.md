@@ -60,6 +60,7 @@ Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
 - [Controlled self-evolution capability matrix](docs/evolution-capability-matrix.md)
 - [Step 34 multi-Worker Bridge production validation](docs/step34-bridge-production-validation.md)
 - [Real DeepSeek Provider A/B](docs/real-deepseek-provider-ab.md)
+- [DeepSeek Native Tool Calling A/B](docs/native-tool-calling-ab.md)
 - [Executable API demo](examples/interview_demo.py)
 - [Interactive rehearsal timer](examples/interview_rehearsal.py)
 - [Interview talking points and Q&A](docs/interview_talking_points.md)
@@ -90,6 +91,7 @@ python examples/interview_rehearsal.py --mode standard
 - Versioned policy rollout, monitoring, rollback, and exact Trace attribution.
 - Real PostgreSQL multi-Worker CI with fault injection and retained evidence.
 - Zero-cost offline default plus an explicit-budget DeepSeek V4 Flash A/B path.
+- Bounded Native Tool Calling experiment with local allowlist and argument validation.
 
 ## Results
 

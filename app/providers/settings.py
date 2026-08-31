@@ -36,6 +36,8 @@ class ProviderSettings:
     deepseek_base_url: str = "https://api.deepseek.com"
     timeout_seconds: float = 20.0
     max_output_tokens: int = 800
+    native_max_rounds: int = 3
+    native_max_tool_calls: int = 8
 
     @classmethod
     def from_env(cls) -> ProviderSettings:
@@ -56,6 +58,8 @@ class ProviderSettings:
             max_output_tokens=_int_setting(
                 "SOFTWARE_AGENT_LLM_MAX_OUTPUT_TOKENS", 800, 128, 2000
             ),
+            native_max_rounds=_int_setting("SOFTWARE_AGENT_NATIVE_MAX_ROUNDS", 3, 2, 6),
+            native_max_tool_calls=_int_setting("SOFTWARE_AGENT_NATIVE_MAX_TOOL_CALLS", 8, 1, 20),
         )
 
     def public_status(self) -> dict[str, Any]:

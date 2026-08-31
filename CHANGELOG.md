@@ -6,6 +6,8 @@ All notable changes to this project are documented here.
 
 ### Added
 
+- Bounded DeepSeek Native Tool Calling loop and a ten-case three-way comparison against the deterministic and JSON Planner paths.
+- Exact local function-argument validation, Provider/tool-call limits, a hidden-input PowerShell runner, and secret-safe Step 36 reports.
 - Optional DeepSeek V4 Flash JSON Planner with non-thinking mode, local schema validation, deterministic fallback, and secret-safe Provider status.
 - Explicit-budget 20-case real Provider A/B with required-Tool labels, latency/token/cost metrics, and retained Before/After reports.
 - Step 34 multi-Worker Bridge fault experiment with database-level failure injection and real two-Worker HTTP concurrency.

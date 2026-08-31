@@ -1,0 +1,12 @@
+[
+  {"query": "查询 openssl 的软件版本", "required_tools": ["package_search"]},
+  {"query": "openssl 依赖哪些组件", "required_tools": ["dependency_analysis"]},
+  {"query": "比较 openssl 两个版本变化", "required_tools": ["version_compare"]},
+  {"query": "libssl.so 属于哪个软件包", "required_tools": ["component_mapping"]},
+  {"query": "release note says what was added in 1214", "required_tools": ["rag_retrieval"]},
+  {"query": "1214 release packages and their dependencies", "required_tools": ["package_search", "dependency_analysis"]},
+  {"query": "查一下 nginx 的版本变化和依赖", "required_tools": ["dependency_analysis", "version_compare"]},
+  {"query": "哪个包提供 libcrypto.so，它还有哪些依赖", "required_tools": ["component_mapping", "dependency_analysis"]},
+  {"query": "查找 tcpdump 包信息、依赖和历史版本变化", "required_tools": ["package_search", "dependency_analysis", "version_compare"]},
+  {"query": "1215 release packages and their dependencies", "required_tools": ["package_search"], "expected_status": "not_found"}
+]
