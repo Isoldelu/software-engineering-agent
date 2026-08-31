@@ -159,14 +159,14 @@ jobs:
           if grep -q 'step27-operator-ci' artifacts/step28/audit.jsonl; then exit 1; fi
       - name: Upload PostgreSQL Step 28 evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: software-agent-step28-postgres-evidence
           path: artifacts/step28/
           if-no-files-found: warn
       - name: Upload PostgreSQL Step 34 Bridge evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: software-agent-step34-bridge-evidence
           path: artifacts/step34/
