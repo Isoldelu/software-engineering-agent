@@ -58,6 +58,10 @@ The remaining strict failure is the intentionally missing `1215` release. The ra
 
 Across connectivity, diagnostic, Before, and After work, 43 real requests were made. Forty-two requests retained usage records; the known peak-price upper bound is about `$0.0237`. Even allowing the first unrecorded response to consume its full configured output allowance, the conservative total remains below `$0.026`.
 
+## Remote Regression Evidence
+
+[GitHub Actions Run 33375239707](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33375239707) passed all three jobs on commit `3f83bdf`: `test-and-evaluate`, `docker-build`, and `postgres-integration`. The test job includes 160 tests, static checks, type checks, and the offline evaluation smoke. The workflow has no Provider credential and does not call `evaluation/real_provider_eval.py`, so this regression run incurred zero Provider calls. Real A/B reports are committed only after secret-shape scans and contain aggregate usage and redacted metadata, not credentials or raw model responses.
+
 ## Why Exact Deterministic Parity Is Secondary
 
 Exact sequence equality is useful for drift visibility but is not a reliable Tool Accuracy label. For example, the deterministic Router selected only dependency analysis for a component-ownership-plus-dependency query, while DeepSeek correctly selected `component_mapping` and `dependency_analysis`. The final benchmark therefore uses human-labeled required Tool coverage as the primary routing metric and retains exact parity as a secondary comparison.

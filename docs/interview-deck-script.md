@@ -2,11 +2,13 @@
 
 配套文件：[Software-Agent-Interview-Deck.pptx](Software-Agent-Interview-Deck.pptx)
 
+> 版本说明：该 Deck 固定为 Step 34 的 155-tests / zero-paid-call 历史快照。Step 35 的当前补充证据为 160 tests、GitHub Actions Run `33375239707` 和 20-case Real DeepSeek JSON Planner A/B；讲解新结果时应同时打开 [`real-deepseek-provider-ab.md`](real-deepseek-provider-ab.md)，不要直接把旧页数字读成当前数字。
+
 建议总时长：3-4 分钟。现场优先讲结论，不逐字朗读页面。
 
 ## 第 1 页：项目定位
 
-> 这是我基于公开风格模拟数据完成的个人复现项目，不包含华为内部数据。项目面向软件研发资产查询与分析，通过 Agent 组合结构化工具和 RAG，并把每次执行转化为可验证、可回放、可评测的 Trace。当前版本通过 155 项自动化测试和 193 条冻结评测，全程没有调用付费 API。
+> 这是我基于公开风格模拟数据完成的个人复现项目，不包含华为内部数据。项目面向软件研发资产查询与分析，通过 Agent 组合结构化工具和 RAG，并把每次执行转化为可验证、可回放、可评测的 Trace。该 Deck 对应 Step 34 快照，当时通过 155 项自动化测试和 193 条冻结评测，尚未执行真实 Provider A/B。
 
 ## 第 2 页：系统架构
 

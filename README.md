@@ -21,7 +21,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 
 | Gate | Result |
 |---|---:|
-| Automated tests | 155 passed |
+| Automated tests | 160 passed |
 | Frozen evaluation baseline | 193 compatible cases |
 | Real PostgreSQL initial load | 100/100, 0 server errors |
 | Load after Worker replacement | 40/40, 0 server errors |
@@ -31,7 +31,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | PostgreSQL two-Worker Bridge HTTP | 14/14 passed |
 | Real DeepSeek structured plans | 20/20 valid, 0 fallback |
 
-Current evidence: [GitHub Actions Run 33363220127](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33363220127). The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
+Current evidence: [GitHub Actions Run 33375239707](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33375239707). The real DeepSeek A/B is an explicit local paid experiment; CI has no Provider Key and does not execute the paid runner. The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
 
 ## Try It
 

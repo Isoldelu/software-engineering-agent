@@ -156,15 +156,17 @@ advisory lock。每 Worker 使用有界连接池，Prometheus 使用 multiproces
 
 ### 如何证明工程能力不是只写了接口
 
-GitHub Actions Run `33363220127` 同时运行 155 项测试、Docker Build 和真实 PostgreSQL
+GitHub Actions Run `33375239707` 同时运行 160 项测试、Docker Build 和真实 PostgreSQL
 集成。双 Worker 首轮 100/100、替换 Worker 后 40/40 均零 5xx；数据库停机时 readiness
 返回 503，恢复后返回 200。Bridge 数据库故障实验 16/16、双 Worker HTTP 实验 14/14，
 并保留独立 Artifact；原有 Fault Injection 6/6、Backup Restore 2/2 也继续通过。
 
 ### 下一步最有价值的工作
 
-小预算真实 Provider A/B，重点测计划合法率、Task Success、P95 Latency、Token 和单任务
-成本；其次是引入外部公开软件资产数据集，验证冻结集之外的泛化能力。
+真实 DeepSeek JSON Planner A/B 已完成，20/20 计划合法、Required Tool Coverage 100%、
+Strict Task Success 95%、零 fallback，P95 2.276 秒，优化轮成本上界约 0.012 美元。
+下一步可比较 Native Tool Calling、JSON Planner 和 deterministic Planner，或引入外部公开
+软件资产数据集验证冻结集之外的泛化能力。
 
 ## 不要越过的表述边界
 
@@ -172,7 +174,7 @@ GitHub Actions Run `33363220127` 同时运行 155 项测试、Docker Build 和�
 - 不说“训练了 RL”或“Agent 自动修改和发布代码”。
 - 不把 DirectLLMProxy 称为真实 GPT/Claude/Gemini 测试。
 - 不把 GitHub Runner 的 100/40 请求结果称为生产 QPS 或 SLA。
-- 不说 FAISS、LangGraph 或真实 Provider 已完成，除非对应实现和实验后来确实落地。
+- 不说 FAISS、LangGraph 已完成；真实 Provider 仅表述为 20 条 JSON Planner A/B，不扩展为生产上线或 Native Tool Calling。
 - 不展示 API Key、Audit 原文、Trajectory 原始 Query 或任何企业内部资料。
 
 ## 最后一句

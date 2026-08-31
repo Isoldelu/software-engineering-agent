@@ -126,6 +126,8 @@ exposed string-valued arguments and speculative Tool selection, so the Prompt co
 arguments, minimal-plan rules, and release-package fan-out. The optimized 20-case run reached 100%
 structured-plan validity, 100% human-labeled required Tool coverage, 95% strict task success, zero
 fallback, 2.276-second P95 latency, and a $0.011726 peak-price cost upper bound.
+GitHub Actions Run `33375239707` then passed 160 tests plus Docker and PostgreSQL jobs on the same
+commit. The CI workflow has no Provider credential and does not invoke the explicit paid runner.
 
 Latest summary:
 
