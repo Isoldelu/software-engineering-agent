@@ -56,7 +56,7 @@ PLANS: dict[Mode, RehearsalPlan] = {
             Segment(
                 "工程边界",
                 10,
-                "CI 已验证 150 项测试、Docker 和 PostgreSQL；真实 Provider A/B 尚未执行。",
+                "CI 已验证 155 项测试、Docker 和 PostgreSQL；真实 Provider A/B 尚未执行。",
             ),
         ),
     ),
@@ -88,12 +88,12 @@ PLANS: dict[Mode, RehearsalPlan] = {
             Segment(
                 "受控自进化",
                 40,
-                "离线循环挖掘 9 个失败并聚成 Router、Alias、Retriever 三类根因，Shadow 与冻结回归修复 9 个且零回归。人工批准后由 Reviewed Bridge 创建灰度策略，但候选不能改源码或自行发布。",
+                "离线循环挖掘 9 个失败并聚成 Router、Alias、Retriever 三类根因，Shadow 与冻结回归修复 9 个且零回归。人工批准后由受审 Bridge（Reviewed Bridge）创建灰度策略，但候选不能改源码或自行发布。",
             ),
             Segment(
                 "工程证据与边界",
                 30,
-                "GitHub Actions Run 33354020784 验证 150 项测试、Docker 和真实 PostgreSQL 多 Worker 门禁。Evolution 候选已通过受审 Bridge 接入灰度与回滚；真实 Provider A/B 尚未执行。",
+                "GitHub Actions Run 33363220127 验证 155 项测试、Docker 和真实 PostgreSQL 多 Worker 门禁。Bridge 故障注入 16/16、双 Worker HTTP 14/14；真实 Provider A/B 尚未执行。",
             ),
         ),
     ),

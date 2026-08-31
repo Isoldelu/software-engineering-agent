@@ -3,7 +3,6 @@ from __future__ import annotations
 import importlib.util
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -29,7 +28,10 @@ def test_step30_delivery_files_cover_showcase_demo_and_interview():
 
     showcase = (ROOT / "docs" / "project-showcase.md").read_text(encoding="utf-8")
     runbook = (ROOT / "docs" / "demo-runbook.md").read_text(encoding="utf-8")
-    assert "33354020784" in showcase
+    assert "33363220127" in showcase
+    assert "155 passed" in showcase
+    assert "16/16 passed" in showcase
+    assert "14/14 passed" in showcase
     assert "193/193" in showcase
     assert "simulated" in showcase.lower()
     assert "2-3 Minute" in runbook

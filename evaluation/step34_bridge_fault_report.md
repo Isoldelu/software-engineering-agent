@@ -30,6 +30,17 @@ The fault suite exposed an initial observability race where the Policy creator a
 | Rollback | passed |
 | Gates | 14/14 passed |
 
-The local HTTP run used a temporary SQLite shared control plane to exercise real Uvicorn process boundaries. GitHub Actions executes the same harness against PostgreSQL and uploads `software-agent-step34-bridge-evidence`; the remote Run and Artifact identifiers are appended after CI completion.
+The local HTTP run used a temporary SQLite shared control plane to exercise real Uvicorn process boundaries.
+
+## Real PostgreSQL CI Evidence
+
+- Commit: `436b83568cc6984f910642136d9af86bbe98c918`.
+- GitHub Actions Run: `33363220127`, conclusion `success`.
+- `test-and-evaluate` Job `99398550631`: success.
+- `docker-build` Job `99398550692`: success.
+- `postgres-integration` Job `99398550716`: success.
+- PostgreSQL step `Step 34 PostgreSQL Bridge fault injection`: success.
+- PostgreSQL step `Step 34 two-worker concurrent Bridge release`: success.
+- Artifact `software-agent-step34-bridge-evidence`: ID `9747392859`, 1797 bytes, `expired=false`, expires 2026-11-29.
 
 Paid Provider calls: `0`.

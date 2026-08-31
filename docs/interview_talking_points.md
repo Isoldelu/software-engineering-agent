@@ -156,9 +156,10 @@ advisory lock。每 Worker 使用有界连接池，Prometheus 使用 multiproces
 
 ### 如何证明工程能力不是只写了接口
 
-GitHub Actions Run `33354020784` 同时运行 150 项测试、Docker Build 和真实 PostgreSQL
+GitHub Actions Run `33363220127` 同时运行 155 项测试、Docker Build 和真实 PostgreSQL
 集成。双 Worker 首轮 100/100、替换 Worker 后 40/40 均零 5xx；数据库停机时 readiness
-返回 503，恢复后返回 200；Fault Injection 6/6，Backup Restore 2/2。
+返回 503，恢复后返回 200。Bridge 数据库故障实验 16/16、双 Worker HTTP 实验 14/14，
+并保留独立 Artifact；原有 Fault Injection 6/6、Backup Restore 2/2 也继续通过。
 
 ### 下一步最有价值的工作
 
