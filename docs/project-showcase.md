@@ -55,7 +55,7 @@ are offline proxy results, not measurements of a paid online model.
 
 | Gate | Verified result |
 |---|---:|
-| Automated tests | 160 passed |
+| Automated tests | 165 passed |
 | Frozen evaluation | 193/193 compatible |
 | Legacy to optimized routing | 61.76% to 100% |
 | PostgreSQL initial load | 100/100, zero server errors |
@@ -69,7 +69,7 @@ are offline proxy results, not measurements of a paid online model.
 | DeepSeek strict task success / P95 | 95% / 2.276 s |
 
 Current evidence is bound to
-[GitHub Actions Run 33375239707](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33375239707).
+[GitHub Actions Run 33383706654](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33383706654).
 This Run passed test, Docker-build, and real PostgreSQL integration jobs without a
 Provider Key or paid Provider call. The real DeepSeek numbers come from the separately
 budgeted, sanitized local A/B report.
