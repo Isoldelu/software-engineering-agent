@@ -29,6 +29,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | Database outage recovery | readiness 503 -> 200 |
 | PostgreSQL Bridge fault injection | 16/16 passed |
 | PostgreSQL two-Worker Bridge HTTP | 14/14 passed |
+| Real DeepSeek structured plans | 20/20 valid, 0 fallback |
 
 Current evidence: [GitHub Actions Run 33363220127](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33363220127). The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
 
@@ -58,6 +59,7 @@ Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
 - [Recording runbook and subtitle timeline](docs/recording-runbook.md)
 - [Controlled self-evolution capability matrix](docs/evolution-capability-matrix.md)
 - [Step 34 multi-Worker Bridge production validation](docs/step34-bridge-production-validation.md)
+- [Real DeepSeek Provider A/B](docs/real-deepseek-provider-ab.md)
 - [Executable API demo](examples/interview_demo.py)
 - [Interactive rehearsal timer](examples/interview_rehearsal.py)
 - [Interview talking points and Q&A](docs/interview_talking_points.md)
@@ -87,7 +89,7 @@ python examples/interview_rehearsal.py --mode standard
 - Controlled Feedback and offline self-evolution with a reviewed, auditable release bridge.
 - Versioned policy rollout, monitoring, rollback, and exact Trace attribution.
 - Real PostgreSQL multi-Worker CI with fault injection and retained evidence.
-- Zero-cost offline default; real online Provider calls require explicit credentials and budget.
+- Zero-cost offline default plus an explicit-budget DeepSeek V4 Flash A/B path.
 
 ## Results
 
@@ -142,6 +144,8 @@ Controlled Feedback experiment: linked routing accuracy `0% -> 100%`, 3 bad case
 Policy rollout experiment: a reviewed candidate was released at 20%; 184 of 1,000 stable-hash session assignments entered rollout (18.4%). Injected rollout failures triggered automatic rollback to `deterministic-policy-v1` with Agent source hashes unchanged.
 
 Provider dual-mode experiment: 12 representative queries reached 100% Offline/Mock-Online plan parity. Malformed JSON, unknown Tool, and timeout injections achieved 100% deterministic fallback, with provider metadata retained in Trace and 0 paid API calls.
+
+Real DeepSeek experiment: 20/20 optimized plans passed JSON and local Tool-schema validation with 0 fallback. Human-labeled required Tool accuracy reached 100%, strict task success reached 95%, and P95 Provider latency was 2.276 seconds. The optimized 20-case run used 19,628 tokens with a conservative peak-price cost upper bound of $0.011726.
 
 Offline evolution experiment: 9 failures were mined into Router, Query Alias, and Retriever clusters. Three configuration candidates fixed all 9 linked cases with 0 regressions and remained `pending_review + active=false`; paid API calls were 0.
 

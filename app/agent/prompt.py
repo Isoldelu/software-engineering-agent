@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import json
 
-
 SYSTEM_PROMPT = """You are an AI4SE Agent for network device software engineering.
 Use tools to verify package metadata, dependency relationships, version changes,
 component ownership, and engineering document evidence. Do not guess. Prefer
@@ -87,15 +86,35 @@ TOOL_SCHEMAS = [
 PLANNER_OUTPUT_FORMAT = {
     "intent": "task intent",
     "tool": "single tool name or hybrid_plan",
-    "arguments": "global arguments extracted from the query",
+    "arguments": {"query": "original or focused natural-language query"},
+    "confidence": "low, medium, or high",
+    "reason": "short reason for the selected plan",
     "steps": [
         {
             "tool": "tool name",
-            "arguments": "tool arguments",
+            "arguments": {"query": "natural-language query for this tool"},
             "reason": "why this tool is needed"
         }
     ]
 }
+
+PLANNER_RULES = [
+    "Return one JSON object only, without markdown or extra text.",
+    "The top-level arguments and every step arguments value must be JSON objects.",
+    "Use exactly one step for a single intent and set tool to that step tool.",
+    "Use hybrid_plan only when the user explicitly asks for multiple intents or sources.",
+    "A current package version lookup uses package_search, not version_compare.",
+    "Use version_compare only for change, difference, history, old/new, or compare intent.",
+    (
+        "For release packages followed by dependency or version analysis, call package_search "
+        "first, then set from_previous_packages to true in the downstream step arguments."
+    ),
+    (
+        "When the query explicitly cites a release note or manual, include rag_retrieval; "
+        "a release id alone does not require document retrieval."
+    ),
+    "Do not add speculative tools. Prefer the smallest sufficient plan.",
+]
 
 
 def build_planner_prompt(query: str) -> str:
@@ -104,6 +123,8 @@ def build_planner_prompt(query: str) -> str:
         SYSTEM_PROMPT,
         "Available tools:",
         json.dumps(TOOL_SCHEMAS, ensure_ascii=False, indent=2),
+        "Planner rules:",
+        "\n".join(f"- {rule}" for rule in PLANNER_RULES),
         "Return a JSON plan in this format:",
         json.dumps(PLANNER_OUTPUT_FORMAT, ensure_ascii=False, indent=2),
         f"User query: {query}"

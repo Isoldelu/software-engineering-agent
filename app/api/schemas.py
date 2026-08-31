@@ -27,7 +27,7 @@ class AgentQueryWithPlanRequest(AgentQueryRequest):
 
 
 class AgentProviderQueryRequest(AgentQueryRequest):
-    provider: Literal["auto", "offline", "openai"] = "auto"
+    provider: Literal["auto", "offline", "openai", "deepseek"] = "auto"
     allow_fallback: bool = True
 
 

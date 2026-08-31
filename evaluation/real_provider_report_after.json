@@ -1,0 +1,580 @@
+{
+  "benchmark": "Software-Agent-Real-DeepSeek-Provider-AB",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "thinking_mode": "disabled",
+  "case_count": 20,
+  "metrics": {
+    "structured_plan_valid_rate": 1.0,
+    "required_tool_accuracy": 1.0,
+    "exact_plan_parity_vs_deterministic": 0.65,
+    "task_success_rate": 0.95,
+    "fallback_rate": 0.0,
+    "latency_p50_ms": 1627.642,
+    "latency_p95_ms": 2276.123,
+    "input_tokens": 16117,
+    "output_tokens": 3511,
+    "total_tokens": 19628,
+    "estimated_peak_cost_upper_bound_usd": 0.011726
+  },
+  "cost_assumption": {
+    "method": "conservative peak cache-miss upper bound",
+    "input_usd_per_million_tokens": 0.44,
+    "output_usd_per_million_tokens": 1.32,
+    "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/"
+  },
+  "comparisons": [
+    {
+      "query": "查询 openssl 的软件版本",
+      "required_tools": [
+        "package_search"
+      ],
+      "deterministic_tools": [
+        "package_search"
+      ],
+      "deepseek_tools": [
+        "package_search"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 3991.22,
+      "usage": {
+        "input_tokens": 804,
+        "output_tokens": 128,
+        "total_tokens": 932
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "openssl 依赖哪些组件",
+      "required_tools": [
+        "dependency_analysis"
+      ],
+      "deterministic_tools": [
+        "dependency_analysis"
+      ],
+      "deepseek_tools": [
+        "dependency_analysis"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1479.496,
+      "usage": {
+        "input_tokens": 802,
+        "output_tokens": 136,
+        "total_tokens": 938
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "比较 openssl 两个版本变化",
+      "required_tools": [
+        "version_compare"
+      ],
+      "deterministic_tools": [
+        "version_compare"
+      ],
+      "deepseek_tools": [
+        "version_compare"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1386.882,
+      "usage": {
+        "input_tokens": 804,
+        "output_tokens": 132,
+        "total_tokens": 936
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "1213 版本有哪些网络工具",
+      "required_tools": [
+        "package_search"
+      ],
+      "deterministic_tools": [
+        "package_search"
+      ],
+      "deepseek_tools": [
+        "package_search"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1628.316,
+      "usage": {
+        "input_tokens": 804,
+        "output_tokens": 143,
+        "total_tokens": 947
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "tcpdump 需要哪些依赖",
+      "required_tools": [
+        "dependency_analysis"
+      ],
+      "deterministic_tools": [
+        "dependency_analysis"
+      ],
+      "deepseek_tools": [
+        "dependency_analysis"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1475.641,
+      "usage": {
+        "input_tokens": 803,
+        "output_tokens": 128,
+        "total_tokens": 931
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "nginx 从 1.20 到 1.24 有什么变化",
+      "required_tools": [
+        "version_compare"
+      ],
+      "deterministic_tools": [
+        "version_compare"
+      ],
+      "deepseek_tools": [
+        "version_compare"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1627.642,
+      "usage": {
+        "input_tokens": 813,
+        "output_tokens": 159,
+        "total_tokens": 972
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "libssl.so 属于哪个软件包",
+      "required_tools": [
+        "component_mapping"
+      ],
+      "deterministic_tools": [
+        "component_mapping"
+      ],
+      "deepseek_tools": [
+        "component_mapping"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1288.964,
+      "usage": {
+        "input_tokens": 804,
+        "output_tokens": 136,
+        "total_tokens": 940
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "which package owns libpcap.so",
+      "required_tools": [
+        "component_mapping"
+      ],
+      "deterministic_tools": [
+        "component_mapping"
+      ],
+      "deepseek_tools": [
+        "component_mapping"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1233.751,
+      "usage": {
+        "input_tokens": 803,
+        "output_tokens": 137,
+        "total_tokens": 940
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "release note says what was added in 1214",
+      "required_tools": [
+        "rag_retrieval"
+      ],
+      "deterministic_tools": [
+        "rag_retrieval"
+      ],
+      "deepseek_tools": [
+        "rag_retrieval"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1445.902,
+      "usage": {
+        "input_tokens": 806,
+        "output_tokens": 145,
+        "total_tokens": 951
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "software manual describes tcpdump as what",
+      "required_tools": [
+        "rag_retrieval"
+      ],
+      "deterministic_tools": [
+        "rag_retrieval"
+      ],
+      "deepseek_tools": [
+        "rag_retrieval"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1386.006,
+      "usage": {
+        "input_tokens": 804,
+        "output_tokens": 132,
+        "total_tokens": 936
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "1214 release packages and their dependencies",
+      "required_tools": [
+        "package_search",
+        "dependency_analysis"
+      ],
+      "deterministic_tools": [
+        "rag_retrieval",
+        "package_search",
+        "dependency_analysis",
+        "dependency_analysis"
+      ],
+      "deepseek_tools": [
+        "package_search",
+        "dependency_analysis",
+        "dependency_analysis"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": false,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1673.394,
+      "usage": {
+        "input_tokens": 804,
+        "output_tokens": 203,
+        "total_tokens": 1007
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "according to release note, what dependencies do tcpdump have in 1214",
+      "required_tools": [
+        "rag_retrieval",
+        "dependency_analysis"
+      ],
+      "deterministic_tools": [
+        "rag_retrieval",
+        "package_search",
+        "dependency_analysis"
+      ],
+      "deepseek_tools": [
+        "rag_retrieval",
+        "package_search",
+        "dependency_analysis"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 2244.48,
+      "usage": {
+        "input_tokens": 812,
+        "output_tokens": 282,
+        "total_tokens": 1094
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "查一下 nginx 的版本变化和依赖",
+      "required_tools": [
+        "dependency_analysis",
+        "version_compare"
+      ],
+      "deterministic_tools": [
+        "package_search",
+        "dependency_analysis",
+        "version_compare"
+      ],
+      "deepseek_tools": [
+        "version_compare",
+        "dependency_analysis"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": false,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1832.319,
+      "usage": {
+        "input_tokens": 807,
+        "output_tokens": 198,
+        "total_tokens": 1005
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "1214 release packages and their version changes",
+      "required_tools": [
+        "package_search",
+        "version_compare"
+      ],
+      "deterministic_tools": [
+        "rag_retrieval",
+        "package_search",
+        "version_compare",
+        "version_compare"
+      ],
+      "deepseek_tools": [
+        "package_search",
+        "version_compare",
+        "version_compare"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": false,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1735.98,
+      "usage": {
+        "input_tokens": 805,
+        "output_tokens": 207,
+        "total_tokens": 1012
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "哪个包提供 libcrypto.so，它还有哪些依赖",
+      "required_tools": [
+        "component_mapping",
+        "dependency_analysis"
+      ],
+      "deterministic_tools": [
+        "dependency_analysis"
+      ],
+      "deepseek_tools": [
+        "component_mapping",
+        "dependency_analysis"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": false,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 2276.123,
+      "usage": {
+        "input_tokens": 809,
+        "output_tokens": 208,
+        "total_tokens": 1017
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "根据 release note 查询 1213 包并分析 openssl 依赖",
+      "required_tools": [
+        "rag_retrieval",
+        "package_search",
+        "dependency_analysis"
+      ],
+      "deterministic_tools": [
+        "rag_retrieval",
+        "package_search",
+        "dependency_analysis"
+      ],
+      "deepseek_tools": [
+        "package_search",
+        "rag_retrieval",
+        "dependency_analysis",
+        "dependency_analysis"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": false,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1906.844,
+      "usage": {
+        "input_tokens": 813,
+        "output_tokens": 282,
+        "total_tokens": 1095
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "ethtool version change and package metadata",
+      "required_tools": [
+        "version_compare",
+        "package_search"
+      ],
+      "deterministic_tools": [
+        "package_search"
+      ],
+      "deepseek_tools": [
+        "version_compare",
+        "package_search"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": false,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1294.721,
+      "usage": {
+        "input_tokens": 803,
+        "output_tokens": 173,
+        "total_tokens": 976
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "查找 tcpdump 包信息、依赖和历史版本变化",
+      "required_tools": [
+        "package_search",
+        "dependency_analysis",
+        "version_compare"
+      ],
+      "deterministic_tools": [
+        "package_search",
+        "dependency_analysis",
+        "version_compare"
+      ],
+      "deepseek_tools": [
+        "package_search",
+        "dependency_analysis",
+        "version_compare"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1715.482,
+      "usage": {
+        "input_tokens": 809,
+        "output_tokens": 250,
+        "total_tokens": 1059
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "manual says what nginx is used for",
+      "required_tools": [
+        "rag_retrieval"
+      ],
+      "deterministic_tools": [
+        "rag_retrieval"
+      ],
+      "deepseek_tools": [
+        "rag_retrieval"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": true,
+      "required_tools_covered": true,
+      "task_success": true,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1024.052,
+      "usage": {
+        "input_tokens": 804,
+        "output_tokens": 131,
+        "total_tokens": 935
+      },
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "query": "1215 release packages and their dependencies",
+      "required_tools": [
+        "package_search",
+        "dependency_analysis"
+      ],
+      "deterministic_tools": [
+        "rag_retrieval",
+        "package_search",
+        "dependency_analysis"
+      ],
+      "deepseek_tools": [
+        "package_search",
+        "dependency_analysis"
+      ],
+      "structured_plan_valid": true,
+      "same_tools": false,
+      "required_tools_covered": true,
+      "task_success": false,
+      "fallback_used": false,
+      "fallback_error_type": null,
+      "latency_ms": 1692.123,
+      "usage": {
+        "input_tokens": 804,
+        "output_tokens": 201,
+        "total_tokens": 1005
+      },
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "gates": {
+    "real_calls_bounded": true,
+    "structured_plan_valid_rate_at_least_80_percent": true,
+    "required_tool_accuracy_at_least_80_percent": true,
+    "task_success_at_least_80_percent": true,
+    "report_contains_no_secret_fields": true
+  },
+  "passed": true,
+  "bad_cases": [],
+  "secrets_exposed": false
+}

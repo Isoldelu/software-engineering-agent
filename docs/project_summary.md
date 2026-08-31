@@ -119,6 +119,14 @@ Local database and HTTP experiments passed 16/16 and 14/14 gates respectively. G
 `33363220127` passed the 155-test, Docker, and PostgreSQL jobs; both Step 34 PostgreSQL steps passed
 and Artifact `software-agent-step34-bridge-evidence` retained their reports.
 
+Step 35 adds an explicit-budget DeepSeek V4 Flash Planner through a dedicated Provider adapter.
+JSON Output is followed by the existing local Plan validator and deterministic fallback; credentials
+remain process-local and are excluded from Trace, Audit, reports, and Git. An initial real response
+exposed string-valued arguments and speculative Tool selection, so the Prompt contract added object
+arguments, minimal-plan rules, and release-package fan-out. The optimized 20-case run reached 100%
+structured-plan validity, 100% human-labeled required Tool coverage, 95% strict task success, zero
+fallback, 2.276-second P95 latency, and a $0.011726 peak-price cost upper bound.
+
 Latest summary:
 
 ```text

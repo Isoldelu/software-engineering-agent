@@ -7,6 +7,7 @@ from typing import Any
 from app.agent.llm_router import parse_llm_plan
 from app.agent.prompt import build_planner_prompt
 from app.providers.base import PlanningProvider
+from app.providers.deepseek_provider import DeepSeekPlanningProvider
 from app.providers.models import PlannerDecision, ProviderRequest, ProviderResult
 from app.providers.offline import OfflinePlanningProvider
 from app.providers.openai_provider import OpenAIPlanningProvider
@@ -24,6 +25,7 @@ class PlannerGateway:
         self.providers = providers or {
             "offline": OfflinePlanningProvider(),
             "openai": OpenAIPlanningProvider(self.settings),
+            "deepseek": DeepSeekPlanningProvider(self.settings),
         }
 
     def plan(
@@ -121,6 +123,10 @@ class PlannerGateway:
             fallback_used=True,
         )
         metadata["fallback_reason"] = {
+            "provider": failed.provider,
+            "model": failed.model,
+            "latency_ms": failed.latency_ms,
+            "usage": failed.usage,
             "error_type": failed.error_type,
             "error_message": failed.error_message,
         }

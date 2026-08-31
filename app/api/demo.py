@@ -189,6 +189,7 @@ DEMO_HTML = """
         <option value="offline">Offline deterministic</option>
         <option value="auto">Auto from environment</option>
         <option value="openai">OpenAI with safe fallback</option>
+        <option value="deepseek">DeepSeek with safe fallback</option>
       </select>
       <button id="run">Run Agent</button>
       <label>Examples</label>

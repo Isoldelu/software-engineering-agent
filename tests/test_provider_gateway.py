@@ -105,6 +105,30 @@ def test_invalid_json_unknown_tool_and_timeout_fall_back_offline():
         assert result["selected_tool"] == "dependency_analysis"
 
 
+def test_fallback_retains_redacted_failed_provider_metrics():
+    result = run_agent_with_provider(
+        "openssl 依赖哪些组件",
+        provider="openai",
+        gateway=_gateway(
+            ProviderResult(
+                provider="mock_online",
+                status="error",
+                plan_output=None,
+                model="mock-v1",
+                latency_ms=12.5,
+                usage={"input_tokens": 20, "output_tokens": 4, "total_tokens": 24},
+                error_type="invalid_plan",
+                error_message="schema rejected",
+            )
+        ),
+    )
+
+    failed = result["provider"]["fallback_reason"]
+    assert failed["model"] == "mock-v1"
+    assert failed["latency_ms"] == 12.5
+    assert failed["usage"]["total_tokens"] == 24
+
+
 def test_provider_failure_can_fail_closed_when_fallback_disabled():
     decision = _gateway(ProviderResult(
         provider="mock_online", status="error", plan_output=None, error_type="timeout"

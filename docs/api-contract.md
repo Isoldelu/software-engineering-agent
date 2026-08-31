@@ -296,6 +296,8 @@ Step 28 新增 `GET /metrics`，开启鉴权时要求 reader。Prometheus Label 
 
 Step 34 将 `evolution_policy_bridge` 与 `policy_state` 声明为受保护命名空间。`GET /maintenance/retention/policy` 和 retention 执行结果都会返回 `protected_namespaces`；通用按时长清理不得删除不可变 Candidate-to-Policy 归因记录或当前/历史 Policy 状态。多 Worker 对同一 Candidate、相同参数并发发布时只允许创建一个 Policy/Bridge；后续请求返回同一映射并标记 `idempotent_replay=true`。如果 Policy 已创建但 Bridge 写入失败，重试必须复用该 Policy 并补写 Bridge，而不是创建新版本。
 
+Step 35 将 Agent Query 的 `provider` 扩展为 `auto | offline | openai | deepseek`。`deepseek` 只有在 online 显式启用且 `DEEPSEEK_API_KEY` 存在时可用；否则沿用 deterministic fallback。DeepSeek JSON 输出必须继续通过本地 Tool allowlist、Plan Schema 和参数类型校验，不能因 Provider 返回合法 JSON 就直接获得 Tool 执行权。Provider 状态只返回 Key 是否配置，不返回 Key 内容；Trace 和响应仅保留脱敏 model、latency、usage、fallback 和 error type。
+
 ## 9. 契约验证
 
 ```bash

@@ -6,6 +6,8 @@ All notable changes to this project are documented here.
 
 ### Added
 
+- Optional DeepSeek V4 Flash JSON Planner with non-thinking mode, local schema validation, deterministic fallback, and secret-safe Provider status.
+- Explicit-budget 20-case real Provider A/B with required-Tool labels, latency/token/cost metrics, and retained Before/After reports.
 - Step 34 multi-Worker Bridge fault experiment with database-level failure injection and real two-Worker HTTP concurrency.
 - Idempotent concurrent release verification, orphan-Bridge compensation, rollout race checks, and retained audit evidence.
 - Explicit retention protection for immutable Evolution/Policy Bridge records and Policy state.
