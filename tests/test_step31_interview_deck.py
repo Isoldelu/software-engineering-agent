@@ -43,8 +43,8 @@ def test_step31_deck_has_five_slides_and_source_notes():
     assert b"C:\\Users\\44486" not in textual_payload
     assert b"/Users/44486" not in textual_payload
     assert b".codex" not in textual_payload
-    assert b"33314875879" in textual_payload
-    assert b"138" in textual_payload
+    assert b"33354020784" in textual_payload
+    assert b"150" in textual_payload
 
     builder = (ROOT / "docs" / "deck" / "build_interview_deck.mjs").read_text(
         encoding="utf-8"
@@ -65,5 +65,5 @@ def test_step31_script_preserves_compliance_and_evaluation_boundaries():
     assert "离线可复现基线" in script
     assert "不代表真实商业模型 A/B" in script
     assert "不会自动修改源码" in script
-    assert "138 项自动化测试" in script
+    assert "150 项自动化测试" in script
     assert "193 条冻结评测" in script

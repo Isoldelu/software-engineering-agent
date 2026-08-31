@@ -21,14 +21,14 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 
 | Gate | Result |
 |---|---:|
-| Automated tests | 138 passed |
+| Automated tests | 150 passed |
 | Frozen evaluation baseline | 193 compatible cases |
 | Real PostgreSQL initial load | 100/100, 0 server errors |
 | Load after Worker replacement | 40/40, 0 server errors |
 | Transaction/lease fault injection | 6/6 passed |
 | Database outage recovery | readiness 503 -> 200 |
 
-Current evidence: [GitHub Actions Run 33314875879](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33314875879). The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
+Current evidence: [GitHub Actions Run 33354020784](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33354020784). The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
 
 ## Try It
 

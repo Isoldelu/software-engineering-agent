@@ -129,7 +129,7 @@ function buildCover(presentation) {
     autoFit: "none",
   });
   addRule(slide, 64, 520, 770, C.faint, 2);
-  addText(slide, "138", { left: 68, top: 548, width: 116, height: 52 }, { fontSize: 40, bold: true, color: C.teal });
+  addText(slide, "150", { left: 68, top: 548, width: 116, height: 52 }, { fontSize: 40, bold: true, color: C.teal });
   addText(slide, "tests", { left: 68, top: 604, width: 116, height: 26 }, { fontSize: 17, color: C.muted });
   addText(slide, "193", { left: 286, top: 548, width: 116, height: 52 }, { fontSize: 40, bold: true, color: C.blue });
   addText(slide, "frozen cases", { left: 286, top: 604, width: 150, height: 26 }, { fontSize: 17, color: C.muted });
@@ -146,7 +146,7 @@ function buildCover(presentation) {
     [
       "Local README: README.md",
       "Local compliance audit: docs/public-release-audit.md",
-      "Current CI evidence: https://github.com/Isoldelu/software-engineering-agent/actions/runs/33314875879",
+      "Current CI evidence: https://github.com/Isoldelu/software-engineering-agent/actions/runs/33354020784",
     ],
   );
 }
@@ -335,7 +335,7 @@ function buildClose(presentation) {
   addHeader(slide, "完整工程闭环已验证，真实 Provider A/B 是下一项独立实验", 5);
 
   addText(slide, "工程证据", { left: 56, top: 148, width: 260, height: 34 }, { fontSize: 27, bold: true });
-  addText(slide, "138", { left: 56, top: 214, width: 150, height: 62 }, { fontSize: 52, bold: true, color: C.teal });
+  addText(slide, "150", { left: 56, top: 214, width: 150, height: 62 }, { fontSize: 52, bold: true, color: C.teal });
   addText(slide, "tests passed", { left: 56, top: 278, width: 180, height: 28 }, { fontSize: 18, color: C.muted });
   addText(slide, "100/100 + 40/40", { left: 56, top: 338, width: 310, height: 48 }, { fontSize: 34, bold: true, color: C.blue });
   addText(slide, "PostgreSQL load / recovery", { left: 56, top: 392, width: 300, height: 28 }, { fontSize: 18, color: C.muted });
@@ -344,7 +344,7 @@ function buildClose(presentation) {
 
   addRule(slide, 410, 146, 2, 444, C.faint);
   addText(slide, "受控边界", { left: 464, top: 148, width: 260, height: 34 }, { fontSize: 27, bold: true });
-  addText(slide, "公开风格模拟数据\n不复制企业内部资产\n候选策略默认 inactive\nShadow + 全量回归 + 人审\n灰度发布与自动回滚", { left: 464, top: 218, width: 318, height: 254 }, {
+  addText(slide, "公开风格模拟数据\n不复制企业内部资产\n候选策略默认 inactive\nShadow + 人审 + Reviewed Bridge\n灰度发布与自动回滚", { left: 464, top: 218, width: 318, height: 254 }, {
     fontSize: 22,
     autoFit: "none",
   });
@@ -360,7 +360,7 @@ function buildClose(presentation) {
   addText(slide, "可直接验收", { left: 878, top: 148, width: 280, height: 34 }, { fontSize: 27, bold: true });
   addText(slide, "GitHub Actions", { left: 878, top: 222, width: 280, height: 34 }, { fontSize: 25, bold: true, color: C.green });
   addText(slide, "Tests · Docker · PostgreSQL", { left: 878, top: 268, width: 310, height: 30 }, { fontSize: 18, color: C.muted });
-  addText(slide, "Run 33314875879", { left: 878, top: 330, width: 300, height: 34 }, { fontSize: 23, bold: true, typeface: MONO });
+  addText(slide, "Run 33354020784", { left: 878, top: 330, width: 300, height: 34 }, { fontSize: 23, bold: true, typeface: MONO });
   addText(slide, "github.com/Isoldelu/\nsoftware-engineering-agent", { left: 878, top: 410, width: 314, height: 80 }, {
     fontSize: 20,
     color: C.blue,
@@ -381,7 +381,7 @@ function buildClose(presentation) {
     slide,
     "最后用工程证据和诚实边界收口。当前 CI 已覆盖测试、Docker 和真实 PostgreSQL 多 Worker 路径；受控自进化不会自动修改源码或直接上线。还没有做的是付费真实 Provider A/B，这应作为预算明确后的独立实验，而不是阻塞现有项目交付。",
     [
-      "GitHub Actions Run: https://github.com/Isoldelu/software-engineering-agent/actions/runs/33314875879",
+      "GitHub Actions Run: https://github.com/Isoldelu/software-engineering-agent/actions/runs/33354020784",
       "Operational evidence: docs/step28-observability-disaster-recovery.md",
       "Public repository: https://github.com/Isoldelu/software-engineering-agent",
       "Project boundaries: docs/project-showcase.md",

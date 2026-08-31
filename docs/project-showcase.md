@@ -55,7 +55,7 @@ are offline proxy results, not measurements of a paid online model.
 
 | Gate | Verified result |
 |---|---:|
-| Automated tests | 138 passed |
+| Automated tests | 150 passed |
 | Frozen evaluation | 193/193 compatible |
 | Legacy to optimized routing | 61.76% to 100% |
 | PostgreSQL initial load | 100/100, zero server errors |
@@ -66,7 +66,7 @@ are offline proxy results, not measurements of a paid online model.
 | Paid Provider calls | 0 |
 
 Current evidence is bound to
-[GitHub Actions Run 33314875879](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33314875879).
+[GitHub Actions Run 33354020784](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33354020784).
 The frozen v1.0.0 evidence remains in [`release/v1.0.0-evidence.json`](../release/v1.0.0-evidence.json).
 
 ## Three-Minute Demo Path

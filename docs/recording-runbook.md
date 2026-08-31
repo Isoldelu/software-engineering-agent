@@ -8,7 +8,7 @@
 
 | 时间 | 画面 | 讲解重点 |
 |---|---|---|
-| 00:00-00:25 | Deck 第 1 页 | 项目定位、模拟数据、138 Tests |
+| 00:00-00:25 | Deck 第 1 页 | 项目定位、模拟数据、150 Tests |
 | 00:25-01:05 | Deck 第 2 页 | Context、Planner、Tools、Evidence、Verifier、Trace |
 | 01:05-01:45 | `/demo` 或 Deck 第 3 页 | nginx 复合 Query 与 3 个 Tool |
 | 01:45-02:20 | `/evaluation` 或 Deck 第 4 页 | Baseline、61.76% 到 100%、冻结集边界 |
@@ -35,7 +35,7 @@ python evaluation/evolution_eval.py
 
 - `http://127.0.0.1:8000/demo`
 - `http://127.0.0.1:8000/evaluation`
-- GitHub Actions Run `33314875879`
+- GitHub Actions Run `33354020784`
 - `docs/Software-Agent-Interview-Deck.pptx`
 
 ## 录制顺序

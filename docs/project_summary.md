@@ -107,7 +107,8 @@ Router, Query Alias, or Retriever candidate is translated into the shared Policy
 with the stable configuration, bound to Candidate/Config SHA-256 digests, and released through an
 immutable idempotent Bridge record. Runtime Policy assignment now applies all three asset types;
 manual or monitored rollback restores the parent version and synchronizes the source candidate.
-The Agent still cannot approve or activate itself.
+The Agent still cannot approve or activate itself. GitHub Actions Run `33354020784` passed the
+150-test suite plus Docker and real PostgreSQL integration jobs.
 
 Latest summary:
 

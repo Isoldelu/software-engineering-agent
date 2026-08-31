@@ -56,7 +56,7 @@ PLANS: dict[Mode, RehearsalPlan] = {
             Segment(
                 "工程边界",
                 10,
-                "CI 已验证 138 项测试、Docker 和 PostgreSQL；真实 Provider A/B 尚未执行。",
+                "CI 已验证 150 项测试、Docker 和 PostgreSQL；真实 Provider A/B 尚未执行。",
             ),
         ),
     ),
@@ -88,12 +88,12 @@ PLANS: dict[Mode, RehearsalPlan] = {
             Segment(
                 "受控自进化",
                 40,
-                "离线循环挖掘 9 个失败并聚成 Router、Alias、Retriever 三类根因，生成配置候选后进行 Shadow 与冻结回归，修复 9 个且零回归。候选停在 pending_review，不能修改源码或自动激活。",
+                "离线循环挖掘 9 个失败并聚成 Router、Alias、Retriever 三类根因，Shadow 与冻结回归修复 9 个且零回归。人工批准后由 Reviewed Bridge 创建灰度策略，但候选不能改源码或自行发布。",
             ),
             Segment(
                 "工程证据与边界",
                 30,
-                "GitHub Actions 验证 138 项测试、Docker 和真实 PostgreSQL 多 Worker 门禁。项目已有灰度与回滚，但 Evolution Candidate 到发布候选仍缺直接桥接；真实 Provider A/B 尚未执行。",
+                "GitHub Actions Run 33354020784 验证 150 项测试、Docker 和真实 PostgreSQL 多 Worker 门禁。Evolution 候选已通过受审 Bridge 接入灰度与回滚；真实 Provider A/B 尚未执行。",
             ),
         ),
     ),
@@ -120,12 +120,12 @@ PLANS: dict[Mode, RehearsalPlan] = {
             Segment(
                 "安全门禁",
                 30,
-                "候选最高自动状态是 pending_review，自动激活接口固定拒绝。人工批准后仍保持 inactive，运行策略另有版本、灰度、监控和自动回滚。",
+                "候选最高自动状态是 pending_review，自动激活接口固定拒绝。人工批准后仍需 admin 通过受审 Bridge，才能创建版本化灰度策略，并由监控决定提升或回滚。",
             ),
             Segment(
                 "尚未实现",
                 35,
-                "尚未实现在线持续学习、模型微调、RL 或源码自修改；离线 Evolution Candidate 也还没有直接转换成可发布 Policy Candidate，这会作为后续桥接步骤。",
+                "尚未实现在线持续学习、模型微调、RL 或源码自修改；Reviewed Bridge 只发布白名单配置，不允许 Agent 自动审核、降低评测门槛或自行上线。",
             ),
         ),
     ),
@@ -134,8 +134,8 @@ PLANS: dict[Mode, RehearsalPlan] = {
 
 REQUIRED_BOUNDARIES: dict[Mode, tuple[str, ...]] = {
     "90s": ("模拟数据", "离线 Proxy", "真实 Provider A/B 尚未执行"),
-    "standard": ("不复制内部数据", "离线 Proxy", "不能修改源码", "仍缺直接桥接"),
-    "evolution": ("配置级", "pending_review", "自动激活", "尚未实现", "没有直接转换"),
+    "standard": ("不复制内部数据", "离线 Proxy", "不能改源码", "受审 Bridge"),
+    "evolution": ("配置级", "pending_review", "自动激活", "尚未实现", "Reviewed Bridge"),
 }
 
 
