@@ -294,6 +294,8 @@ Step 27 新增生产运维端点，全部要求 admin：
 
 Step 28 新增 `GET /metrics`，开启鉴权时要求 reader。Prometheus Label 只允许 method、route template、status、denial reason 和 retention namespace，不允许 Query、Session/Trace ID、Key fingerprint 或请求正文。`/storage/status` 的 `pool` 字段只返回脱敏连接池计数。
 
+Step 34 将 `evolution_policy_bridge` 与 `policy_state` 声明为受保护命名空间。`GET /maintenance/retention/policy` 和 retention 执行结果都会返回 `protected_namespaces`；通用按时长清理不得删除不可变 Candidate-to-Policy 归因记录或当前/历史 Policy 状态。多 Worker 对同一 Candidate、相同参数并发发布时只允许创建一个 Policy/Bridge；后续请求返回同一映射并标记 `idempotent_replay=true`。如果 Policy 已创建但 Bridge 写入失败，重试必须复用该 Policy 并补写 Bridge，而不是创建新版本。
+
 ## 9. 契约验证
 
 ```bash

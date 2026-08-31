@@ -4,6 +4,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import threading
+import uuid
+from collections.abc import Iterator
+from contextlib import contextmanager
 from copy import deepcopy
 from typing import Any
 
@@ -66,8 +70,24 @@ class EvolutionPolicyBridgeService:
         self.evolution = evolution
         self.policies = policies
         self.translator = EvolutionPolicyTranslator()
+        self._lock = threading.RLock()
+        self._lease_owner = f"evolution-policy-bridge-{uuid.uuid4().hex}"
 
     def release(
+        self,
+        candidate_id: str,
+        *,
+        rollout_percentage: float,
+        released_by: str,
+    ) -> dict[str, Any]:
+        with self._release_guard(candidate_id):
+            return self._release_locked(
+                candidate_id,
+                rollout_percentage=rollout_percentage,
+                released_by=released_by,
+            )
+
+    def _release_locked(
         self,
         candidate_id: str,
         *,
@@ -148,6 +168,21 @@ class EvolutionPolicyBridgeService:
             policy.to_dict(),
             created=created and bridge_created,
         )
+
+    @contextmanager
+    def _release_guard(self, candidate_id: str) -> Iterator[None]:
+        """Serialize one Candidate release across threads and database Workers."""
+        with self._lock:
+            if not self.evolution.store:
+                yield
+                return
+            with self.evolution.store.lease(
+                f"evolution-policy-bridge-release:{candidate_id}",
+                self._lease_owner,
+                ttl_seconds=30.0,
+                wait_timeout=5.0,
+            ):
+                yield
 
     def list(self) -> list[dict[str, Any]]:
         return [item.to_dict() for item in self.evolution.bridges()]

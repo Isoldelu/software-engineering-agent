@@ -318,7 +318,10 @@ def retention_policy() -> dict:
     """Return effective retention periods and their environment controls."""
     if not DEFAULT_RETENTION_SERVICE:
         raise HTTPException(status_code=503, detail="Shared database is not configured.")
-    return {"policies": [item.to_dict() for item in DEFAULT_RETENTION_SERVICE.policies()]}
+    return {
+        "policies": [item.to_dict() for item in DEFAULT_RETENTION_SERVICE.policies()],
+        "protected_namespaces": DEFAULT_RETENTION_SERVICE.protected_namespaces(),
+    }
 
 
 @app.post("/maintenance/retention/run")

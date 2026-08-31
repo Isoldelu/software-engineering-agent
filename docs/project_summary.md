@@ -110,6 +110,14 @@ manual or monitored rollback restores the parent version and synchronizes the so
 The Agent still cannot approve or activate itself. GitHub Actions Run `33354020784` passed the
 150-test suite plus Docker and real PostgreSQL integration jobs.
 
+Step 34 validates that reviewed releases remain consistent under multi-Worker contention and
+partial persistence failures. Twenty concurrent HTTP release requests across two Uvicorn Workers
+converged on one Policy and one Bridge; a fail-once repository exposed the Policy-before-Bridge
+window and verified retry compensation without a duplicate Policy. Competing candidates, rollout
+promote/rollback races, audit retention, and protected release-ledger namespaces are also gated.
+Local database and HTTP experiments passed 16/16 and 14/14 gates respectively; the real PostgreSQL
+CI result is recorded separately after the workflow completes.
+
 Latest summary:
 
 ```text

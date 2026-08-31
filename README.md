@@ -15,7 +15,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | Trust | Evidence, Citation, Verifier, partial success, replayable privacy-bounded Trace |
 | Optimization | Benchmark, Bad Case loop, offline candidates, Shadow gates, human review |
 | Delivery | Reviewed Evolution bridge, policy versioning, gray rollout, rollback, FastAPI |
-| Operations | Auth, Key rotation, Audit, retention, pooling, Prometheus, backup/restore |
+| Operations | Auth, Key rotation, Audit, protected release ledger, pooling, Prometheus, backup/restore |
 
 ## Verified Evidence
 
@@ -55,6 +55,7 @@ Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
 - [90-second and 3.5-minute mock interview guide](docs/mock-interview-guide.md)
 - [Recording runbook and subtitle timeline](docs/recording-runbook.md)
 - [Controlled self-evolution capability matrix](docs/evolution-capability-matrix.md)
+- [Step 34 multi-Worker Bridge production validation](docs/step34-bridge-production-validation.md)
 - [Executable API demo](examples/interview_demo.py)
 - [Interactive rehearsal timer](examples/interview_rehearsal.py)
 - [Interview talking points and Q&A](docs/interview_talking_points.md)
@@ -143,6 +144,8 @@ Provider dual-mode experiment: 12 representative queries reached 100% Offline/Mo
 Offline evolution experiment: 9 failures were mined into Router, Query Alias, and Retriever clusters. Three configuration candidates fixed all 9 linked cases with 0 regressions and remained `pending_review + active=false`; paid API calls were 0.
 
 Reviewed Evolution-to-Policy experiment: three human-approved Router, Query Alias, and Retriever candidates created three immutable rollout policies. Three duplicate release requests were idempotent, candidate/config SHA-256 digests were retained, and a rollback restored the parent policy while deactivating the released source candidate. All 10 release gates passed with 0 paid API calls.
+
+Step 34 fault experiment: 20 concurrent release requests across two real Uvicorn Workers converged on one Policy and one immutable Bridge with one creator and 19 idempotent replays. A database-level injected failure between Policy and Bridge persistence produced a temporary orphan; retry reused the existing Policy and repaired the Bridge. Promote/rollback contention restored the parent Policy, final orphan count was zero, and all 16 database gates plus 14 HTTP gates passed locally.
 
 Control-plane experiment: two independent Store/Repository instances passed all 13 persistence, API role, CAS, lease, Session, Trace, Feedback, Evolution, and Policy consistency gates. Concurrent Policy creation produced unique v2/v3 versions. SQLite WAL is used for local validation; PostgreSQL 16 is the deployment backend configured in Compose and CI.
 

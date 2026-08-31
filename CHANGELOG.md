@@ -6,6 +6,9 @@ All notable changes to this project are documented here.
 
 ### Added
 
+- Step 34 multi-Worker Bridge fault experiment with database-level failure injection and real two-Worker HTTP concurrency.
+- Idempotent concurrent release verification, orphan-Bridge compensation, rollout race checks, and retained audit evidence.
+- Explicit retention protection for immutable Evolution/Policy Bridge records and Policy state.
 - Reviewed Evolution-to-Policy Bridge for human-approved Router, Query Alias, and Retriever candidates.
 - Immutable Candidate/Policy mapping records, SHA-256 provenance, idempotent rollout creation, and parameter-drift rejection.
 - Runtime Policy support for query aliases and Hybrid Retriever configuration.

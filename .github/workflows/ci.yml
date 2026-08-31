@@ -65,9 +65,9 @@ jobs:
           python-version: "3.12"
       - name: Install runtime dependencies
         run: python -m pip install -r requirements-runtime.txt
-      - name: Prepare Step 28 evidence directory
+      - name: Prepare Step 28 and Step 34 evidence directories
         run: |
-          mkdir -p artifacts/step28
+          mkdir -p artifacts/step28 artifacts/step34
           rm -rf /tmp/software-agent-prometheus
           mkdir -p /tmp/software-agent-prometheus
       - name: PostgreSQL persistence and lease smoke
@@ -76,6 +76,10 @@ jobs:
         run: python -B evaluation/step27_fault_eval.py | tee artifacts/step28/fault-injection.json
       - name: PostgreSQL logical backup and restore drill
         run: python -B evaluation/backup_restore_drill.py | tee artifacts/step28/backup-restore.json
+      - name: Step 34 PostgreSQL Bridge fault injection
+        run: python -B evaluation/step34_bridge_fault_eval.py | tee artifacts/step34/database-fault-injection.json
+      - name: Prepare Step 34 reviewed HTTP candidate
+        run: python -B evaluation/step34_bridge_http.py --prepare | tee artifacts/step34/http-candidate.json
       - name: Start two-worker API
         run: |
           uvicorn app.api.server:app --host 127.0.0.1 --port 8010 --workers 2 > /tmp/software-agent.log 2>&1 &
@@ -103,6 +107,13 @@ jobs:
             http://127.0.0.1:8010/metrics \
             | tee artifacts/step28/prometheus-metrics.txt
           grep -q 'software_agent_http_requests_total' artifacts/step28/prometheus-metrics.txt
+      - name: Step 34 two-worker concurrent Bridge release
+        run: |
+          python -B evaluation/step34_bridge_http.py \
+            --base-url http://127.0.0.1:8010 \
+            --api-key step27-admin-ci \
+            --requests 20 \
+            --concurrency 8 | tee artifacts/step34/multiworker-http.json
       - name: Kill one worker and verify supervisor recovery
         run: |
           PARENT=$(cat /tmp/software-agent.pid)
@@ -153,3 +164,10 @@ jobs:
           name: software-agent-step28-postgres-evidence
           path: artifacts/step28/
           if-no-files-found: warn
+      - name: Upload PostgreSQL Step 34 Bridge evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: software-agent-step34-bridge-evidence
+          path: artifacts/step34/
+          if-no-files-found: error

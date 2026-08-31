@@ -22,6 +22,7 @@ DEFAULT_RETENTION_DAYS = {
     "evolution_candidate": 90,
     "audit": 180,
 }
+PROTECTED_NAMESPACES = ("evolution_policy_bridge", "policy_state")
 
 
 @dataclass(frozen=True)
@@ -61,6 +62,11 @@ class RetentionService:
             result.append(RetentionPolicy(namespace, days))
         return result
 
+    @staticmethod
+    def protected_namespaces() -> list[str]:
+        """Return release records that bounded retention must never prune."""
+        return list(PROTECTED_NAMESPACES)
+
     def run(
         self,
         *,
@@ -99,4 +105,5 @@ class RetentionService:
             "batch_limit": bounded_limit,
             "total_affected": sum(item["affected"] for item in results),
             "results": results,
+            "protected_namespaces": self.protected_namespaces(),
         }
