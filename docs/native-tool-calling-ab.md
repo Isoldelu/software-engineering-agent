@@ -51,7 +51,7 @@ child process environment, clears the environment variable in `finally`, and wri
 report:
 
 ```powershell
-./examples/run_step36.ps1 -PythonCommand "python" -MaxCases 10
+./examples/run_step36.ps1 -PythonCommand "python" -SdkPath "<temporary-sdk-directory>" -MaxCases 10
 ```
 
 When Python is not on `PATH`, pass its absolute executable path with `-PythonCommand`.
