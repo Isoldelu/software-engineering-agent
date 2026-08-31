@@ -4,11 +4,14 @@ from __future__ import annotations
 
 from typing import Any
 
+from app.evolution.repository import (
+    DEFAULT_EVOLUTION_REPOSITORY,
+    EvolutionRepository,
+)
 from app.feedback.policy import CandidateConfigValidator
-from app.feedback.repository import CandidateRepository, DEFAULT_CANDIDATE_REPOSITORY
+from app.feedback.repository import DEFAULT_CANDIDATE_REPOSITORY, CandidateRepository
 from app.policy.engine import (
     DEFAULT_POLICY_ENGINE,
-    DEFAULT_POLICY_MONITOR,
     DEFAULT_POLICY_REPOSITORY,
     PolicyConfigValidator,
     PolicyEngine,
@@ -23,10 +26,12 @@ class PolicyReleaseService:
         repository: PolicyRepository,
         engine: PolicyEngine,
         candidates: CandidateRepository,
+        evolution_candidates: EvolutionRepository | None = None,
     ) -> None:
         self.repository = repository
         self.engine = engine
         self.candidates = candidates
+        self.evolution_candidates = evolution_candidates
 
     def release_candidate(
         self,
@@ -69,6 +74,7 @@ class PolicyReleaseService:
 
     def promote(self, policy_id: str) -> dict[str, Any]:
         policy = self.repository.promote(policy_id)
+        self._set_candidate_status(policy.source_candidate_id, "active", active=True)
         return policy.to_dict()
 
     def rollback(self, policy_id: str, *, reason: str) -> dict[str, Any]:
@@ -114,18 +120,39 @@ class PolicyReleaseService:
         return state
 
     def _deactivate_candidate(self, candidate_id: str | None, status: str) -> None:
+        self._set_candidate_status(candidate_id, status, active=False)
+
+    def _set_candidate_status(
+        self,
+        candidate_id: str | None,
+        status: str,
+        *,
+        active: bool,
+    ) -> None:
         if not candidate_id:
             return
-        candidate = self.candidates.get(candidate_id)
-        if not candidate:
+        if candidate_id.startswith("evolution:") and self.evolution_candidates:
+            parts = candidate_id.split(":", 2)
+            if len(parts) < 2:
+                return
+            evolution_candidate = self.evolution_candidates.get_candidate(parts[1])
+            if not evolution_candidate:
+                return
+            evolution_candidate.active = active
+            evolution_candidate.review["activation_status"] = status
+            self.evolution_candidates.save_candidate(evolution_candidate)
             return
-        candidate.active = False
-        candidate.review["activation_status"] = status
-        self.candidates.save(candidate)
+        feedback_candidate = self.candidates.get(candidate_id)
+        if not feedback_candidate:
+            return
+        feedback_candidate.active = active
+        feedback_candidate.review["activation_status"] = status
+        self.candidates.save(feedback_candidate)
 
 
 DEFAULT_POLICY_RELEASE_SERVICE = PolicyReleaseService(
     repository=DEFAULT_POLICY_REPOSITORY,
     engine=DEFAULT_POLICY_ENGINE,
     candidates=DEFAULT_CANDIDATE_REPOSITORY,
+    evolution_candidates=DEFAULT_EVOLUTION_REPOSITORY,
 )

@@ -10,10 +10,25 @@ from contextlib import contextmanager
 from copy import deepcopy
 from typing import TypeVar
 
-from app.evolution.models import EvolutionCandidate, FailureCluster, MinedFailure
-from app.storage.database import DEFAULT_CONTROL_PLANE_STORE, ControlPlaneStore
+from app.evolution.models import (
+    EvolutionCandidate,
+    EvolutionPolicyBridge,
+    FailureCluster,
+    MinedFailure,
+)
+from app.storage.database import (
+    DEFAULT_CONTROL_PLANE_STORE,
+    ConcurrentUpdateError,
+    ControlPlaneStore,
+)
 
-Record = TypeVar("Record", MinedFailure, FailureCluster, EvolutionCandidate)
+Record = TypeVar(
+    "Record",
+    MinedFailure,
+    FailureCluster,
+    EvolutionCandidate,
+    EvolutionPolicyBridge,
+)
 
 
 class EvolutionRepository:
@@ -23,6 +38,7 @@ class EvolutionRepository:
         self._failures: OrderedDict[str, MinedFailure] = OrderedDict()
         self._clusters: OrderedDict[str, FailureCluster] = OrderedDict()
         self._candidates: OrderedDict[str, EvolutionCandidate] = OrderedDict()
+        self._bridges: OrderedDict[str, EvolutionPolicyBridge] = OrderedDict()
         self._versions: dict[tuple[str, str], int] = {}
         self._lock = threading.RLock()
 
@@ -67,6 +83,55 @@ class EvolutionRepository:
         with self._lock:
             item = self._candidates.get(candidate_id)
             return deepcopy(item) if item else None
+
+    def save_bridge_once(
+        self,
+        item: EvolutionPolicyBridge,
+    ) -> tuple[EvolutionPolicyBridge, bool]:
+        existing = self.get_bridge(item.bridge_id)
+        if existing:
+            if existing != item:
+                raise ValueError(f"Bridge id collision: {item.bridge_id}")
+            return existing, False
+        if self.store:
+            try:
+                stored = self.store.upsert(
+                    "evolution_policy_bridge",
+                    item.bridge_id,
+                    item.to_dict(),
+                    expected_version=0,
+                )
+                self._versions[("evolution_policy_bridge", item.bridge_id)] = stored.version
+            except ConcurrentUpdateError:
+                existing = self.get_bridge(item.bridge_id)
+                if not existing or existing != item:
+                    raise
+                return existing, False
+        with self._lock:
+            current = self._bridges.get(item.bridge_id)
+            if current:
+                if current != item:
+                    raise ValueError(f"Bridge id collision: {item.bridge_id}")
+                return deepcopy(current), False
+            self._bridges[item.bridge_id] = deepcopy(item)
+            return deepcopy(item), True
+
+    def get_bridge(self, bridge_id: str) -> EvolutionPolicyBridge | None:
+        if self.store:
+            stored = self.store.get("evolution_policy_bridge", bridge_id)
+            if not stored:
+                return None
+            self._versions[("evolution_policy_bridge", bridge_id)] = stored.version
+            return EvolutionPolicyBridge(**stored.payload)
+        with self._lock:
+            item = self._bridges.get(bridge_id)
+            return deepcopy(item) if item else None
+
+    def bridges(self) -> list[EvolutionPolicyBridge]:
+        if self.store:
+            return self._list("evolution_policy_bridge", EvolutionPolicyBridge)
+        with self._lock:
+            return deepcopy(list(self._bridges.values()))
 
     def failures(self) -> list[MinedFailure]:
         if self.store:

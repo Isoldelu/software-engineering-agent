@@ -28,6 +28,7 @@ from app.api.schemas import (
     CandidateProposeRequest,
     CandidateReviewRequest,
     EvaluationResponse,
+    EvolutionPolicyReleaseRequest,
     EvolutionReviewRequest,
     FeedbackSubmitRequest,
     HealthResponse,
@@ -38,6 +39,7 @@ from app.api.schemas import (
     RetentionRunRequest,
     ToolListResponse,
 )
+from app.evolution.bridge import DEFAULT_EVOLUTION_POLICY_BRIDGE
 from app.evolution.service import DEFAULT_EVOLUTION_SERVICE
 from app.feedback.service import DEFAULT_FEEDBACK_LOOP
 from app.maintenance.retention import RetentionService
@@ -539,6 +541,12 @@ def evolution_state() -> dict:
     return DEFAULT_EVOLUTION_SERVICE.state()
 
 
+@app.get("/evolution/bridges")
+def evolution_bridges() -> dict:
+    """List immutable reviewed Evolution-to-Policy bridge records."""
+    return {"bridges": DEFAULT_EVOLUTION_POLICY_BRIDGE.list()}
+
+
 @app.post("/evolution/candidates/{candidate_id}/shadow-evaluate")
 def evolution_shadow_evaluate(candidate_id: str) -> dict:
     """Run linked cases and frozen regression cases without changing runtime policy."""
@@ -603,6 +611,41 @@ def policy_from_candidate(candidate_id: str, request: PolicyReleaseRequest) -> d
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     except ValueError as exc:
         raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+
+@app.post("/policies/from-evolution/{candidate_id}")
+def policy_from_evolution(
+    candidate_id: str,
+    request: EvolutionPolicyReleaseRequest,
+    http_request: Request,
+) -> dict:
+    """Translate one reviewed evolution candidate into a versioned rollout policy."""
+    try:
+        result = DEFAULT_EVOLUTION_POLICY_BRIDGE.release(
+            candidate_id,
+            rollout_percentage=request.rollout_percentage,
+            released_by=request.released_by,
+        )
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    principal = getattr(http_request.state, "auth_principal", {})
+    _record_audit(
+        event_type="evolution_policy_bridge",
+        resource=candidate_id,
+        action="release",
+        outcome="success",
+        actor_fingerprint=principal.get("key_fingerprint"),
+        actor_role=principal.get("role"),
+        details={
+            "bridge_id": result["bridge"]["bridge_id"],
+            "policy_id": result["policy"]["policy_id"],
+            "rollout_percentage": request.rollout_percentage,
+            "created": result["created"],
+        },
+    )
+    return result
 
 
 @app.post("/policies/{policy_id}/rollout")

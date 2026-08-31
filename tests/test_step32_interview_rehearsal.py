@@ -56,7 +56,8 @@ def test_evolution_matrix_distinguishes_controlled_loop_from_autonomy():
     assert "已经实现离线、配置级、受控自进化" in matrix
     assert "9 个失败" in matrix
     assert "零回归" in matrix
-    assert "Evolution Candidate 与可发布 Policy Candidate 使用不同模型" in matrix
+    assert "Evolution 到 Policy 受审桥接 | 已实现" in matrix
+    assert "Agent 仍不能自行发布" in matrix
     assert "在线持续学习" in matrix
     assert "未实现" in matrix
     assert "源码自修改" in matrix

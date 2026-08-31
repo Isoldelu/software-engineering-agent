@@ -96,6 +96,11 @@ class EvolutionReviewRequest(BaseModel):
     note: str = ""
 
 
+class EvolutionPolicyReleaseRequest(BaseModel):
+    rollout_percentage: float = Field(default=20.0, gt=0, le=100)
+    released_by: str = Field(..., min_length=1)
+
+
 class PolicyReleaseRequest(BaseModel):
     rollout_percentage: float = Field(default=20.0, gt=0, le=100)
     released_by: str

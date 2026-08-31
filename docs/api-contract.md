@@ -252,6 +252,15 @@ Step 25 新增离线受控自进化端点：
 
 Step 25 只生成 `router_rule/query_alias/retriever_weights` 三类配置资产。自动流程最高到 `pending_review`，不得修改源码、数据集、测试断言、权限和发布门槛。
 
+Step 33 新增受审 Evolution-to-Policy 桥接端点：
+
+| Method | Path | 用途 |
+|---|---|---|
+| GET | `/evolution/bridges` | 查询不可变的 Candidate-to-Policy 映射、摘要和发布归因 |
+| POST | `/policies/from-evolution/{candidate_id}` | 将已人工批准且 Shadow 通过的 Evolution Candidate 翻译为版本化灰度 Policy |
+
+发布请求包含 `rollout_percentage` 和 `released_by`。端点要求 admin；未批准、未通过 Shadow、配置越界、已有其他灰度或同候选参数漂移返回 HTTP 409，不存在的候选返回 404。相同候选和相同参数重复请求返回同一 Bridge/Policy，并以 `idempotent_replay=true` 表达，不创建新版本。`/evolution/candidates/{candidate_id}/activate` 仍固定拒绝，Agent 不能绕过受审发布端点自行激活。
+
 Step 26 新增控制面状态端点：
 
 | Method | Path | 用途 |

@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here.
 
+## [Unreleased]
+
+### Added
+
+- Reviewed Evolution-to-Policy Bridge for human-approved Router, Query Alias, and Retriever candidates.
+- Immutable Candidate/Policy mapping records, SHA-256 provenance, idempotent rollout creation, and parameter-drift rejection.
+- Runtime Policy support for query aliases and Hybrid Retriever configuration.
+- FastAPI release/list endpoints, rollback state synchronization, Step 33 tests, evaluation, and documentation.
+
 ## [1.0.0] - 2026-08-24
 
 ### Added

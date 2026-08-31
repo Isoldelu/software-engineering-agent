@@ -62,3 +62,22 @@ class EvolutionCandidate:
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+@dataclass(frozen=True)
+class EvolutionPolicyBridge:
+    bridge_id: str
+    schema_version: str
+    candidate_id: str
+    candidate_digest: str
+    policy_source_id: str
+    policy_id: str
+    policy_version: int
+    rollout_percentage: float
+    released_by: str
+    reviewer: str
+    config_digest: str
+    created_at: str
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)

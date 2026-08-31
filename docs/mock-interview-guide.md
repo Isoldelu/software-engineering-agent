@@ -2,7 +2,7 @@
 
 ## 90 秒版本
 
-> 这是一个基于公开风格模拟数据复现的 AI4SE Agent，不包含华为内部数据。系统面向 Package、Dependency、Version、Component 和研发文档检索，由 Planner 组合五个领域工具，结果统一进入 Evidence、Citation、Verifier 和可回放 Trace。以 nginx 版本变化和依赖为例，Planner 会组合三个工具，而不是只做一次 RAG。项目建立了 193 条冻结评测和离线 Proxy Baseline，关键词 Router 在挑战集上为 61.76%，优化后达到冻结集 100%。我还实现了受控自进化：离线挖掘 9 个失败，生成 Router、Alias 和 Retriever 三类配置候选，Shadow 修复 9 个且零回归，但候选不能修改源码或自动激活。GitHub Actions 已验证 138 项测试、Docker 和 PostgreSQL 多 Worker 门禁。真实 Provider A/B 尚未执行。
+> 这是一个基于公开风格模拟数据复现的 AI4SE Agent，不包含华为内部数据。系统面向 Package、Dependency、Version、Component 和研发文档检索，由 Planner 组合五个领域工具，结果统一进入 Evidence、Citation、Verifier 和可回放 Trace。以 nginx 版本变化和依赖为例，Planner 会组合三个工具，而不是只做一次 RAG。项目建立了 193 条冻结评测和离线 Proxy Baseline，关键词 Router 在挑战集上为 61.76%，优化后达到冻结集 100%。我还实现了受控自进化：离线挖掘 9 个失败，生成三类配置候选，Shadow 修复 9 个且零回归；人工批准后可经受审 Bridge 进入版本化灰度和回滚，但 Agent 不能改源码或自行发布。真实 Provider A/B 尚未执行。
 
 ## 3 分 30 秒版本
 
@@ -24,11 +24,11 @@
 
 ### 5. 受控自进化
 
-OfflineFailureMiner 重跑标注用例，识别 Router、Alias 和 Retriever 三类重复失败，最小聚类支持数为 2。系统生成有限类型的配置候选，在隔离环境执行关联 Shadow 和冻结回归。实验挖掘 9 个失败，生成 3 个候选，修复 9 个且零回归。候选最高自动状态是 `pending_review`，不能修改源码或自行激活。
+OfflineFailureMiner 重跑标注用例，识别 Router、Alias 和 Retriever 三类重复失败，最小聚类支持数为 2。系统生成有限类型的配置候选，在隔离环境执行关联 Shadow 和冻结回归。实验挖掘 9 个失败，生成 3 个候选，修复 9 个且零回归。候选最高自动状态是 `pending_review`；人工批准后由 admin 通过受审 Bridge 创建不可变 Policy，按 Session 灰度并支持回滚，候选自身不能激活。
 
 ### 6. 工程交付与边界
 
-FastAPI、PostgreSQL、鉴权、审计、Prometheus、备份恢复、Docker 和多 Worker 路径已经建立。GitHub Actions 当前验证 138 项测试。策略层另有版本化、灰度和自动回滚，但 Evolution Candidate 到可发布 Policy Candidate 还缺显式桥接。真实 Provider A/B 仍等待 API Key 与预算。
+FastAPI、PostgreSQL、鉴权、审计、Prometheus、备份恢复、Docker 和多 Worker 路径已经建立。Evolution、Policy 的受审桥接、版本化、灰度和回滚已经连通。真实 Provider A/B 仍等待 API Key 与预算。
 
 ## 高频技术追问
 
@@ -54,7 +54,7 @@ RAG 只是一个工具。Agent 还负责 Context、意图路由、多工具规�
 
 ### Evolution Candidate 能直接灰度吗？
 
-目前不能。Offline Evolution 与 Feedback Policy 使用两类 Candidate 和 Repository。灰度与回滚能力已实现，但还需要 Reviewed Evolution-to-Policy Bridge 才能把两条链路连起来。
+可以，但不是自动直接灰度。候选必须先通过 Shadow 与冻结回归，再经人工 approve；admin 调用 Reviewed Evolution-to-Policy Bridge 后，系统才会翻译配置、校验摘要并创建不可变灰度 Policy。重复发布幂等，异常可回滚，`activate` 接口仍拒绝自激活。
 
 ### 如何避免 Bad Case 把策略带偏？
 
@@ -70,7 +70,7 @@ RAG 只是一个工具。Agent 还负责 Context、意图路由、多工具规�
 
 ### 下一步最有价值的改进是什么？
 
-不使用付费 API 时，优先实现受审 Evolution-to-Policy Bridge；预算明确后，再用固定 Query Set 做真实 Provider 的质量、延迟、成本和回退 A/B。
+优先把 Bridge 放到真实 PostgreSQL 多 Worker CI 中做并发发布、故障注入和审计保留验证；预算明确后，再用固定 Query Set 做真实 Provider 的质量、延迟、成本和回退 A/B。
 
 ## 自评分标准
 

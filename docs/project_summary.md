@@ -25,6 +25,7 @@ The system focuses on software asset query and analysis tasks:
 - Versioned policy release, deterministic gray rollout, monitoring, and rollback
 - Optional real LLM planning provider with offline/online dual-mode evaluation
 - Offline failure mining, root-cause clustering, and human-gated shadow candidates
+- Reviewed Evolution-to-Policy translation, immutable provenance, idempotent rollout, and rollback
 - Shared PostgreSQL-ready control-plane persistence and role-aware API authentication
 - Benchmark evaluation and bad-case optimization
 
@@ -100,6 +101,13 @@ Step 30 provides an interview delivery layer: a one-page architecture and eviden
 2-3 minute demo runbook, an executable API demo client, current interview Q&A, and browser-verified
 screenshots. GitHub Actions Run `33314875879` passed 138 tests plus Docker and PostgreSQL jobs.
 This layer changes presentation, not the frozen Agent behavior.
+
+Step 33 closes the previously explicit Evolution/Policy gap. A human-approved, Shadow-passed
+Router, Query Alias, or Retriever candidate is translated into the shared Policy schema, merged
+with the stable configuration, bound to Candidate/Config SHA-256 digests, and released through an
+immutable idempotent Bridge record. Runtime Policy assignment now applies all three asset types;
+manual or monitored rollback restores the parent version and synchronizes the source candidate.
+The Agent still cannot approve or activate itself.
 
 Latest summary:
 

@@ -18,9 +18,14 @@ class RAGRetrieverTool:
         docs_dir: str | Path = DEFAULT_DOCS_DIR,
         *,
         mode: str | None = None,
+        hybrid_weights: dict[str, float] | None = None,
     ) -> None:
         self.docs_dir = Path(docs_dir)
-        self.retriever = DocumentRetriever(self.docs_dir, mode=mode)
+        self.retriever = DocumentRetriever(
+            self.docs_dir,
+            mode=mode,
+            hybrid_weights=hybrid_weights,
+        )
 
     def run(self, query: str) -> dict:
         """Retrieve documents and return a normalized Tool observation."""

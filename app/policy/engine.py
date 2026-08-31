@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from typing import Any
 
 from app.agent.llm_router import VALID_TOOLS
@@ -16,7 +17,8 @@ from app.storage.database import DEFAULT_CONTROL_PLANE_STORE
 class PolicyConfigValidator:
     def validate(self, config: dict[str, Any]) -> list[str]:
         issues = []
-        if set(config) != {"rules"}:
+        allowed_keys = {"rules", "aliases", "retriever"}
+        if not config or not set(config) <= allowed_keys:
             issues.append("invalid_config_keys")
         rules = config.get("rules", [])
         if not isinstance(rules, list):
@@ -37,6 +39,28 @@ class PolicyConfigValidator:
                 issues.append("invalid_action_intent")
             if not isinstance(rule.get("priority"), int):
                 issues.append("invalid_priority")
+        aliases = config.get("aliases", {})
+        if not isinstance(aliases, dict):
+            issues.append("aliases_must_be_dict")
+        else:
+            for alias, canonical in aliases.items():
+                if not isinstance(alias, str) or not alias.strip():
+                    issues.append("invalid_alias")
+                if not isinstance(canonical, str) or not canonical.strip():
+                    issues.append("invalid_canonical_alias")
+        retriever = config.get("retriever")
+        if retriever is not None:
+            if not isinstance(retriever, dict) or set(retriever) != {
+                "mode", "rrf_weight", "reranker_weight"
+            }:
+                issues.append("invalid_retriever_config")
+            else:
+                if retriever.get("mode") != "hybrid":
+                    issues.append("invalid_retriever_mode")
+                for key in ("rrf_weight", "reranker_weight"):
+                    value = retriever.get(key)
+                    if not isinstance(value, (int, float)) or not 0 <= value <= 1000:
+                        issues.append(f"invalid_retriever_{key}")
         return sorted(set(issues))
 
 
@@ -76,6 +100,31 @@ class PolicyEngine:
     def bucket(self, session_id: str) -> float:
         digest = hashlib.sha256(f"{self.hash_salt}:{session_id}".encode()).hexdigest()
         return (int(digest[:12], 16) % 10000) / 100.0
+
+    def rewrite_query(
+        self,
+        query: str,
+        assignment: PolicyAssignment,
+    ) -> tuple[str, dict[str, Any]]:
+        rewritten = query
+        applied = []
+        aliases = assignment.config.get("aliases", {})
+        for alias in sorted(aliases, key=len, reverse=True):
+            canonical = aliases[alias]
+            pattern = re.compile(re.escape(alias), re.IGNORECASE)
+            rewritten, count = pattern.subn(canonical, rewritten)
+            if count:
+                applied.append({"alias": alias, "canonical": canonical, "count": count})
+        return rewritten, {
+            "schema_version": "policy-query-transform-v1",
+            "applied_aliases": applied,
+            "changed": rewritten != query,
+        }
+
+    @staticmethod
+    def retriever_options(assignment: PolicyAssignment) -> dict[str, Any] | None:
+        retriever = assignment.config.get("retriever")
+        return dict(retriever) if isinstance(retriever, dict) else None
 
     def plan_for_query(
         self,

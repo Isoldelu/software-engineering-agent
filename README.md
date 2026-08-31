@@ -13,8 +13,8 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | Agent | Deterministic/optional LLM planning, five tools, hybrid workflows, multi-turn context |
 | Knowledge | Structured software assets plus Legacy/BM25/Hybrid RAG |
 | Trust | Evidence, Citation, Verifier, partial success, replayable privacy-bounded Trace |
-| Optimization | Benchmark, Bad Case loop, offline candidate generation, human review |
-| Delivery | Policy versioning, gray rollout, rollback, FastAPI, Docker, PostgreSQL |
+| Optimization | Benchmark, Bad Case loop, offline candidates, Shadow gates, human review |
+| Delivery | Reviewed Evolution bridge, policy versioning, gray rollout, rollback, FastAPI |
 | Operations | Auth, Key rotation, Audit, retention, pooling, Prometheus, backup/restore |
 
 ## Verified Evidence
@@ -81,7 +81,7 @@ python examples/interview_rehearsal.py --mode standard
 
 - Multi-tool Agent with hybrid planning across structured tools and RAG.
 - Stable Evidence/Citation, deterministic verification, replay, and partial-success semantics.
-- Controlled Feedback and offline self-evolution that stop at human review.
+- Controlled Feedback and offline self-evolution with a reviewed, auditable release bridge.
 - Versioned policy rollout, monitoring, rollback, and exact Trace attribution.
 - Real PostgreSQL multi-Worker CI with fault injection and retained evidence.
 - Zero-cost offline default; real online Provider calls require explicit credentials and budget.
@@ -142,6 +142,8 @@ Provider dual-mode experiment: 12 representative queries reached 100% Offline/Mo
 
 Offline evolution experiment: 9 failures were mined into Router, Query Alias, and Retriever clusters. Three configuration candidates fixed all 9 linked cases with 0 regressions and remained `pending_review + active=false`; paid API calls were 0.
 
+Reviewed Evolution-to-Policy experiment: three human-approved Router, Query Alias, and Retriever candidates created three immutable rollout policies. Three duplicate release requests were idempotent, candidate/config SHA-256 digests were retained, and a rollback restored the parent policy while deactivating the released source candidate. All 10 release gates passed with 0 paid API calls.
+
 Control-plane experiment: two independent Store/Repository instances passed all 13 persistence, API role, CAS, lease, Session, Trace, Feedback, Evolution, and Policy consistency gates. Concurrent Policy creation produced unique v2/v3 versions. SQLite WAL is used for local validation; PostgreSQL 16 is the deployment backend configured in Compose and CI.
 
 Step 27 local operations experiment: 60/60 concurrent requests succeeded across two observed Uvicorn Workers with 0 server errors. After one Worker was killed, its replacement was observed and the recovery load passed 40/40. Migration, Key rotation, Audit, retention, CAS/lease, and transaction rollback gates passed. Real PostgreSQL load and database outage gates are configured in CI and remain pending execution on this disk-constrained workstation.
@@ -175,7 +177,10 @@ flowchart TD
     TRAJ --> EVAL["Benchmark / Bad Case / Robustness Evaluation"]
     EVAL --> EVO["Offline Failure Mining / Root-cause Clustering"]
     EVO --> SHADOW["Config Candidate / Shadow Evaluation"]
-    SHADOW --> FB
+    SHADOW --> REVIEW["Human Review"]
+    REVIEW --> BRIDGE["Reviewed Evolution-to-Policy Bridge"]
+    BRIDGE --> POLICY["Versioned Policy / Canary / Rollback"]
+    POLICY --> P
 ```
 
 ## Core Workflow

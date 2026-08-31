@@ -91,13 +91,22 @@ def run_agent(
     resolved_query, inherited_entities = context_resolver.resolve(query, context)
     trace_id = traces.new_trace_id()
     policy_assignment = policies.assign(context.session_id)
+    policy_input_query = resolved_query
+    resolved_query, policy_transform = policies.rewrite_query(
+        resolved_query,
+        policy_assignment,
+    )
     policy_plan = policies.plan_for_query(resolved_query, policy_assignment)
     effective_plan_output = llm_plan_output or (
         json.dumps(policy_plan, ensure_ascii=False) if policy_plan else None
     )
 
     plan = build_plan(resolved_query, llm_output=effective_plan_output)
-    execution = execute_plan(resolved_query, plan)
+    execution = execute_plan(
+        resolved_query,
+        plan,
+        policy_retriever=policies.retriever_options(policy_assignment),
+    )
     success = all(item["observation"].get("status") == "success" for item in execution["observations"])
     evidence_items = _extract_evidence_items(execution["observations"])
     citations = citations_from_evidence(evidence_items)
@@ -163,6 +172,8 @@ def run_agent(
         "trace_id": trace_id,
         "parent_trace_id": parent_trace_id,
         "resolved_query": resolved_query,
+        "policy_input_query": policy_input_query,
+        "policy_transform": policy_transform,
         "inherited_context": inherited_entities,
         "policy_version": policy_assignment.policy_id,
         "policy_assignment": policy_assignment.to_dict(),
@@ -217,7 +228,12 @@ def replay_trace(
     return ReplayReader(traces).replay(trace_id, run_agent)
 
 
-def execute_plan(query: str, plan: dict) -> dict:
+def execute_plan(
+    query: str,
+    plan: dict,
+    *,
+    policy_retriever: dict | None = None,
+) -> dict:
     """Execute a planned sequence of tool calls."""
     observations = []
     used_tools = []
@@ -226,7 +242,16 @@ def execute_plan(query: str, plan: dict) -> dict:
     for step in plan["steps"]:
         tool_name = step["tool"]
         tool_class = TOOL_REGISTRY[tool_name]
-        tool = tool_class()
+        if tool_name == "rag_retrieval" and policy_retriever:
+            tool = tool_class(
+                mode=policy_retriever["mode"],
+                hybrid_weights={
+                    "rrf_weight": policy_retriever["rrf_weight"],
+                    "reranker_weight": policy_retriever["reranker_weight"],
+                },
+            )
+        else:
+            tool = tool_class()
 
         if tool_name in {"dependency_analysis", "version_compare"} and step["arguments"].get("from_previous_packages"):
             packages = package_candidates or [plan["arguments"].get("package")]

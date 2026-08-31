@@ -168,6 +168,19 @@ query -> PlannerGateway -> Offline Provider (default)
 
 Provider 只拥有 Plan 提议权，不拥有 Tool 执行权。缺 Key、在线未启用、超时、API 错误、Malformed JSON 和未知 Tool 都在 Gateway 边界被阻断；允许 fallback 时切回 Offline Planner，否则 fail-closed 且不执行 Tool。详见 `docs/llm-provider.md`。
 
+### Step 33 受审 Evolution-to-Policy 扩展
+
+```text
+approved Evolution Candidate + passed Shadow report
+-> asset translator (rule / alias / retriever)
+-> merge stable Policy config -> dual schema validation
+-> Candidate + Config SHA-256 provenance
+-> idempotent immutable Bridge record -> rollout policy_vN
+-> stable session assignment -> runtime effect -> promote/rollback
+```
+
+Policy Engine 在规划前应用 Alias，在 Planner 前匹配版本化 Router Rule，并把 Retriever 配置注入 RAG Tool。相同 Candidate 和相同灰度参数重放不创建新版本；参数漂移、未审批或 Shadow 未通过均拒绝。候选自激活接口仍然关闭，详见 `docs/reviewed-evolution-policy-bridge.md`。
+
 ## 6. 兼容规则
 
 - `/agent/query` 已有字段必须继续存在并保持语义。

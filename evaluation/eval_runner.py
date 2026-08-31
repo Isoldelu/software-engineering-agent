@@ -24,13 +24,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run Software-Agent evaluation suites.")
     parser.add_argument(
         "--suite",
-        choices=["benchmark", "challenge", "robustness", "large", "experiment", "evidence", "verifier", "rag", "context", "feedback", "policy", "provider", "evolution", "control-plane", "all"],
+        choices=["benchmark", "challenge", "robustness", "large", "experiment", "evidence", "verifier", "rag", "context", "feedback", "policy", "provider", "evolution", "evolution-bridge", "control-plane", "all"],
         default="benchmark",
         help="Evaluation suite to run."
     )
     args = parser.parse_args()
 
-    if args.suite == "control-plane":
+    if args.suite == "evolution-bridge":
+        report = run_evolution_bridge_evaluation()
+    elif args.suite == "control-plane":
         report = run_control_plane_evaluation()
     elif args.suite == "evolution":
         report = run_evolution_evaluation()
@@ -186,6 +188,13 @@ def run_evolution_evaluation() -> dict:
     return run()
 
 
+def run_evolution_bridge_evaluation() -> dict:
+    """Run Step 33 reviewed Evolution-to-Policy release evaluation."""
+    from evaluation.evolution_bridge_eval import run_evolution_bridge_evaluation as run
+
+    return run()
+
+
 def run_control_plane_evaluation() -> dict:
     """Run Step 26 persistence, authorization, and consistency evaluation."""
     from evaluation.control_plane_eval import run_control_plane_evaluation as run
@@ -207,6 +216,7 @@ def run_all_evaluations() -> dict:
         "policy_rollout": run_policy_evaluation(),
         "provider_dual_mode": run_provider_evaluation(),
         "offline_evolution": run_evolution_evaluation(),
+        "reviewed_evolution_policy_bridge": run_evolution_bridge_evaluation(),
         "control_plane": run_control_plane_evaluation(),
     }
 
@@ -247,6 +257,7 @@ def run_evaluation_summary() -> dict:
             "Policy evaluation validates stable rollout assignment and source-free rollback.",
             "Provider evaluation validates optional online planning and deterministic fallback.",
             "Offline evolution mines failures, clusters root causes, and shadow-tests safe candidates.",
+            "Reviewed bridge converts approved evolution assets into auditable rollout policies.",
             "Control-plane evaluation validates persistence, API roles, CAS, and database leases.",
             "Evaluation includes routing, task success, grounding, answer accuracy, and tool-call efficiency."
         ]

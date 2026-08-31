@@ -83,6 +83,58 @@ class PolicyRepository:
             self._persist()
             return deepcopy(policy)
 
+    def create_rollout_once(
+        self,
+        *,
+        config: dict[str, Any],
+        source_candidate_id: str,
+        rollout_percentage: float,
+        metadata: dict[str, Any] | None = None,
+    ) -> tuple[PolicyVersion, bool]:
+        """Atomically create one rollout policy for a stable source id."""
+        with self._write_guard():
+            if not 0 < rollout_percentage <= 100:
+                raise ValueError("rollout percentage must be within (0, 100]")
+            existing = next(
+                (
+                    item
+                    for item in self._policies.values()
+                    if item.source_candidate_id == source_candidate_id
+                ),
+                None,
+            )
+            if existing:
+                if existing.config != config:
+                    raise ValueError("Existing source policy has a different configuration.")
+                initial_percentage = existing.metadata.get(
+                    "initial_rollout_percentage",
+                    existing.rollout_percentage,
+                )
+                if float(initial_percentage) != float(rollout_percentage):
+                    raise ValueError("Existing source policy used a different rollout percentage.")
+                return deepcopy(existing), False
+            if self.rollout_policy_id:
+                raise ValueError("Another rollout policy is already active.")
+            version = max(item.version for item in self._policies.values()) + 1
+            policy_metadata = deepcopy(metadata or {})
+            policy_metadata["initial_rollout_percentage"] = float(rollout_percentage)
+            policy = PolicyVersion(
+                policy_id=f"policy_v{version}",
+                version=version,
+                status="rollout",
+                config=deepcopy(config),
+                rollout_percentage=float(rollout_percentage),
+                parent_policy_id=self.stable_policy_id,
+                source_candidate_id=source_candidate_id,
+                created_at=_now(),
+                activated_at=_now(),
+                metadata=policy_metadata,
+            )
+            self._policies[policy.policy_id] = policy
+            self.rollout_policy_id = policy.policy_id
+            self._persist()
+            return deepcopy(policy), True
+
     def start_rollout(self, policy_id: str, percentage: float) -> PolicyVersion:
         with self._write_guard():
             if not 0 < percentage <= 100:
