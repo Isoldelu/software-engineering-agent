@@ -9,6 +9,7 @@ from app.providers.gateway import PlannerGateway
 from app.providers.mock import MockPlanningProvider
 from app.providers.models import ProviderResult
 from app.providers.native_tool_provider import (
+    NATIVE_SYSTEM_PROMPT,
     DeepSeekNativeToolAgent,
     NativeToolResult,
     _validate_tool_call,
@@ -136,6 +137,64 @@ def test_native_tool_loop_blocks_unknown_tool_without_execution():
     }
 
 
+def test_native_tool_loop_forces_final_answer_after_not_found():
+    completions = SequenceCompletions(
+        [
+            _response(
+                tool_calls=[
+                    _tool_call(
+                        "call-missing",
+                        "package_search",
+                        json.dumps({"query": "1215 release packages"}),
+                    )
+                ]
+            ),
+            _response(content="No packages were found for release 1215.", finish_reason="stop"),
+        ]
+    )
+    client = SimpleNamespace(chat=SimpleNamespace(completions=completions))
+    result = DeepSeekNativeToolAgent(ProviderSettings(online_enabled=True), client=client).run(
+        "1215 release packages"
+    )
+
+    assert result.status == "success"
+    assert result.execution_status == "not_found"
+    assert result.provider_rounds == 2
+    assert result.tool_call_count == 1
+    assert completions.requests[1]["tool_choice"] == "none"
+
+
+def test_native_tool_loop_blocks_duplicate_tool_and_query():
+    repeated = _tool_call(
+        "call-repeat",
+        "package_search",
+        json.dumps({"query": "openssl"}),
+    )
+    completions = SequenceCompletions(
+        [
+            _response(tool_calls=[repeated]),
+            _response(tool_calls=[repeated]),
+            _response(content="The repeated request was blocked.", finish_reason="stop"),
+        ]
+    )
+    client = SimpleNamespace(chat=SimpleNamespace(completions=completions))
+    result = DeepSeekNativeToolAgent(ProviderSettings(online_enabled=True), client=client).run(
+        "query openssl"
+    )
+
+    assert result.status == "error"
+    assert result.invalid_tool_call_count == 1
+    assert result.tool_calls[1]["error_type"] == "duplicate_tool_call"
+    assert result.tool_calls[1]["observation_status"] == "blocked"
+
+
+def test_native_system_prompt_requires_minimal_calls_and_not_found_stop():
+    assert "single intent" in NATIVE_SYSTEM_PROMPT
+    assert "exactly one relevant tool" in NATIVE_SYSTEM_PROMPT
+    assert "If every observation says not_found" in NATIVE_SYSTEM_PROMPT
+    assert "Never repeat the same tool and query" in NATIVE_SYSTEM_PROMPT
+
+
 def test_native_tool_argument_validator_rejects_invalid_and_extra_arguments():
     assert _validate_tool_call("package_search", "not-json")[0] == ("arguments_invalid_json")
     assert _validate_tool_call("package_search", "[]")[0] == ("arguments_must_be_object")
@@ -240,4 +299,7 @@ def test_three_way_comparison_runs_with_injected_providers_without_network():
     assert report["methods"]["native_tool_calling"]["task_success_rate"] == 1.0
     assert report["methods"]["native_tool_calling"]["average_provider_rounds"] == 2
     assert report["methods"]["native_tool_calling"]["total_tokens"] == 720
+    assert report["gates"]["native_run_valid_rate_at_least_90_percent"]
+    assert report["gates"]["native_task_success_at_least_90_percent"]
+    assert report["case_failures"] == []
     assert report["secrets_exposed"] is False

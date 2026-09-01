@@ -129,6 +129,13 @@ fallback, 2.276-second P95 latency, and a $0.011726 peak-price cost upper bound.
 GitHub Actions Run `33375239707` then passed 160 tests plus Docker and PostgreSQL jobs on the same
 commit. The CI workflow has no Provider credential and does not invoke the explicit paid runner.
 
+Step 36 adds a bounded DeepSeek Native Tool Calling loop and compares it with the deterministic and
+JSON planning paths on 10 simulated queries. Real Bad Cases showed speculative over-calling and a
+`not_found` loop. Minimal-tool prompting, duplicate-call blocking, and deterministic `not_found`
+convergence improved Native task success from 90% to 100%, reduced average Tool calls from 2.4 to
+1.7, P95 latency from 5.940 to 4.074 seconds, tokens by 11.13%, and the conservative run-cost upper
+bound by 13.07%. The final report passed every Gate and contains no credential-shaped value.
+
 Latest summary:
 
 ```text

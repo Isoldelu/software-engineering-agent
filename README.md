@@ -149,6 +149,8 @@ Provider dual-mode experiment: 12 representative queries reached 100% Offline/Mo
 
 Real DeepSeek experiment: 20/20 optimized plans passed JSON and local Tool-schema validation with 0 fallback. Human-labeled required Tool accuracy reached 100%, strict task success reached 95%, and P95 Provider latency was 2.276 seconds. The optimized 20-case run used 19,628 tokens with a conservative peak-price cost upper bound of $0.011726.
 
+Native Tool Calling experiment: on 10 simulated queries, convergence guards improved Native task success from 90% to 100%, reduced average Tool calls from 2.4 to 1.7, reduced P95 Provider latency from 5.940 to 4.074 seconds, and lowered the conservative cost upper bound by 13.07% to $0.013977. JSON Planner and Native both reached 100% required Tool coverage and task success in the optimized three-way run; the deterministic Planner remained fastest and free but missed one compound intent.
+
 Offline evolution experiment: 9 failures were mined into Router, Query Alias, and Retriever clusters. Three configuration candidates fixed all 9 linked cases with 0 regressions and remained `pending_review + active=false`; paid API calls were 0.
 
 Reviewed Evolution-to-Policy experiment: three human-approved Router, Query Alias, and Retriever candidates created three immutable rollout policies. Three duplicate release requests were idempotent, candidate/config SHA-256 digests were retained, and a rollback restored the parent policy while deactivating the released source candidate. All 10 release gates passed with 0 paid API calls.

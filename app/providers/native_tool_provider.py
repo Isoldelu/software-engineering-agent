@@ -14,11 +14,15 @@ from app.agent.workflow import TOOL_REGISTRY
 from app.providers.settings import ProviderSettings
 
 NATIVE_SYSTEM_PROMPT = """You are an AI4SE software-engineering Agent.
-Use the supplied tools for every factual claim. Select the smallest sufficient set of tools.
-For a compound request, call every tool needed to cover each explicit intent. When package_search
-returns multiple release packages, call downstream dependency or version tools once per relevant
-package. Never invent a tool or argument. After receiving tool results, answer concisely from those
-results and explicitly acknowledge not-found evidence."""
+Use the supplied tools for every factual claim and select the smallest sufficient tool set.
+For a single intent, call exactly one relevant tool: package metadata -> package_search;
+dependencies -> dependency_analysis; version changes -> version_compare; file ownership ->
+component_mapping; release notes or manuals -> rag_retrieval. Do not broaden a single-intent
+request into an investigation. For a compound request, call only the tools needed for its explicit
+intents. When package_search returns multiple release packages, call a downstream tool once per
+relevant package. Never repeat the same tool and query. Once the evidence is sufficient, answer
+immediately. If every observation says not_found, acknowledge that evidence and stop; do not retry
+or call unrelated fallback tools. Never invent a tool, argument, or fact."""
 
 
 @dataclass
@@ -77,6 +81,8 @@ class DeepSeekNativeToolAgent:
         provider_rounds = 0
         error_type: str | None = None
         error_message: str | None = None
+        force_final_answer = False
+        seen_calls: set[tuple[str, str]] = set()
 
         try:
             client = self._client or self._build_client()
@@ -86,7 +92,13 @@ class DeepSeekNativeToolAgent:
                     model=self.settings.deepseek_model,
                     messages=list(messages),
                     tools=build_function_specs(),
-                    tool_choice="required" if round_number == 1 else "auto",
+                    tool_choice=(
+                        "required"
+                        if round_number == 1
+                        else "none"
+                        if force_final_answer
+                        else "auto"
+                    ),
                     max_tokens=self.settings.max_output_tokens,
                     temperature=0,
                     stream=False,
@@ -108,6 +120,7 @@ class DeepSeekNativeToolAgent:
                         error_message = "The final model response reached the output limit."
                     break
 
+                round_observation_statuses: list[str] = []
                 for index, tool_call in enumerate(tool_calls, start=1):
                     call_id = str(
                         getattr(tool_call, "id", None) or f"local-call-{round_number}-{index}"
@@ -127,6 +140,14 @@ class DeepSeekNativeToolAgent:
                         validation_error = "max_tool_calls_exceeded"
                         call_record["valid"] = False
                         call_record["error_type"] = validation_error
+                    if validation_error is None and arguments is not None:
+                        call_key = (name, arguments["query"].casefold())
+                        if call_key in seen_calls:
+                            validation_error = "duplicate_tool_call"
+                            call_record["valid"] = False
+                            call_record["error_type"] = validation_error
+                        else:
+                            seen_calls.add(call_key)
                     if validation_error:
                         call_record["observation_status"] = "blocked"
                         calls.append(call_record)
@@ -145,7 +166,9 @@ class DeepSeekNativeToolAgent:
                     assert arguments is not None
                     observation = TOOL_REGISTRY[name]().run(arguments["query"])
                     observations.append({"tool": name, "observation": observation})
-                    call_record["observation_status"] = observation.get("status", "failed")
+                    observation_status = observation.get("status", "failed")
+                    round_observation_statuses.append(observation_status)
+                    call_record["observation_status"] = observation_status
                     calls.append(call_record)
                     messages.append(
                         {
@@ -158,6 +181,10 @@ class DeepSeekNativeToolAgent:
                             ),
                         }
                     )
+                if round_observation_statuses and all(
+                    status == "not_found" for status in round_observation_statuses
+                ):
+                    force_final_answer = True
             else:
                 error_type = "max_rounds_exceeded"
                 error_message = "The model did not finish within the configured round limit."

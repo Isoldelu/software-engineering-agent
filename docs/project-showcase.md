@@ -67,6 +67,8 @@ are offline proxy results, not measurements of a paid online model.
 | PostgreSQL two-Worker Bridge HTTP gates | 14/14 passed |
 | Real DeepSeek A/B | 20/20 valid plans, 100% required Tool coverage |
 | DeepSeek strict task success / P95 | 95% / 2.276 s |
+| Native Tool Calling optimization | task success 90% -> 100% |
+| Native Tool calls / P95 / cost | -29.17% / -31.41% / -13.07% |
 
 Current evidence is bound to
 [GitHub Actions Run 33383706654](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33383706654).
@@ -81,8 +83,8 @@ The frozen v1.0.0 evidence remains in [`release/v1.0.0-evidence.json`](../releas
 2. Show the planned tool chain, Evidence/Citation, Verifier status, and Trace ID.
 3. Open `/evaluation-dashboard` and show the frozen evaluation and baseline comparison.
 4. Open the green GitHub Actions Run and explain the PostgreSQL Worker-recovery gate.
-5. Close with the compliance boundary: all asset data is simulated; the real Provider experiment
-   used an explicit 43-call budget and did not expose credentials.
+5. Compare JSON Planner and Native Tool Calling, then close with the compliance boundary: all asset
+   data is simulated, paid runs used explicit call budgets, and credentials were not retained.
 
 Detailed commands and fallback steps are in [`demo-runbook.md`](demo-runbook.md).
 
@@ -107,5 +109,5 @@ Detailed commands and fallback steps are in [`demo-runbook.md`](demo-runbook.md)
 - The benchmark is deterministic and project-specific, so 100% does not imply general-domain
   intelligence.
 - GitHub-hosted load numbers are functional deployment evidence, not a production SLA.
-- Real Provider evidence is limited to 20 labeled Planner cases; it does not establish general
-  model quality, native Tool-Calling quality, production throughput, or SLA.
+- Real Provider evidence is limited to 20 JSON Planner cases and 10 Native Tool Calling cases; it
+  does not establish general model quality, production throughput, or SLA.

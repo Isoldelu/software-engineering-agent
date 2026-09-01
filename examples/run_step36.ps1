@@ -7,12 +7,23 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$secureKey = Read-Host "Enter the rotated DEEPSEEK_API_KEY (hidden)" -AsSecureString
-$keyPointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureKey)
 $plainKey = $null
+$keyPointer = [IntPtr]::Zero
 $previousPythonPath = $env:PYTHONPATH
 
 try {
+    if (-not [string]::IsNullOrWhiteSpace($SdkPath)) {
+        $resolvedSdkPath = (Resolve-Path -LiteralPath $SdkPath -ErrorAction Stop).Path
+        $env:PYTHONPATH = $resolvedSdkPath
+    }
+
+    & $PythonCommand -c "from openai import OpenAI"
+    if ($LASTEXITCODE -ne 0) {
+        throw "The selected Python runtime cannot import OpenAI from the configured SDK path."
+    }
+
+    $secureKey = Read-Host "Enter the rotated DEEPSEEK_API_KEY (hidden)" -AsSecureString
+    $keyPointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureKey)
     $plainKey = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($keyPointer)
     if ([string]::IsNullOrWhiteSpace($plainKey)) {
         throw "A non-empty rotated DeepSeek API Key is required."
@@ -21,9 +32,6 @@ try {
     $env:DEEPSEEK_API_KEY = $plainKey
     $env:SOFTWARE_AGENT_ENABLE_ONLINE_LLM = "true"
     $env:SOFTWARE_AGENT_LLM_PROVIDER = "deepseek"
-    if (-not [string]::IsNullOrWhiteSpace($SdkPath)) {
-        $env:PYTHONPATH = $SdkPath
-    }
 
     & $PythonCommand -B evaluation/native_tool_calling_eval.py `
         --confirm-paid-calls `
@@ -45,5 +53,7 @@ finally {
         $env:PYTHONPATH = $previousPythonPath
     }
     $plainKey = $null
-    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($keyPointer)
+    if ($keyPointer -ne [IntPtr]::Zero) {
+        [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($keyPointer)
+    }
 }

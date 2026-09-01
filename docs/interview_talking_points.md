@@ -20,8 +20,8 @@
 > 组件归属和研发文档分散的问题。系统通过 Router 和 Hybrid Planner 组合五个专业工具，
 > 再用 Evidence、Citation 和 Verifier 保证答案可追溯。我建立了 193 条冻结评测和受控
 > Bad-case Loop，路由准确率从 61.76% 提升到 100%；服务层支持 FastAPI、PostgreSQL
-> 多 Worker、鉴权、审计、指标和故障恢复。所有数据均为模拟数据，真实 Provider A/B
-> 因预算未明确暂未执行。
+> 多 Worker、鉴权、审计、指标和故障恢复。所有资产数据均为模拟数据；真实 DeepSeek
+> JSON Planner 与 Native Tool Calling A/B 均在显式小预算下执行，Key 不进入仓库或报告。
 
 ## 2 分钟版本
 
@@ -52,7 +52,7 @@
 4. **评测优化**：解释 193 条冻结集、三类 Baseline、61.76% 到 100% 的 Bad Case 闭环。
 5. **受控自进化**：只生成配置候选，禁止改源码和自动激活，必须回放、Shadow、人工审核。
 6. **工程交付**：FastAPI/PostgreSQL、多 Worker 一致性、Auth/Audit/Metrics/Backup。
-7. **边界**：模拟数据、离线 Proxy、CI 功能压测、真实 Provider 未测。
+7. **边界**：模拟数据、小规模真实 Provider A/B、CI 功能压测，不表述为生产 SLA。
 
 ## 最值得展示的一条 Query
 
@@ -133,9 +133,9 @@ A/B，因此不会把该数字表述为通用模型能力。
 
 ### 是否调用了真实 LLM
 
-当前默认模式没有付费调用。项目实现了 OpenAI Responses 风格的结构化 Planner Adapter、
-Schema 校验、Timeout 和 Fallback，并用 Mock Online 做计划一致性测试；真实质量、Token、
-延迟和成本仍待 API Key 与预算明确后测量。
+当前默认模式没有付费调用。项目先完成 Provider Adapter、Schema 校验、Timeout、Fallback
+和 Mock Online 契约测试，再在显式预算下运行 DeepSeek JSON Planner 与 Native Tool Calling
+真实实验。Key 只进入运行进程，报告保留 Tool、Token、延迟和成本，不保留凭据或原始回答。
 
 ### Evidence 和 Citation 与普通日志有什么区别
 
@@ -164,9 +164,9 @@ GitHub Actions Run `33383706654` 同时运行 165 项测试、Docker Build 和�
 ### 下一步最有价值的工作
 
 真实 DeepSeek JSON Planner A/B 已完成，20/20 计划合法、Required Tool Coverage 100%、
-Strict Task Success 95%、零 fallback，P95 2.276 秒，优化轮成本上界约 0.012 美元。
-下一步可比较 Native Tool Calling、JSON Planner 和 deterministic Planner，或引入外部公开
-软件资产数据集验证冻结集之外的泛化能力。
+Strict Task Success 95%、零 fallback。随后完成 10 条 Native Tool Calling 三路对比，针对
+过度调用和 `not_found` 循环增加收敛保护后，Native Task Success 从 90% 升至 100%，平均
+Tool Calls 降低 29%，P95 降低 31%。下一步应优先引入外部公开软件资产数据验证泛化。
 
 ## 不要越过的表述边界
 
@@ -174,7 +174,7 @@ Strict Task Success 95%、零 fallback，P95 2.276 秒，优化轮成本上界�
 - 不说“训练了 RL”或“Agent 自动修改和发布代码”。
 - 不把 DirectLLMProxy 称为真实 GPT/Claude/Gemini 测试。
 - 不把 GitHub Runner 的 100/40 请求结果称为生产 QPS 或 SLA。
-- 不说 FAISS、LangGraph 已完成；真实 Provider 仅表述为 20 条 JSON Planner A/B，不扩展为生产上线或 Native Tool Calling。
+- 不说 FAISS、LangGraph 已完成；真实 Provider 仅表述为 20 条 JSON Planner 和 10 条 Native Tool Calling 受控实验，不扩展为生产上线或通用模型结论。
 - 不展示 API Key、Audit 原文、Trajectory 原始 Query 或任何企业内部资料。
 
 ## 最后一句

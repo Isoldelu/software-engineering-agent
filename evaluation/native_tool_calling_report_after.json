@@ -1,0 +1,951 @@
+{
+  "benchmark": "Software-Agent-DeepSeek-Native-Tool-Calling-AB",
+  "model": "deepseek-v4-flash",
+  "thinking_mode": "disabled",
+  "case_count": 10,
+  "max_native_rounds_per_case": 3,
+  "max_projected_provider_calls": 40,
+  "actual_provider_calls": 33,
+  "native_tool_call_validity": 1.0,
+  "methods": {
+    "deterministic": {
+      "valid_rate": 1.0,
+      "required_tool_accuracy": 0.9,
+      "task_success_rate": 0.9,
+      "fallback_rate": 0.0,
+      "average_provider_rounds": 0.0,
+      "average_tool_calls": 1.9,
+      "latency_p50_ms": 4.296,
+      "latency_p95_ms": 32.758,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "estimated_peak_cost_upper_bound_usd": 0.0
+    },
+    "json_planner": {
+      "valid_rate": 1.0,
+      "required_tool_accuracy": 1.0,
+      "task_success_rate": 1.0,
+      "fallback_rate": 0.0,
+      "average_provider_rounds": 1.0,
+      "average_tool_calls": 1.7,
+      "latency_p50_ms": 1806.368,
+      "latency_p95_ms": 6155.454,
+      "input_tokens": 8053,
+      "output_tokens": 1691,
+      "total_tokens": 9744,
+      "estimated_peak_cost_upper_bound_usd": 0.00577544
+    },
+    "native_tool_calling": {
+      "valid_rate": 1.0,
+      "required_tool_accuracy": 1.0,
+      "task_success_rate": 1.0,
+      "fallback_rate": 0.0,
+      "average_provider_rounds": 2.3,
+      "average_tool_calls": 1.7,
+      "latency_p50_ms": 2570.063,
+      "latency_p95_ms": 4074.216,
+      "input_tokens": 25967,
+      "output_tokens": 1933,
+      "total_tokens": 27900,
+      "estimated_peak_cost_upper_bound_usd": 0.01397704
+    }
+  },
+  "comparisons": [
+    {
+      "query": "查询 openssl 的软件版本",
+      "required_tools": [
+        "package_search"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "package_search"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 1,
+        "latency_ms": 2.596,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "package_search"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 1,
+        "latency_ms": 6155.454,
+        "usage": {
+          "input_tokens": 804,
+          "output_tokens": 128,
+          "total_tokens": 932
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "package_search"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 2,
+        "tool_call_count": 1,
+        "latency_ms": 2648.683,
+        "usage": {
+          "input_tokens": 1935,
+          "output_tokens": 139,
+          "total_tokens": 2074
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "package_search",
+            "arguments": {
+              "query": "openssl"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "openssl 依赖哪些组件",
+      "required_tools": [
+        "dependency_analysis"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 1,
+        "latency_ms": 32.758,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 1,
+        "latency_ms": 1776.787,
+        "usage": {
+          "input_tokens": 802,
+          "output_tokens": 121,
+          "total_tokens": 923
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 2,
+        "tool_call_count": 1,
+        "latency_ms": 2451.896,
+        "usage": {
+          "input_tokens": 1849,
+          "output_tokens": 115,
+          "total_tokens": 1964
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "dependency_analysis",
+            "arguments": {
+              "query": "openssl 依赖哪些组件"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "比较 openssl 两个版本变化",
+      "required_tools": [
+        "version_compare"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "version_compare"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 1,
+        "latency_ms": 5.222,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "version_compare"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 1,
+        "latency_ms": 1484.614,
+        "usage": {
+          "input_tokens": 804,
+          "output_tokens": 132,
+          "total_tokens": 936
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "version_compare"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 2,
+        "tool_call_count": 1,
+        "latency_ms": 2502.468,
+        "usage": {
+          "input_tokens": 1957,
+          "output_tokens": 164,
+          "total_tokens": 2121
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "version_compare",
+            "arguments": {
+              "query": "Compare the changes between two versions of openssl"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "libssl.so 属于哪个软件包",
+      "required_tools": [
+        "component_mapping"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "component_mapping"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 1,
+        "latency_ms": 1.629,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "component_mapping"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 1,
+        "latency_ms": 1828.305,
+        "usage": {
+          "input_tokens": 804,
+          "output_tokens": 131,
+          "total_tokens": 935
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "component_mapping"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 2,
+        "tool_call_count": 1,
+        "latency_ms": 2435.477,
+        "usage": {
+          "input_tokens": 1973,
+          "output_tokens": 118,
+          "total_tokens": 2091
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "component_mapping",
+            "arguments": {
+              "query": "libssl.so"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "release note says what was added in 1214",
+      "required_tools": [
+        "rag_retrieval"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "rag_retrieval"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 1,
+        "latency_ms": 4.296,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "rag_retrieval"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 1,
+        "latency_ms": 1653.838,
+        "usage": {
+          "input_tokens": 806,
+          "output_tokens": 141,
+          "total_tokens": 947
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "rag_retrieval"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 2,
+        "tool_call_count": 1,
+        "latency_ms": 2015.971,
+        "usage": {
+          "input_tokens": 2447,
+          "output_tokens": 130,
+          "total_tokens": 2577
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "rag_retrieval",
+            "arguments": {
+              "query": "release notes for 1214 what was added"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "1214 release packages and their dependencies",
+      "required_tools": [
+        "package_search",
+        "dependency_analysis"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 4,
+        "latency_ms": 7.493,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 3,
+        "latency_ms": 1448.027,
+        "usage": {
+          "input_tokens": 804,
+          "output_tokens": 202,
+          "total_tokens": 1006
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "package_search",
+          "dependency_analysis",
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 3,
+        "tool_call_count": 3,
+        "latency_ms": 4074.216,
+        "usage": {
+          "input_tokens": 4263,
+          "output_tokens": 321,
+          "total_tokens": 4584
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "package_search",
+            "arguments": {
+              "query": "1214 release packages"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          },
+          {
+            "round": 2,
+            "tool": "dependency_analysis",
+            "arguments": {
+              "query": "nginx dependencies"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          },
+          {
+            "round": 2,
+            "tool": "dependency_analysis",
+            "arguments": {
+              "query": "tcpdump dependencies"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "查一下 nginx 的版本变化和依赖",
+      "required_tools": [
+        "dependency_analysis",
+        "version_compare"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 3,
+        "latency_ms": 4.381,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "version_compare",
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 2,
+        "latency_ms": 1806.368,
+        "usage": {
+          "input_tokens": 807,
+          "output_tokens": 185,
+          "total_tokens": 992
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 3,
+        "tool_call_count": 3,
+        "latency_ms": 3317.445,
+        "usage": {
+          "input_tokens": 4116,
+          "output_tokens": 308,
+          "total_tokens": 4424
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "package_search",
+            "arguments": {
+              "query": "nginx"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          },
+          {
+            "round": 1,
+            "tool": "dependency_analysis",
+            "arguments": {
+              "query": "nginx"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          },
+          {
+            "round": 2,
+            "tool": "version_compare",
+            "arguments": {
+              "query": "nginx version comparison"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "哪个包提供 libcrypto.so，它还有哪些依赖",
+      "required_tools": [
+        "component_mapping",
+        "dependency_analysis"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": false,
+        "execution_status": "success",
+        "task_success": false,
+        "provider_rounds": 0,
+        "tool_call_count": 1,
+        "latency_ms": 1.39,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "component_mapping",
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 2,
+        "latency_ms": 2009.253,
+        "usage": {
+          "input_tokens": 809,
+          "output_tokens": 210,
+          "total_tokens": 1019
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "component_mapping",
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 3,
+        "tool_call_count": 2,
+        "latency_ms": 3893.193,
+        "usage": {
+          "input_tokens": 3588,
+          "output_tokens": 175,
+          "total_tokens": 3763
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "component_mapping",
+            "arguments": {
+              "query": "libcrypto.so"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          },
+          {
+            "round": 2,
+            "tool": "dependency_analysis",
+            "arguments": {
+              "query": "openssl"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "查找 tcpdump 包信息、依赖和历史版本变化",
+      "required_tools": [
+        "package_search",
+        "dependency_analysis",
+        "version_compare"
+      ],
+      "expected_status": "success",
+      "deterministic": {
+        "used_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 3,
+        "latency_ms": 3.759,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 3,
+        "latency_ms": 2269.907,
+        "usage": {
+          "input_tokens": 809,
+          "output_tokens": 240,
+          "total_tokens": 1049
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "package_search",
+          "dependency_analysis",
+          "version_compare"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "success",
+        "task_success": true,
+        "provider_rounds": 2,
+        "tool_call_count": 3,
+        "latency_ms": 3599.145,
+        "usage": {
+          "input_tokens": 2679,
+          "output_tokens": 365,
+          "total_tokens": 3044
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "package_search",
+            "arguments": {
+              "query": "tcpdump package information"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          },
+          {
+            "round": 1,
+            "tool": "dependency_analysis",
+            "arguments": {
+              "query": "tcpdump dependencies"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          },
+          {
+            "round": 1,
+            "tool": "version_compare",
+            "arguments": {
+              "query": "tcpdump version changes history"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "query": "1215 release packages and their dependencies",
+      "required_tools": [
+        "package_search"
+      ],
+      "expected_status": "not_found",
+      "deterministic": {
+        "used_tools": [
+          "rag_retrieval",
+          "package_search",
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "not_found",
+        "task_success": true,
+        "provider_rounds": 0,
+        "tool_call_count": 3,
+        "latency_ms": 4.532,
+        "usage": {},
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "json_planner": {
+        "used_tools": [
+          "package_search",
+          "dependency_analysis"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "not_found",
+        "task_success": true,
+        "provider_rounds": 1,
+        "tool_call_count": 2,
+        "latency_ms": 1908.158,
+        "usage": {
+          "input_tokens": 804,
+          "output_tokens": 201,
+          "total_tokens": 1005
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": []
+      },
+      "native_tool_calling": {
+        "used_tools": [
+          "package_search"
+        ],
+        "valid": true,
+        "required_tools_covered": true,
+        "execution_status": "not_found",
+        "task_success": true,
+        "provider_rounds": 2,
+        "tool_call_count": 1,
+        "latency_ms": 2570.063,
+        "usage": {
+          "input_tokens": 1160,
+          "output_tokens": 98,
+          "total_tokens": 1258
+        },
+        "fallback_used": false,
+        "invalid_tool_call_count": 0,
+        "error_type": null,
+        "tool_call_trace": [
+          {
+            "round": 1,
+            "tool": "package_search",
+            "arguments": {
+              "query": "1215 release packages"
+            },
+            "valid": true,
+            "error_type": null,
+            "observation_status": "not_found"
+          }
+        ]
+      }
+    }
+  ],
+  "cost_assumption": {
+    "method": "conservative peak cache-miss upper bound",
+    "input_usd_per_million_tokens": 0.44,
+    "output_usd_per_million_tokens": 1.32,
+    "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/"
+  },
+  "gates": {
+    "case_count_bounded": true,
+    "projected_provider_calls_bounded": true,
+    "actual_provider_calls_bounded": true,
+    "native_tool_call_validity_at_least_90_percent": true,
+    "native_required_tool_accuracy_at_least_80_percent": true,
+    "native_run_valid_rate_at_least_90_percent": true,
+    "native_task_success_at_least_90_percent": true,
+    "report_contains_no_secret_fields": true
+  },
+  "passed": true,
+  "bad_cases": [],
+  "case_failures": [
+    {
+      "query": "哪个包提供 libcrypto.so，它还有哪些依赖",
+      "methods": [
+        "deterministic"
+      ]
+    }
+  ],
+  "secrets_exposed": false
+}

@@ -120,6 +120,7 @@ def run_native_tool_comparison(
                     usage=native_result.usage,
                     invalid_tool_call_count=native_result.invalid_tool_call_count,
                     error_type=native_result.error_type,
+                    tool_call_trace=native_result.tool_calls,
                 ),
             }
         )
@@ -149,6 +150,12 @@ def run_native_tool_comparison(
         "native_required_tool_accuracy_at_least_80_percent": (
             methods["native_tool_calling"]["required_tool_accuracy"] >= 0.8
         ),
+        "native_run_valid_rate_at_least_90_percent": (
+            methods["native_tool_calling"]["valid_rate"] >= 0.9
+        ),
+        "native_task_success_at_least_90_percent": (
+            methods["native_tool_calling"]["task_success_rate"] >= 0.9
+        ),
         "report_contains_no_secret_fields": "api_key"
         not in json.dumps({"methods": methods, "comparisons": comparisons}).lower(),
     }
@@ -172,6 +179,21 @@ def run_native_tool_comparison(
         "gates": gates,
         "passed": all(gates.values()),
         "bad_cases": [name for name, passed in gates.items() if not passed],
+        "case_failures": [
+            {
+                "query": item["query"],
+                "methods": [
+                    name
+                    for name in ("deterministic", "json_planner", "native_tool_calling")
+                    if not item[name]["task_success"]
+                ],
+            }
+            for item in comparisons
+            if any(
+                not item[name]["task_success"]
+                for name in ("deterministic", "json_planner", "native_tool_calling")
+            )
+        ],
         "secrets_exposed": False,
     }
 
@@ -190,6 +212,7 @@ def _method_case(
     fallback_used: bool = False,
     invalid_tool_call_count: int = 0,
     error_type: str | None = None,
+    tool_call_trace: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     required_covered = required.issubset(used_tools)
     return {
@@ -205,6 +228,7 @@ def _method_case(
         "fallback_used": fallback_used,
         "invalid_tool_call_count": invalid_tool_call_count,
         "error_type": error_type,
+        "tool_call_trace": tool_call_trace or [],
     }
 
 
