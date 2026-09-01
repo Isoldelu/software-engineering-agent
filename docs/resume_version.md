@@ -28,5 +28,5 @@ Built a Software Engineering Agent for R&D scenarios where package metadata, dep
 - Constructed benchmark, challenge, robustness, and large-scale evaluation suites covering 193 simulated cases across six task categories.
 - Designed offline baseline experiments comparing DirectLLMProxy, RAGOnlyProxy, and Agent; Agent achieved 100% task success on the simulated large benchmark.
 - Improved tool routing accuracy from 61.76% to 100% through bad-case analysis, alias mapping, planner optimization, and normalized tool arguments; configuration candidates require frozen-set replay and human review.
-- Delivered FastAPI/PostgreSQL multi-Worker operations with CAS/Lease consistency, Auth/Audit/Metrics and recovery gates; GitHub CI passed 165 tests plus 16/16 Bridge fault and 14/14 two-Worker HTTP gates with retained evidence.
+- Delivered FastAPI/PostgreSQL multi-Worker operations with CAS/Lease consistency, Auth/Audit/Metrics and recovery gates; GitHub CI passed 168 tests plus 16/16 Bridge fault and 14/14 two-Worker HTTP gates with retained evidence.
 - Ran budgeted real DeepSeek experiments: the 20-case JSON Planner reached 100% required Tool coverage and 95% strict task success; convergence guards on the 10-case Native Tool Calling set raised task success from 90% to 100% while reducing average Tool calls by 29% and P95 latency by 31%.

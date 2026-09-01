@@ -135,6 +135,8 @@ JSON planning paths on 10 simulated queries. Real Bad Cases showed speculative o
 convergence improved Native task success from 90% to 100%, reduced average Tool calls from 2.4 to
 1.7, P95 latency from 5.940 to 4.074 seconds, tokens by 11.13%, and the conservative run-cost upper
 bound by 13.07%. The final report passed every Gate and contains no credential-shaped value.
+GitHub Actions Run `33508283174` then passed 168 tests plus Docker and PostgreSQL jobs on the same
+commit without a Provider Key or paid call.
 
 Latest summary:
 
