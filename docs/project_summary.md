@@ -143,8 +143,8 @@ MCP SDK v2.1.1 stdio Server without duplicating Tool logic. A real Client launch
 subprocess, initializes the protocol session, discovers typed schemas, and executes four success and
 not-found calls. All seven Smoke Gates passed, including exact Tool discovery, required query
 schemas, 4/4 parity with direct Tool execution, and zero Provider calls. The MCP child environment
-does not forward Provider credentials. Local regression now covers 172 tests; remote CI evidence is
-recorded separately after the Step 37 push.
+does not forward Provider credentials. GitHub Actions Run `33647074935` passed all 172 tests plus
+Docker and PostgreSQL jobs, including the real MCP stdio process-boundary Smoke, with zero paid calls.
 
 Latest summary:
 

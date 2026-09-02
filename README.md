@@ -33,7 +33,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | Real DeepSeek structured plans | 20/20 valid, 0 fallback |
 | MCP stdio process boundary | 3 Tools, 4/4 parity, 7/7 gates |
 
-Current evidence: [GitHub Actions Run 33508283174](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33508283174). The real DeepSeek experiments are explicit local paid paths; CI has no Provider Key and does not execute either paid runner. The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
+Current evidence: [GitHub Actions Run 33647074935](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33647074935). The real DeepSeek experiments are explicit local paid paths; CI has no Provider Key and does not execute either paid runner. The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
 
 ## Try It
 

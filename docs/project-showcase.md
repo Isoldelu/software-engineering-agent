@@ -72,7 +72,7 @@ are offline proxy results, not measurements of a paid online model.
 | MCP stdio process boundary | 3 Tools, 4/4 parity, 7/7 gates |
 
 Current evidence is bound to
-[GitHub Actions Run 33508283174](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33508283174).
+[GitHub Actions Run 33647074935](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33647074935).
 This Run passed test, Docker-build, and real PostgreSQL integration jobs without a
 Provider Key or paid Provider call. The real DeepSeek numbers come from the separately
 budgeted, sanitized local A/B report.
