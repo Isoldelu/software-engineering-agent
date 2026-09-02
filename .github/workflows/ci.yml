@@ -20,9 +20,11 @@ jobs:
       - name: Syntax and undefined-name check
         run: python -m ruff check --no-cache --select E9,F63,F7,F82 app evaluation tests
       - name: Control-plane and Agent boundary type check
-        run: python -m mypy --cache-dir "${RUNNER_TEMP}/software-agent-mypy" --follow-imports=skip app/policy app/feedback app/providers app/evolution app/storage app/security
+        run: python -m mypy --cache-dir "${RUNNER_TEMP}/software-agent-mypy" --follow-imports=skip app/policy app/feedback app/providers app/evolution app/storage app/security app/mcp
       - name: Evaluation smoke
         run: python -B evaluation/smoke.py
+      - name: MCP stdio process-boundary smoke
+        run: python -B evaluation/mcp_smoke.py
 
   docker-build:
     runs-on: ubuntu-latest

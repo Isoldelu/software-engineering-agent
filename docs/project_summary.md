@@ -138,6 +138,14 @@ bound by 13.07%. The final report passed every Gate and contains no credential-s
 GitHub Actions Run `33508283174` then passed 168 tests plus Docker and PostgreSQL jobs on the same
 commit without a Provider Key or paid call.
 
+Step 37 exposes `package_search`, `dependency_analysis`, and `version_compare` through an official
+MCP SDK v2.1.1 stdio Server without duplicating Tool logic. A real Client launches the Server as a
+subprocess, initializes the protocol session, discovers typed schemas, and executes four success and
+not-found calls. All seven Smoke Gates passed, including exact Tool discovery, required query
+schemas, 4/4 parity with direct Tool execution, and zero Provider calls. The MCP child environment
+does not forward Provider credentials. Local regression now covers 172 tests; remote CI evidence is
+recorded separately after the Step 37 push.
+
 Latest summary:
 
 ```text

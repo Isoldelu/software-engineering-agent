@@ -16,12 +16,13 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | Optimization | Benchmark, Bad Case loop, offline candidates, Shadow gates, human review |
 | Delivery | Reviewed Evolution bridge, policy versioning, gray rollout, rollback, FastAPI |
 | Operations | Auth, Key rotation, Audit, protected release ledger, pooling, Prometheus, backup/restore |
+| Interoperability | Read-only MCP stdio Server exposing three deterministic Tools |
 
 ## Verified Evidence
 
 | Gate | Result |
 |---|---:|
-| Automated tests | 168 passed |
+| Automated tests | 172 passed |
 | Frozen evaluation baseline | 193 compatible cases |
 | Real PostgreSQL initial load | 100/100, 0 server errors |
 | Load after Worker replacement | 40/40, 0 server errors |
@@ -30,6 +31,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | PostgreSQL Bridge fault injection | 16/16 passed |
 | PostgreSQL two-Worker Bridge HTTP | 14/14 passed |
 | Real DeepSeek structured plans | 20/20 valid, 0 fallback |
+| MCP stdio process boundary | 3 Tools, 4/4 parity, 7/7 gates |
 
 Current evidence: [GitHub Actions Run 33508283174](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33508283174). The real DeepSeek experiments are explicit local paid paths; CI has no Provider Key and does not execute either paid runner. The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
 
@@ -48,6 +50,13 @@ uvicorn app.api.server:app --host 127.0.0.1 --port 8000
 
 Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
 
+Run the optional MCP stdio demo:
+
+```bash
+python -m pip install -r requirements-mcp.txt
+python -B examples/mcp_client_demo.py
+```
+
 ## Interview-Ready Package
 
 - [One-page project showcase](docs/project-showcase.md)
@@ -61,6 +70,7 @@ Then open `http://127.0.0.1:8000/demo` or call `POST /agent/query`.
 - [Step 34 multi-Worker Bridge production validation](docs/step34-bridge-production-validation.md)
 - [Real DeepSeek Provider A/B](docs/real-deepseek-provider-ab.md)
 - [DeepSeek Native Tool Calling A/B](docs/native-tool-calling-ab.md)
+- [MCP Tool Server](docs/mcp-tool-server.md)
 - [Executable API demo](examples/interview_demo.py)
 - [Interactive rehearsal timer](examples/interview_rehearsal.py)
 - [Interview talking points and Q&A](docs/interview_talking_points.md)
@@ -92,6 +102,7 @@ python examples/interview_rehearsal.py --mode standard
 - Real PostgreSQL multi-Worker CI with fault injection and retained evidence.
 - Zero-cost offline default plus an explicit-budget DeepSeek V4 Flash A/B path.
 - Bounded Native Tool Calling experiment with local allowlist and argument validation.
+- Real stdio MCP Client/Server discovery and calls over three read-only deterministic Tools.
 
 ## Results
 
@@ -151,6 +162,8 @@ Real DeepSeek experiment: 20/20 optimized plans passed JSON and local Tool-schem
 
 Native Tool Calling experiment: on 10 simulated queries, convergence guards improved Native task success from 90% to 100%, reduced average Tool calls from 2.4 to 1.7, reduced P95 Provider latency from 5.940 to 4.074 seconds, and lowered the conservative cost upper bound by 13.07% to $0.013977. JSON Planner and Native both reached 100% required Tool coverage and task success in the optimized three-way run; the deterministic Planner remained fastest and free but missed one compound intent.
 
+MCP experiment: an official-SDK stdio Client launched the Server as a separate process, discovered exactly `package_search`, `dependency_analysis`, and `version_compare`, and completed four success/not-found calls with 4/4 semantic parity against direct Tool execution. All seven MCP gates passed with zero Provider calls and no forwarded Provider credentials.
+
 Offline evolution experiment: 9 failures were mined into Router, Query Alias, and Retriever clusters. Three configuration candidates fixed all 9 linked cases with 0 regressions and remained `pending_review + active=false`; paid API calls were 0.
 
 Reviewed Evolution-to-Policy experiment: three human-approved Router, Query Alias, and Retriever candidates created three immutable rollout policies. Three duplicate release requests were idempotent, candidate/config SHA-256 digests were retained, and a rollback restored the parent policy while deactivating the released source candidate. All 10 release gates passed with 0 paid API calls.
@@ -194,6 +207,10 @@ flowchart TD
     REVIEW --> BRIDGE["Reviewed Evolution-to-Policy Bridge"]
     BRIDGE --> POLICY["Versioned Policy / Canary / Rollback"]
     POLICY --> P
+    MCPCLIENT["External MCP Client"] --> MCPSERVER["stdio MCP Server"]
+    MCPSERVER --> PKG
+    MCPSERVER --> DEP
+    MCPSERVER --> VER
 ```
 
 ## Core Workflow
@@ -532,7 +549,7 @@ Built a simulated-data Software Engineering Agent prototype to validate Agent me
 
 ## Roadmap
 
-- Run a budget-capped real Provider A/B for plan validity, task success, latency, tokens, and cost
 - Add an external public software-asset evaluation set to measure out-of-distribution behavior
 - Add production alert rules and a longer PostgreSQL capacity/soak experiment
 - Evaluate whether FAISS or a managed vector store improves retrieval beyond the current small corpus
+- Evaluate authenticated Streamable HTTP only if remote MCP deployment becomes necessary

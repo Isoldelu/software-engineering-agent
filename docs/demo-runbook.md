@@ -3,7 +3,8 @@
 ## Demo Goal
 
 Use one compound engineering query to show planning, multi-tool execution, grounded evidence,
-verification, replayable Trace, evaluation, and deployability without relying on a paid API.
+verification, replayable Trace, evaluation, deployability, and MCP Tool interoperability. The live
+demo remains deterministic and does not require a paid API.
 
 ## Preflight
 
@@ -16,12 +17,13 @@ Open these tabs before the interview:
 
 - `http://127.0.0.1:8000/demo`
 - `http://127.0.0.1:8000/evaluation-dashboard`
-- `https://github.com/Isoldelu/software-engineering-agent/actions/runs/33363220127`
+- `https://github.com/Isoldelu/software-engineering-agent/actions/runs/33508283174`
 
 Optional command-line preflight:
 
 ```powershell
 python examples/interview_demo.py --skip-evaluation
+python -B examples/mcp_client_demo.py
 ```
 
 Remove `--skip-evaluation` when you want the script to execute the frozen evaluation summary.
@@ -79,7 +81,21 @@ Open the green Actions Run and say:
 
 > 真实 PostgreSQL CI 中两个 Worker 完成 100 次请求，杀掉一个 Worker 后替换进程完成 40 次
 > 恢复请求，均无 5xx；数据库停机时 readiness 从 200 降为 503，恢复后回到 200。所有数据
-> 都是模拟数据，真实 Provider A/B 因没有明确预算暂未执行。
+> 都是模拟数据；真实 Provider A/B 使用显式小预算离线执行，CI 和现场演示均不读取 Key。
+
+### Optional 30-second MCP Extension
+
+Run `python -B examples/mcp_client_demo.py` and point to:
+
+1. `transport: stdio` and `process_boundary: true`;
+2. the three discovered Tool names and required `query` schemas;
+3. the structured success observations returned through MCP;
+4. `provider_calls: 0`.
+
+Say:
+
+> Native Tool Calling 解决模型在 Agent 内如何选工具；MCP 解决外部 Host 如何标准化发现和
+> 调用工具。这里的 Client 真正启动独立 stdio Server，并复用同一套确定性 Tool 实现。
 
 ## Backup Queries
 
@@ -99,6 +115,8 @@ Open the green Actions Run and say:
   plus the green Actions Run.
 - If the browser cannot open, run `python examples/interview_demo.py`; its output contains the
   tool chain, evidence count, verification state, Trace ID, and optional evaluation summary.
+- If the MCP demo fails before discovery, verify `requirements-mcp.txt` was installed; the MCP path
+  does not need an API Key or network connection after installation.
 - Do not switch to a real Provider during an interview unless credentials and budget have already
   been tested. The deterministic mode is the intended reliable demo path.
 

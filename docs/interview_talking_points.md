@@ -22,6 +22,7 @@
 > Bad-case Loop，路由准确率从 61.76% 提升到 100%；服务层支持 FastAPI、PostgreSQL
 > 多 Worker、鉴权、审计、指标和故障恢复。所有资产数据均为模拟数据；真实 DeepSeek
 > JSON Planner 与 Native Tool Calling A/B 均在显式小预算下执行，Key 不进入仓库或报告。
+> 此外将三个确定性工具封装为 MCP stdio Server，验证外部 Client 的标准化发现与调用。
 
 ## 2 分钟版本
 
@@ -43,6 +44,8 @@
 > 工程层面，FastAPI 控制面支持 PostgreSQL 共享状态、CAS、Lease、API Key 轮换、Audit、
 > Retention、Prometheus 和备份恢复。GitHub Actions 的真实 PostgreSQL 测试中，双 Worker
 > 100 次请求和替换 Worker 后 40 次请求均零 5xx，6 类故障门禁全部通过。
+> 互操作层面，MCP Client 会启动独立 stdio Server，发现 Package、Dependency 和 Version
+> 三个只读工具；4 次 success/not-found 调用与本地执行结果完全一致，且不转发 Provider Key。
 
 ## 5 分钟展开顺序
 
@@ -52,7 +55,8 @@
 4. **评测优化**：解释 193 条冻结集、三类 Baseline、61.76% 到 100% 的 Bad Case 闭环。
 5. **受控自进化**：只生成配置候选，禁止改源码和自动激活，必须回放、Shadow、人工审核。
 6. **工程交付**：FastAPI/PostgreSQL、多 Worker 一致性、Auth/Audit/Metrics/Backup。
-7. **边界**：模拟数据、小规模真实 Provider A/B、CI 功能压测，不表述为生产 SLA。
+7. **MCP 互操作**：解释 stdio Client/Server、Tool Schema 发现和跨进程调用。
+8. **边界**：模拟数据、小规模真实 Provider A/B、CI 功能压测，不表述为生产 SLA。
 
 ## 最值得展示的一条 Query
 
@@ -137,6 +141,13 @@ A/B，因此不会把该数字表述为通用模型能力。
 和 Mock Online 契约测试，再在显式预算下运行 DeepSeek JSON Planner 与 Native Tool Calling
 真实实验。Key 只进入运行进程，报告保留 Tool、Token、延迟和成本，不保留凭据或原始回答。
 
+### Native Tool Calling 和 MCP 有什么区别
+
+Native Tool Calling 是 Agent 内部的推理路径：模型根据 Query 和 observation 决定下一步调用。
+MCP 是工具互操作协议：外部 Host 通过统一协议发现 Schema 并调用确定性工具。Step 37 使用
+官方 Python SDK 建立真实 stdio 子进程会话，发现 3/3 Tools，并完成 4/4 本地结果一致性验证。
+它不等于模型训练，也不代表已经完成远程 HTTP、鉴权或所有 IDE 的兼容认证。
+
 ### Evidence 和 Citation 与普通日志有什么区别
 
 Evidence 是回答事实的结构化来源，Citation 把答案声明关联到具体资产记录或文档 Chunk；
@@ -166,7 +177,8 @@ GitHub Actions Run `33508283174` 同时运行 168 项测试、Docker Build 和�
 真实 DeepSeek JSON Planner A/B 已完成，20/20 计划合法、Required Tool Coverage 100%、
 Strict Task Success 95%、零 fallback。随后完成 10 条 Native Tool Calling 三路对比，针对
 过度调用和 `not_found` 循环增加收敛保护后，Native Task Success 从 90% 升至 100%，平均
-Tool Calls 降低 29%，P95 降低 31%。下一步应优先引入外部公开软件资产数据验证泛化。
+Tool Calls 降低 29%，P95 降低 31%。轻量 MCP stdio Server 也已完成；下一步应优先引入
+外部公开软件资产数据验证泛化，而不是继续堆协议或框架。
 
 ## 不要越过的表述边界
 
@@ -175,6 +187,7 @@ Tool Calls 降低 29%，P95 降低 31%。下一步应优先引入外部公开软
 - 不把 DirectLLMProxy 称为真实 GPT/Claude/Gemini 测试。
 - 不把 GitHub Runner 的 100/40 请求结果称为生产 QPS 或 SLA。
 - 不说 FAISS、LangGraph 已完成；真实 Provider 仅表述为 20 条 JSON Planner 和 10 条 Native Tool Calling 受控实验，不扩展为生产上线或通用模型结论。
+- MCP 只表述为官方 Python Client 的本地 stdio 实验，不说已接入所有 IDE 或完成远程生产部署。
 - 不展示 API Key、Audit 原文、Trajectory 原始 Query 或任何企业内部资料。
 
 ## 最后一句

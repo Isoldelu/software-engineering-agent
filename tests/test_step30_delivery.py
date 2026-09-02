@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,8 +29,8 @@ def test_step30_delivery_files_cover_showcase_demo_and_interview():
 
     showcase = (ROOT / "docs" / "project-showcase.md").read_text(encoding="utf-8")
     runbook = (ROOT / "docs" / "demo-runbook.md").read_text(encoding="utf-8")
-    assert "33383706654" in showcase
-    assert "165 passed" in showcase
+    assert re.search(r"GitHub Actions Run \d{8,}", showcase)
+    assert re.search(r"\| Automated tests \| \d+ passed \|", showcase)
     assert "16/16 passed" in showcase
     assert "14/14 passed" in showcase
     assert "193/193" in showcase

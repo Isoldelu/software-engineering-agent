@@ -1,0 +1,60 @@
+{
+  "benchmark": "Software-Agent-MCP-stdio-smoke",
+  "sdk": "mcp==2.1.1",
+  "transport": "stdio",
+  "server": {
+    "name": "software-agent-tools",
+    "version": "1.0.0"
+  },
+  "discovered_tools": [
+    "dependency_analysis",
+    "package_search",
+    "version_compare"
+  ],
+  "tool_count": 3,
+  "call_count": 4,
+  "case_results": [
+    {
+      "tool": "package_search",
+      "query": "query openssl version",
+      "status": "success",
+      "parity": true,
+      "latency_ms": 74.372
+    },
+    {
+      "tool": "dependency_analysis",
+      "query": "openssl dependencies",
+      "status": "success",
+      "parity": true,
+      "latency_ms": 3.093
+    },
+    {
+      "tool": "version_compare",
+      "query": "compare openssl version changes",
+      "status": "success",
+      "parity": true,
+      "latency_ms": 2.527
+    },
+    {
+      "tool": "package_search",
+      "query": "query package metadata for nonexistent",
+      "status": "not_found",
+      "parity": true,
+      "latency_ms": 1.709
+    }
+  ],
+  "discovery_latency_ms": 1.869,
+  "total_latency_ms": 1462.635,
+  "provider_calls": 0,
+  "gates": {
+    "stdio_process_boundary": true,
+    "exact_tool_set": true,
+    "query_schemas_valid": true,
+    "all_calls_returned": true,
+    "success_and_not_found_covered": true,
+    "local_tool_parity": true,
+    "provider_calls_zero": true
+  },
+  "passed": true,
+  "secrets_exposed": false
+}
