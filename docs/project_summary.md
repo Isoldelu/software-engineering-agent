@@ -155,6 +155,8 @@ two-window experiment, 10 Traces produced three low-quality actionable cases, th
 one Router candidate, 3/3 linked fixes, and zero frozen regressions. The candidate remained inactive
 at `pending_review`; the experiment made zero Provider calls and does not claim model training or
 autonomous release.
+GitHub Actions Run `34037424566` passed 181 tests, the dedicated Continuous Shadow and MCP stdio
+Smokes, Docker build, and real PostgreSQL integration with no Provider credential or paid call.
 
 Latest summary:
 

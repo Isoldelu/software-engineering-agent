@@ -73,7 +73,7 @@ are offline proxy results, not measurements of a paid online model.
 | Continuous Shadow evolution | 10 Traces, 3/3 fixes, 0 regressions |
 
 Current evidence is bound to
-[GitHub Actions Run 33647074935](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33647074935).
+[GitHub Actions Run 34037424566](https://github.com/Isoldelu/software-engineering-agent/actions/runs/34037424566).
 This Run passed test, Docker-build, and real PostgreSQL integration jobs without a
 Provider Key or paid Provider call. The real DeepSeek numbers come from the separately
 budgeted, sanitized local A/B report.

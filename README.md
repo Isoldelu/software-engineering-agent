@@ -22,7 +22,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 
 | Gate | Result |
 |---|---:|
-| Automated tests | 181 passed locally for Step 38 |
+| Automated tests | 181 passed |
 | Frozen evaluation baseline | 193 compatible cases |
 | Real PostgreSQL initial load | 100/100, 0 server errors |
 | Load after Worker replacement | 40/40, 0 server errors |
@@ -34,7 +34,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | MCP stdio process boundary | 3 Tools, 4/4 parity, 7/7 gates |
 | Continuous Shadow evolution | 10 Traces, 3/3 fixes, 0 regressions |
 
-Current evidence: [GitHub Actions Run 33647074935](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33647074935). The real DeepSeek experiments are explicit local paid paths; CI has no Provider Key and does not execute either paid runner. The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
+Current evidence: [GitHub Actions Run 34037424566](https://github.com/Isoldelu/software-engineering-agent/actions/runs/34037424566). The real DeepSeek experiments are explicit local paid paths; CI has no Provider Key and does not execute either paid runner. The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
 
 ## Try It
 
