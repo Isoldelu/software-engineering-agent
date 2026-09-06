@@ -81,3 +81,45 @@ class EvolutionPolicyBridge:
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+@dataclass(frozen=True)
+class TraceQualityAssessment:
+    assessment_id: str
+    schema_version: str
+    batch_id: str
+    trace_id: str
+    quality_score: float
+    low_quality: bool
+    actionable: bool
+    signals: list[str]
+    feedback_ids: list[str]
+    expected_tool: str | None
+    fingerprint: str | None
+    assessed_at: str
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(frozen=True)
+class ContinuousEvolutionCycle:
+    cycle_id: str
+    schema_version: str
+    status: str
+    started_at: str
+    completed_at: str
+    cursor_before: str | None
+    cursor_after: str | None
+    trace_count: int
+    low_quality_count: int
+    actionable_count: int
+    profile: dict[str, Any]
+    drift: dict[str, Any]
+    candidate_ids: list[str]
+    gates: dict[str, bool]
+    automatic_activation: bool = False
+    human_review_required: bool = True
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)

@@ -1,0 +1,144 @@
+{
+  "benchmark": "Software-Agent-Continuous-Shadow-Evolution",
+  "schema_version": "continuous-evolution-report-v1",
+  "mode": "trace_driven_continuous_shadow",
+  "baseline_cycle": {
+    "cycle_id": "cycle_5a01a78c420ff182",
+    "schema_version": "continuous-evolution-cycle-v1",
+    "status": "healthy",
+    "started_at": "2026-09-06T13:50:22.551430+00:00",
+    "completed_at": "2026-09-06T13:50:22.551430+00:00",
+    "cursor_before": null,
+    "cursor_after": "tr_ac3c65e0dea847efa93d",
+    "trace_count": 5,
+    "low_quality_count": 0,
+    "actionable_count": 0,
+    "profile": {
+      "trace_count": 5,
+      "mean_quality_score": 1.0,
+      "low_quality_rate": 0.0,
+      "failure_rate": 0.0,
+      "negative_feedback_rate": 0.0,
+      "p95_latency_ms": 4.473,
+      "tool_distribution": {
+        "component_mapping": 0.2,
+        "dependency_analysis": 0.2,
+        "package_search": 0.2,
+        "rag_retrieval": 0.2,
+        "version_compare": 0.2
+      }
+    },
+    "drift": {
+      "reference_available": false,
+      "detected": false,
+      "signals": [
+        "reference_initialized"
+      ],
+      "deltas": {}
+    },
+    "candidate_ids": [],
+    "gates": {
+      "batch_bounded": true,
+      "cursor_advanced": true,
+      "all_traces_assessed": true,
+      "only_actionable_failures_proposed": true,
+      "automatic_activation_blocked": true,
+      "human_review_required": true
+    },
+    "automatic_activation": false,
+    "human_review_required": true
+  },
+  "drift_cycle": {
+    "cycle_id": "cycle_0ab810ef0bb806a0",
+    "schema_version": "continuous-evolution-cycle-v1",
+    "status": "pending_review",
+    "started_at": "2026-09-06T13:50:22.561949+00:00",
+    "completed_at": "2026-09-06T13:50:23.346783+00:00",
+    "cursor_before": "tr_ac3c65e0dea847efa93d",
+    "cursor_after": "tr_23c7feec18734ae7b4d9",
+    "trace_count": 5,
+    "low_quality_count": 3,
+    "actionable_count": 3,
+    "profile": {
+      "trace_count": 5,
+      "mean_quality_score": 0.7,
+      "low_quality_rate": 0.6,
+      "failure_rate": 0.0,
+      "negative_feedback_rate": 0.6,
+      "p95_latency_ms": 2.041,
+      "tool_distribution": {
+        "dependency_analysis": 0.2,
+        "package_search": 0.6,
+        "version_compare": 0.2
+      }
+    },
+    "drift": {
+      "reference_available": true,
+      "detected": true,
+      "signals": [
+        "quality_score_drop",
+        "low_quality_rate_increase",
+        "tool_distribution_shift"
+      ],
+      "deltas": {
+        "quality_score_drop": 0.3,
+        "low_quality_rate": 0.6,
+        "failure_rate": 0.0,
+        "tool_distribution": 0.4,
+        "p95_latency_ms": -2.432,
+        "p95_latency_ratio": -0.5437
+      }
+    },
+    "candidate_ids": [
+      "evo_continuous_1bd599d269c5772c"
+    ],
+    "gates": {
+      "batch_bounded": true,
+      "cursor_advanced": true,
+      "all_traces_assessed": true,
+      "only_actionable_failures_proposed": true,
+      "automatic_activation_blocked": true,
+      "human_review_required": true
+    },
+    "automatic_activation": false,
+    "human_review_required": true
+  },
+  "idle_cycle": {
+    "mode": "trace_driven_continuous_shadow",
+    "status": "idle",
+    "processed_trace_count": 0,
+    "cursor": "tr_23c7feec18734ae7b4d9",
+    "automatic_activation": false,
+    "human_review_required": true
+  },
+  "processed_trace_count": 10,
+  "low_quality_trace_count": 3,
+  "actionable_trace_count": 3,
+  "drift_signals": [
+    "quality_score_drop",
+    "low_quality_rate_increase",
+    "tool_distribution_shift"
+  ],
+  "candidate_count": 1,
+  "candidate_statuses": [
+    "pending_review"
+  ],
+  "fixed_bad_case_count": 3,
+  "regressed_case_count": 0,
+  "thresholds": {
+    "healthy_reference_initialized": true,
+    "trace_batch_cursor_resumed": true,
+    "degraded_window_detected": true,
+    "three_low_quality_actionable_traces": true,
+    "one_supported_candidate_generated": true,
+    "all_candidates_pending_review": true,
+    "all_linked_failures_fixed": true,
+    "frozen_regressions_zero": true,
+    "empty_follow_up_is_idempotent": true,
+    "automatic_activation_blocked": true,
+    "human_review_required": true
+  },
+  "paid_api_calls": 0,
+  "passed": true,
+  "bad_cases": []
+}

@@ -6,6 +6,8 @@ All notable changes to this project are documented here.
 
 ### Added
 
+- Trace-driven continuous Shadow evolution with resumable batches, deterministic quality scoring,
+  multi-signal drift detection, persistent cursor/cycle evidence, and human-gated candidates.
 - Bounded DeepSeek Native Tool Calling loop and a ten-case three-way comparison against the deterministic and JSON Planner paths.
 - Exact local function-argument validation, Provider/tool-call limits, a hidden-input PowerShell runner, and secret-safe Step 36 reports.
 - Optional DeepSeek V4 Flash JSON Planner with non-thinking mode, local schema validation, deterministic fallback, and secret-safe Provider status.

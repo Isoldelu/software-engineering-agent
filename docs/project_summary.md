@@ -25,6 +25,7 @@ The system focuses on software asset query and analysis tasks:
 - Versioned policy release, deterministic gray rollout, monitoring, and rollback
 - Optional real LLM planning provider with offline/online dual-mode evaluation
 - Offline failure mining, root-cause clustering, and human-gated shadow candidates
+- Resumable Trace batches, deterministic quality scoring, and drift-gated continuous Shadow cycles
 - Reviewed Evolution-to-Policy translation, immutable provenance, idempotent rollout, and rollback
 - Shared PostgreSQL-ready control-plane persistence and role-aware API authentication
 - Benchmark evaluation and bad-case optimization
@@ -145,6 +146,15 @@ not-found calls. All seven Smoke Gates passed, including exact Tool discovery, r
 schemas, 4/4 parity with direct Tool execution, and zero Provider calls. The MCP child environment
 does not forward Provider credentials. GitHub Actions Run `33647074935` passed all 172 tests plus
 Docker and PostgreSQL jobs, including the real MCP stdio process-boundary Smoke, with zero paid calls.
+
+Step 38 extends one-shot offline mining into a resumable Trace-driven continuous Shadow loop. A
+bounded consumer persists its cursor, scores observable execution quality, and compares each window
+with the last healthy profile across quality, failure, Tool-distribution, and P95 latency signals.
+Only repeated explicit wrong-tool feedback can become an actionable configuration candidate. In a
+two-window experiment, 10 Traces produced three low-quality actionable cases, three drift signals,
+one Router candidate, 3/3 linked fixes, and zero frozen regressions. The candidate remained inactive
+at `pending_review`; the experiment made zero Provider calls and does not claim model training or
+autonomous release.
 
 Latest summary:
 

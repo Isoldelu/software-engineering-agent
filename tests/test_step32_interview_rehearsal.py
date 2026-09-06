@@ -53,12 +53,12 @@ def test_evolution_matrix_distinguishes_controlled_loop_from_autonomy():
     matrix = (ROOT / "docs" / "evolution-capability-matrix.md").read_text(
         encoding="utf-8"
     )
-    assert "已经实现离线、配置级、受控自进化" in matrix
+    assert "已经实现 Trace 驱动、配置级、受控持续 Shadow 自进化" in matrix
     assert "9 个失败" in matrix
     assert "零回归" in matrix
     assert "Evolution 到 Policy 受审桥接 | 已实现" in matrix
     assert "Agent 仍不能自行发布" in matrix
-    assert "在线持续学习" in matrix
+    assert "常驻在线调度" in matrix
     assert "未实现" in matrix
     assert "源码自修改" in matrix
 

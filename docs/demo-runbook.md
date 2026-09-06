@@ -75,6 +75,15 @@ Say:
 > 193 条回放、Shadow Evaluation 和人工审核；策略发布使用稳定灰度分流并支持自动回滚，
 > Agent 不能自行修改源码或跳过门禁。
 
+Optional Step 38 command:
+
+```powershell
+python -B examples/continuous_evolution_demo.py
+```
+
+Point out the three drift signals, 3/3 linked fixes, zero regressions, and the final
+`pending_review` status. The scan is resumable, but it is not an always-on scheduler.
+
 ### 2:30-3:00: Engineering Evidence And Boundary
 
 Open the green Actions Run and say:

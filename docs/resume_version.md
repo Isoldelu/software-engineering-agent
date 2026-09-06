@@ -18,6 +18,7 @@ Built a Software Engineering Agent for R&D scenarios where package metadata, dep
 - Compared DirectLLMProxy, RAGOnlyProxy, and Agent baselines; Agent achieved 100% task success on the simulated large benchmark.
 - Improved tool routing accuracy from 61.76% to 100% by analyzing bad cases and adding alias mapping, planner rules, and tool argument normalization.
 - Built a controlled Feedback and policy loop with shadow evaluation, human review, deterministic gray rollout, and rollback.
+- Extended the loop with resumable Trace batches, deterministic quality scoring, multi-signal drift detection, and automatic Shadow replay while retaining manual approval.
 - Exposed the system through FastAPI and PostgreSQL with multi-Worker state, role-aware authentication, Audit, Prometheus, retention, and backup/restore.
 - Integrated DeepSeek V4 Flash as an optional real JSON Planner with local schema validation, deterministic fallback, token/latency accounting, and explicit budget controls.
 - Exposed three deterministic read-only Tools through an MCP stdio Server and verified external schema discovery and subprocess invocation with the official Python Client.
@@ -29,6 +30,7 @@ Built a Software Engineering Agent for R&D scenarios where package metadata, dep
 - Constructed benchmark, challenge, robustness, and large-scale evaluation suites covering 193 simulated cases across six task categories.
 - Designed offline baseline experiments comparing DirectLLMProxy, RAGOnlyProxy, and Agent; Agent achieved 100% task success on the simulated large benchmark.
 - Improved tool routing accuracy from 61.76% to 100% through bad-case analysis, alias mapping, planner optimization, and normalized tool arguments; configuration candidates require frozen-set replay and human review.
-- Delivered FastAPI/PostgreSQL multi-Worker operations with CAS/Lease consistency, Auth/Audit/Metrics and recovery gates; local regression passed 172 tests plus 16/16 Bridge fault and 14/14 two-Worker HTTP gates with retained evidence.
+- Built a Trace-driven continuous Shadow loop; a two-window experiment detected three drift signals, generated one reviewed Router candidate, fixed 3/3 linked failures, and introduced zero frozen-set regressions.
+- Delivered FastAPI/PostgreSQL multi-Worker operations with CAS/Lease consistency, Auth/Audit/Metrics and recovery gates; local regression passed 181 tests plus 16/16 Bridge fault and 14/14 two-Worker HTTP gates with retained evidence.
 - Ran budgeted real DeepSeek experiments: the 20-case JSON Planner reached 100% required Tool coverage and 95% strict task success; convergence guards on the 10-case Native Tool Calling set raised task success from 90% to 100% while reducing average Tool calls by 29% and P95 latency by 31%.
 - Wrapped Package, Dependency, and Version Tools as a read-only MCP stdio Server; a real subprocess Client discovered 3/3 schemas and achieved 4/4 parity with direct Tool execution at zero Provider cost.

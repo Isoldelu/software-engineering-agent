@@ -25,6 +25,8 @@ jobs:
         run: python -B evaluation/smoke.py
       - name: MCP stdio process-boundary smoke
         run: python -B evaluation/mcp_smoke.py
+      - name: Continuous Shadow Evolution smoke
+        run: python -B evaluation/continuous_evolution_eval.py
 
   docker-build:
     runs-on: ubuntu-latest

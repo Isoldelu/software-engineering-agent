@@ -126,6 +126,7 @@ Step 18 向后兼容新增字段：
 | GET | `/evaluation/policy` | 策略版本、灰度分流和自动回滚评测 |
 | GET | `/evaluation/provider` | Offline/Mock-Online 一致性与故障降级评测 |
 | GET | `/evaluation/evolution` | 离线失败挖掘、聚类、候选影子评测与安全门禁 |
+| GET | `/evaluation/evolution-continuous` | Trace 批次、质量漂移、连续 Shadow 与待审候选评测 |
 | GET | `/evaluation/control-plane` | 数据库持久化、API 角色和多 Worker 一致性门禁 |
 
 `/evaluation/run` 的 V1 字段：
@@ -260,6 +261,27 @@ Step 33 新增受审 Evolution-to-Policy 桥接端点：
 | POST | `/policies/from-evolution/{candidate_id}` | 将已人工批准且 Shadow 通过的 Evolution Candidate 翻译为版本化灰度 Policy |
 
 发布请求包含 `rollout_percentage` 和 `released_by`。端点要求 admin；未批准、未通过 Shadow、配置越界、已有其他灰度或同候选参数漂移返回 HTTP 409，不存在的候选返回 404。相同候选和相同参数重复请求返回同一 Bridge/Policy，并以 `idempotent_replay=true` 表达，不创建新版本。`/evolution/candidates/{candidate_id}/activate` 仍固定拒绝，Agent 不能绕过受审发布端点自行激活。
+
+Step 38 新增 Trace-driven Continuous Shadow 端点：
+
+| Method | Path | 用途 |
+|---|---|---|
+| POST | `/evolution/continuous/scan` | 按持久化游标消费一个 1-1000 条的有界 Trace 批次 |
+| GET | `/evolution/continuous/state` | 查询游标、健康基线、评估数和历史 Cycle |
+| GET | `/evaluation/evolution-continuous` | 运行健康/漂移两窗口的零付费确定性实验 |
+
+扫描请求为 `{"batch_size": 100}`。POST 要求 operator，两个 GET 要求 reader。首批数据建立
+健康 Reference；后续批次比较质量分、低质量率、失败率、Tool 分布和 P95 延迟。仅当漂移
+成立，并且至少两条显式负反馈提供同一个 `wrong_tool/expected_tool/trigger` 时才生成候选。
+自动流程只执行 Shadow 与冻结回归，候选最高状态为 `pending_review`、`active=false`。
+
+连续状态使用 `continuous-evolution-state-v1`；每个 Cycle 使用
+`continuous-evolution-cycle-v1`，包含 `cursor_before/cursor_after/profile/drift/candidate_ids/gates`。
+Cursor 丢失时返回 HTTP 409，不会从头静默重复消费。该接口不包含 Scheduler、模型训练或
+自动 Policy 发布语义。
+
+`continuous_evolution_state` 属于受保护命名空间，不参与按时长清理；
+`continuous_trace_assessment` 默认保留 30 天，`continuous_evolution_cycle` 默认保留 90 天。
 
 Step 26 新增控制面状态端点：
 

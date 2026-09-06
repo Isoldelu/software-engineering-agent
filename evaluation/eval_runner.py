@@ -24,7 +24,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run Software-Agent evaluation suites.")
     parser.add_argument(
         "--suite",
-        choices=["benchmark", "challenge", "robustness", "large", "experiment", "evidence", "verifier", "rag", "context", "feedback", "policy", "provider", "evolution", "evolution-bridge", "bridge-fault", "control-plane", "all"],
+        choices=["benchmark", "challenge", "robustness", "large", "experiment", "evidence", "verifier", "rag", "context", "feedback", "policy", "provider", "evolution", "evolution-continuous", "evolution-bridge", "bridge-fault", "control-plane", "all"],
         default="benchmark",
         help="Evaluation suite to run."
     )
@@ -36,6 +36,8 @@ def main() -> None:
         report = run_evolution_bridge_evaluation()
     elif args.suite == "control-plane":
         report = run_control_plane_evaluation()
+    elif args.suite == "evolution-continuous":
+        report = run_continuous_evolution_evaluation()
     elif args.suite == "evolution":
         report = run_evolution_evaluation()
     elif args.suite == "provider":
@@ -190,6 +192,15 @@ def run_evolution_evaluation() -> dict:
     return run()
 
 
+def run_continuous_evolution_evaluation() -> dict:
+    """Run Step 38 trace-driven continuous Shadow evolution evaluation."""
+    from evaluation.continuous_evolution_eval import (
+        run_continuous_evolution_evaluation as run,
+    )
+
+    return run()
+
+
 def run_evolution_bridge_evaluation() -> dict:
     """Run Step 33 reviewed Evolution-to-Policy release evaluation."""
     from evaluation.evolution_bridge_eval import run_evolution_bridge_evaluation as run
@@ -225,6 +236,7 @@ def run_all_evaluations() -> dict:
         "policy_rollout": run_policy_evaluation(),
         "provider_dual_mode": run_provider_evaluation(),
         "offline_evolution": run_evolution_evaluation(),
+        "continuous_shadow_evolution": run_continuous_evolution_evaluation(),
         "reviewed_evolution_policy_bridge": run_evolution_bridge_evaluation(),
         "bridge_fault_injection": run_bridge_fault_evaluation(),
         "control_plane": run_control_plane_evaluation(),
@@ -267,6 +279,7 @@ def run_evaluation_summary() -> dict:
             "Policy evaluation validates stable rollout assignment and source-free rollback.",
             "Provider evaluation validates optional online planning and deterministic fallback.",
             "Offline evolution mines failures, clusters root causes, and shadow-tests safe candidates.",
+            "Continuous evolution consumes Trace batches, detects drift, and queues reviewed candidates.",
             "Reviewed bridge converts approved evolution assets into auditable rollout policies.",
             "Bridge fault injection validates concurrency, compensation, and rollout races.",
             "Control-plane evaluation validates persistence, API roles, CAS, and database leases.",

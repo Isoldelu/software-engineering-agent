@@ -78,6 +78,13 @@ class TraceRepository:
         with self._lock:
             return len(self._records)
 
+    def list(self) -> list[dict[str, Any]]:
+        """Return traces in stable ingestion order for bounded batch consumers."""
+        if self.store:
+            return [deepcopy(item.payload) for item in self.store.list("trace")]
+        with self._lock:
+            return deepcopy(list(self._records.values()))
+
     def _read_persisted(self, trace_id: str) -> dict[str, Any] | None:
         if not self.path.exists():
             return None

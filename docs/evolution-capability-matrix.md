@@ -2,17 +2,23 @@
 
 ## 结论
 
-当前项目**已经实现离线、配置级、受控自进化**，但没有实现在线自治学习或源码自修改。
+当前项目**已经实现 Trace 驱动、配置级、受控持续 Shadow 自进化**，但没有实现在线自治
+学习、常驻调度或源码自修改。
 
 最准确的表述是：
 
 > 系统能够从标注评测失败中发现重复模式，生成有限类型的配置候选，并通过 Shadow 与冻结回归验证候选；候选不能自行激活，但人工批准后可经受审桥接进入版本化灰度与回滚。
+
+Step 38 在此基础上增加持久化游标、Trace 批次质量评分和多信号漂移检测。扫描可以重复
+调用并从上次位置继续，但它仍是显式触发的受控作业，不等于生产流量上的常驻在线学习。
 
 ## 已实现链路
 
 | 环节 | 当前实现 | 证据 |
 |---|---|---|
 | 失败发现 | 重跑 Agent 与 RAG 标注用例，识别可复现失败 | `app/evolution/miner.py` |
+| 持续观察 | 按游标消费有界 Trace 批次，保存质量评估和健康基线 | `app/evolution/continuous.py` |
+| 漂移检测 | 比较质量分、低质量率、失败率、Tool 分布和 P95 延迟 | `TraceDriftDetector` |
 | 根因聚类 | Router Miss、Entity Alias Miss、Retriever Rank Miss；最小支持数为 2 | `OfflineFailureMiner` |
 | 候选生成 | Router Rule、Query Alias、Retriever Weights | `EvolutionCandidateFactory` |
 | 安全校验 | 只允许配置变更，禁止源码、权限、数据集和自动激活 | `EvolutionConfigValidator` |
@@ -39,12 +45,13 @@ Result: passed
 
 | 能力 | 状态 | 影响 |
 |---|---|---|
-| 在线持续学习 | 未实现 | Miner 当前读取标注 Benchmark，不会自动消费全部线上 Trace 并持续改策略 |
+| Trace 批次持续扫描 | 已实现 | 显式调用后按持久化游标继续消费，并自动执行漂移检测和 Shadow |
+| 常驻在线调度 | 未实现 | 当前没有定时器或生产流量源自动触发扫描 |
 | 模型训练 | 未实现 | 没有 Fine-tuning、RL、策略梯度或参数更新 |
 | 源码自修改 | 明确禁止 | Candidate 不能编辑 Python、测试、数据集、权限和发布门禁 |
 | 自动上线 | 明确禁止 | Evolution Candidate 的激活接口固定返回拒绝 |
 | Evolution 到 Policy 受审桥接 | 已实现 | 不复制为 Feedback Candidate；保留独立模型，通过不可变 Bridge Record 映射到 Policy Version |
-| 真实 Provider 驱动优化 | 未执行 | 当前循环为离线确定性实验，Paid API Calls=0 |
+| 真实 Provider 对比 | 已执行 | Step 35/36 完成小预算 Planner/Native A/B；Step 38 本身保持 Paid API Calls=0 |
 
 ## 关于策略发布的精确边界
 
@@ -78,14 +85,13 @@ Evolution Candidate 不会自动转换成 Feedback Candidate，也不会自动�
 
 ## 下一阶段建议
 
-Reviewed Evolution-to-Policy Bridge 已完成。下一项应验证更接近生产的发布治理：
+Trace-driven Continuous Shadow Evolution 已完成。下一项应验证开放数据与长期运行：
 
 ```text
-Bridge API
--> PostgreSQL multi-Worker idempotency
--> concurrent release / rollback fault injection
--> audit export and retention proof
--> optional real Provider A/B under explicit budget
+public software-asset OOD data
+-> scheduled bounded scans and alert rules
+-> longer PostgreSQL capacity/soak experiment
+-> optional authenticated remote MCP only when needed
 ```
 
 仍不应加入源码自修改、自动降低评测门槛或无人工审批上线。

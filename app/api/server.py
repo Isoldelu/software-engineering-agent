@@ -27,6 +27,7 @@ from app.api.schemas import (
     ApiKeyRotateRequest,
     CandidateProposeRequest,
     CandidateReviewRequest,
+    ContinuousEvolutionScanRequest,
     EvaluationResponse,
     EvolutionPolicyReleaseRequest,
     EvolutionReviewRequest,
@@ -40,6 +41,7 @@ from app.api.schemas import (
     ToolListResponse,
 )
 from app.evolution.bridge import DEFAULT_EVOLUTION_POLICY_BRIDGE
+from app.evolution.continuous import DEFAULT_CONTINUOUS_EVOLUTION_SERVICE
 from app.evolution.service import DEFAULT_EVOLUTION_SERVICE
 from app.feedback.service import DEFAULT_FEEDBACK_LOOP
 from app.maintenance.retention import RetentionService
@@ -68,6 +70,7 @@ from evaluation.eval_runner import (
     run_bad_case_analysis,
     run_benchmark_experiment,
     run_context_evaluation,
+    run_continuous_evolution_evaluation,
     run_control_plane_evaluation,
     run_evaluation,
     run_evaluation_summary,
@@ -538,6 +541,21 @@ def evolution_scan() -> dict:
     return DEFAULT_EVOLUTION_SERVICE.scan()
 
 
+@app.post("/evolution/continuous/scan")
+def continuous_evolution_scan(request: ContinuousEvolutionScanRequest) -> dict:
+    """Consume one bounded Trace batch and run drift-gated Shadow evaluation."""
+    try:
+        return DEFAULT_CONTINUOUS_EVOLUTION_SERVICE.scan(batch_size=request.batch_size)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+
+@app.get("/evolution/continuous/state")
+def continuous_evolution_state() -> dict:
+    """Return the resumable cursor and immutable continuous-cycle summaries."""
+    return DEFAULT_CONTINUOUS_EVOLUTION_SERVICE.state()
+
+
 @app.get("/evolution/state")
 def evolution_state() -> dict:
     """Return the current in-memory offline evolution cycle."""
@@ -780,6 +798,12 @@ def evaluation_provider() -> dict:
 def evaluation_evolution() -> dict:
     """Run offline failure mining, clustering, and shadow evaluation."""
     return run_evolution_evaluation()
+
+
+@app.get("/evaluation/evolution-continuous")
+def evaluation_continuous_evolution() -> dict:
+    """Run the deterministic two-window continuous Shadow experiment."""
+    return run_continuous_evolution_evaluation()
 
 
 @app.get("/evaluation/control-plane")

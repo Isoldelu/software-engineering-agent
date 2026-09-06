@@ -40,6 +40,9 @@
 > RAGOnlyProxy 和 Agent 对比。通过 Alias、参数归一化和 Hybrid Planner 优化，路由准确率
 > 从 61.76% 提升到 100%。反馈不会让 Agent 自动改源码，而是生成白名单配置候选，经过
 > Shadow Evaluation、全量回归和人工审核后才能灰度发布，异常时回滚父策略。
+> Step 38 又把一次性挖掘扩展成带持久化游标的 Trace 批次扫描，通过质量分、低质量率、
+> 工具分布和延迟检测漂移，只将有明确期望工具的重复反馈转成候选并自动执行 Shadow；
+> 候选仍停在 pending_review，不会自行上线。
 >
 > 工程层面，FastAPI 控制面支持 PostgreSQL 共享状态、CAS、Lease、API Key 轮换、Audit、
 > Retention、Prometheus 和备份恢复。GitHub Actions 的真实 PostgreSQL 测试中，双 Worker
@@ -53,7 +56,7 @@
 2. **Agent 执行**：Context -> Router/Planner -> Tools -> Evidence -> Verifier -> Answer -> Trace。
 3. **复杂任务**：展示 `查一下 nginx 的版本变化和依赖` 如何组合三个结构化工具。
 4. **评测优化**：解释 193 条冻结集、三类 Baseline、61.76% 到 100% 的 Bad Case 闭环。
-5. **受控自进化**：只生成配置候选，禁止改源码和自动激活，必须回放、Shadow、人工审核。
+5. **受控自进化**：Trace 批次、质量评分和漂移检测只生成配置候选，必须回放、Shadow、人工审核。
 6. **工程交付**：FastAPI/PostgreSQL、多 Worker 一致性、Auth/Audit/Metrics/Backup。
 7. **MCP 互操作**：解释 stdio Client/Server、Tool Schema 发现和跨进程调用。
 8. **边界**：模拟数据、小规模真实 Provider A/B、CI 功能压测，不表述为生产 SLA。
@@ -125,9 +128,10 @@ RAG 适合发布说明和手册，但精确包版本、依赖边和组件归属�
 
 ### 你说的自进化是什么
 
-是受控离线优化，不是 Agent 自己修改代码。Trace 和 Feedback 产生 Bad Case，系统聚类
-根因并生成白名单配置候选；候选必须经过 Shadow、冻结集回归、人工审核和策略灰度，任何
-门禁失败都不能激活。
+是 Trace 驱动的受控持续 Shadow 优化，不是 Agent 自己修改代码。系统按持久化游标消费
+有界 Trace 批次，用确定性质量信号检测漂移；只有重复且带明确 expected_tool 的负反馈才会
+生成白名单配置候选。候选必须经过 Shadow、冻结集回归、人工审核和策略灰度，任何门禁
+失败都不能激活。当前没有常驻调度器、模型训练或无人工审批上线。
 
 ### 为什么 100% 不代表过拟合
 

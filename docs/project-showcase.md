@@ -55,7 +55,7 @@ are offline proxy results, not measurements of a paid online model.
 
 | Gate | Verified result |
 |---|---:|
-| Automated tests | 172 passed |
+| Automated tests | 181 passed |
 | Frozen evaluation | 193/193 compatible |
 | Legacy to optimized routing | 61.76% to 100% |
 | PostgreSQL initial load | 100/100, zero server errors |
@@ -70,6 +70,7 @@ are offline proxy results, not measurements of a paid online model.
 | Native Tool Calling optimization | task success 90% -> 100% |
 | Native Tool calls / P95 / cost | -29.17% / -31.41% / -13.07% |
 | MCP stdio process boundary | 3 Tools, 4/4 parity, 7/7 gates |
+| Continuous Shadow evolution | 10 Traces, 3/3 fixes, 0 regressions |
 
 Current evidence is bound to
 [GitHub Actions Run 33647074935](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33647074935).
@@ -85,7 +86,8 @@ The frozen v1.0.0 evidence remains in [`release/v1.0.0-evidence.json`](../releas
 3. Open `/evaluation-dashboard` and show the frozen evaluation and baseline comparison.
 4. Open the green GitHub Actions Run and explain the PostgreSQL Worker-recovery gate.
 5. Run `examples/mcp_client_demo.py` and show stdio Tool discovery plus structured results.
-6. Compare JSON Planner, Native Tool Calling, and MCP, then close with the compliance boundary: all
+6. Run `examples/continuous_evolution_demo.py` and show drift signals plus `pending_review`.
+7. Compare JSON Planner, Native Tool Calling, and MCP, then close with the compliance boundary: all
    asset data is simulated, paid runs used explicit budgets, and credentials were not retained.
 
 Detailed commands and fallback steps are in [`demo-runbook.md`](demo-runbook.md).

@@ -13,7 +13,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | Agent | Deterministic/optional LLM planning, five tools, hybrid workflows, multi-turn context |
 | Knowledge | Structured software assets plus Legacy/BM25/Hybrid RAG |
 | Trust | Evidence, Citation, Verifier, partial success, replayable privacy-bounded Trace |
-| Optimization | Benchmark, Bad Case loop, offline candidates, Shadow gates, human review |
+| Optimization | Benchmark, Trace-driven drift, continuous Shadow candidates, human review |
 | Delivery | Reviewed Evolution bridge, policy versioning, gray rollout, rollback, FastAPI |
 | Operations | Auth, Key rotation, Audit, protected release ledger, pooling, Prometheus, backup/restore |
 | Interoperability | Read-only MCP stdio Server exposing three deterministic Tools |
@@ -22,7 +22,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 
 | Gate | Result |
 |---|---:|
-| Automated tests | 172 passed |
+| Automated tests | 181 passed locally for Step 38 |
 | Frozen evaluation baseline | 193 compatible cases |
 | Real PostgreSQL initial load | 100/100, 0 server errors |
 | Load after Worker replacement | 40/40, 0 server errors |
@@ -32,6 +32,7 @@ This project does not contain, copy, or depend on internal enterprise data. It u
 | PostgreSQL two-Worker Bridge HTTP | 14/14 passed |
 | Real DeepSeek structured plans | 20/20 valid, 0 fallback |
 | MCP stdio process boundary | 3 Tools, 4/4 parity, 7/7 gates |
+| Continuous Shadow evolution | 10 Traces, 3/3 fixes, 0 regressions |
 
 Current evidence: [GitHub Actions Run 33647074935](https://github.com/Isoldelu/software-engineering-agent/actions/runs/33647074935). The real DeepSeek experiments are explicit local paid paths; CI has no Provider Key and does not execute either paid runner. The frozen v1.0.0 evidence remains available in the [release summary](release/v1.0.0-evidence.json).
 
@@ -57,6 +58,12 @@ python -m pip install -r requirements-mcp.txt
 python -B examples/mcp_client_demo.py
 ```
 
+Run the zero-cost continuous Shadow evolution demo:
+
+```bash
+python -B examples/continuous_evolution_demo.py
+```
+
 ## Interview-Ready Package
 
 - [One-page project showcase](docs/project-showcase.md)
@@ -71,6 +78,7 @@ python -B examples/mcp_client_demo.py
 - [Real DeepSeek Provider A/B](docs/real-deepseek-provider-ab.md)
 - [DeepSeek Native Tool Calling A/B](docs/native-tool-calling-ab.md)
 - [MCP Tool Server](docs/mcp-tool-server.md)
+- [Trace-driven Continuous Shadow Evolution](docs/continuous-shadow-evolution.md)
 - [Executable API demo](examples/interview_demo.py)
 - [Interactive rehearsal timer](examples/interview_rehearsal.py)
 - [Interview talking points and Q&A](docs/interview_talking_points.md)
@@ -97,7 +105,7 @@ python examples/interview_rehearsal.py --mode standard
 
 - Multi-tool Agent with hybrid planning across structured tools and RAG.
 - Stable Evidence/Citation, deterministic verification, replay, and partial-success semantics.
-- Controlled Feedback and offline self-evolution with a reviewed, auditable release bridge.
+- Trace-driven continuous Shadow evolution with a reviewed, auditable release bridge.
 - Versioned policy rollout, monitoring, rollback, and exact Trace attribution.
 - Real PostgreSQL multi-Worker CI with fault injection and retained evidence.
 - Zero-cost offline default plus an explicit-budget DeepSeek V4 Flash A/B path.
@@ -165,6 +173,8 @@ Native Tool Calling experiment: on 10 simulated queries, convergence guards impr
 MCP experiment: an official-SDK stdio Client launched the Server as a separate process, discovered exactly `package_search`, `dependency_analysis`, and `version_compare`, and completed four success/not-found calls with 4/4 semantic parity against direct Tool execution. All seven MCP gates passed with zero Provider calls and no forwarded Provider credentials.
 
 Offline evolution experiment: 9 failures were mined into Router, Query Alias, and Retriever clusters. Three configuration candidates fixed all 9 linked cases with 0 regressions and remained `pending_review + active=false`; paid API calls were 0.
+
+Continuous Shadow experiment: a healthy five-Trace window initialized the reference profile; the next five-Trace window contained three explicit wrong-tool feedback records and triggered quality-score, low-quality-rate, and Tool-distribution drift. One Router candidate fixed 3/3 linked cases with zero frozen regressions, remained `pending_review + active=false`, and used zero Provider calls.
 
 Reviewed Evolution-to-Policy experiment: three human-approved Router, Query Alias, and Retriever candidates created three immutable rollout policies. Three duplicate release requests were idempotent, candidate/config SHA-256 digests were retained, and a rollback restored the parent policy while deactivating the released source candidate. All 10 release gates passed with 0 paid API calls.
 
@@ -352,6 +362,8 @@ POST /agent/query-provider
 GET  /providers/status
 POST /evolution/scan
 GET  /evolution/state
+POST /evolution/continuous/scan
+GET  /evolution/continuous/state
 POST /evolution/candidates/{candidate_id}/shadow-evaluate
 POST /evolution/candidates/{candidate_id}/review
 POST /evolution/candidates/{candidate_id}/activate  # always blocked
@@ -373,6 +385,7 @@ POST /policies/{policy_id}/monitor
 GET  /evaluation/policy
 GET  /evaluation/provider
 GET  /evaluation/evolution
+GET  /evaluation/evolution-continuous
 GET  /evaluation/control-plane
 POST /candidates/{candidate_id}/evaluate
 POST /candidates/{candidate_id}/review
@@ -477,6 +490,16 @@ python -B evaluation/eval_runner.py --suite evolution
 
 This Step 25 cycle uses no external Provider. It can propose Router Rule, Query Alias, and Retriever Weight configurations, but every passing candidate stops at human review and cannot self-activate.
 
+Run the resumable Trace-driven continuous Shadow experiment:
+
+```bash
+python -B evaluation/eval_runner.py --suite evolution-continuous
+```
+
+Step 38 consumes bounded Trace batches, compares them with the last healthy profile, and only turns
+repeated explicit wrong-tool feedback into candidates. Passing candidates remain inactive and wait
+for human review.
+
 Run persistence, authorization, and multi-worker consistency evaluation:
 
 ```bash
@@ -532,6 +555,8 @@ The baseline normalizes the local project path while preserving routing decision
 - [Controlled Feedback Report](evaluation/controlled_feedback_report.md)
 - [Offline Controlled Evolution Design](docs/offline-controlled-evolution.md)
 - [Offline Controlled Evolution Report](evaluation/offline_evolution_report.md)
+- [Continuous Shadow Evolution Design](docs/continuous-shadow-evolution.md)
+- [Continuous Shadow Evolution Report](evaluation/continuous_evolution_report.json)
 - [Control-plane Persistence And Auth](docs/control-plane-persistence-auth.md)
 - [Control-plane Evaluation Report](evaluation/control_plane_report.md)
 
@@ -550,6 +575,7 @@ Built a simulated-data Software Engineering Agent prototype to validate Agent me
 ## Roadmap
 
 - Add an external public software-asset evaluation set to measure out-of-distribution behavior
+- Add a scheduler and alerting around the bounded continuous Shadow scan; keep approval manual
 - Add production alert rules and a longer PostgreSQL capacity/soak experiment
 - Evaluate whether FAISS or a managed vector store improves retrieval beyond the current small corpus
 - Evaluate authenticated Streamable HTTP only if remote MCP deployment becomes necessary

@@ -61,12 +61,22 @@ def test_retention_never_prunes_bridge_or_policy_release_evidence(tmp_path):
         rollout_percentage=20,
         released_by="retention-test",
     )
+    store.upsert(
+        "continuous_evolution_state",
+        "default",
+        {"last_trace_id": "tr-retained", "processed_trace_count": 10},
+    )
     old = time.time() - 1000 * 86_400
     with store.transaction(write=True) as cursor:
         cursor.execute(
             "UPDATE control_plane_records SET updated_at = ? "
-            "WHERE namespace IN (?, ?)",
-            (old, "evolution_policy_bridge", "policy_state"),
+            "WHERE namespace IN (?, ?, ?)",
+            (
+                old,
+                "evolution_policy_bridge",
+                "policy_state",
+                "continuous_evolution_state",
+            ),
         )
 
     result = RetentionService(store).run(
@@ -78,9 +88,11 @@ def test_retention_never_prunes_bridge_or_policy_release_evidence(tmp_path):
     assert result["protected_namespaces"] == [
         "evolution_policy_bridge",
         "policy_state",
+        "continuous_evolution_state",
     ]
     assert evolution.get_bridge(released["bridge"]["bridge_id"]) is not None
     assert PolicyRepository(store=store).get(released["policy"]["policy_id"]) is not None
+    assert store.get("continuous_evolution_state", "default") is not None
     store.close()
 
 

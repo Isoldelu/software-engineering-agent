@@ -96,6 +96,10 @@ class EvolutionReviewRequest(BaseModel):
     note: str = ""
 
 
+class ContinuousEvolutionScanRequest(BaseModel):
+    batch_size: int = Field(default=100, ge=1, le=1000)
+
+
 class EvolutionPolicyReleaseRequest(BaseModel):
     rollout_percentage: float = Field(default=20.0, gt=0, le=100)
     released_by: str = Field(..., min_length=1)

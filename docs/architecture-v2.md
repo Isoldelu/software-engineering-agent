@@ -181,6 +181,26 @@ approved Evolution Candidate + passed Shadow report
 
 Policy Engine 在规划前应用 Alias，在 Planner 前匹配版本化 Router Rule，并把 Retriever 配置注入 RAG Tool。相同 Candidate 和相同灰度参数重放不创建新版本；参数漂移、未审批或 Shadow 未通过均拒绝。候选自激活接口仍然关闭，详见 `docs/reviewed-evolution-policy-bridge.md`。
 
+### Step 38 Trace-driven Continuous Shadow 扩展
+
+```text
+Trace/Feedback
+-> bounded cursor batch
+-> deterministic quality assessment
+-> healthy-reference drift detector
+-> actionable failure cluster
+-> configuration candidate
+-> Shadow + frozen regression
+-> pending_review
+-> existing reviewed Policy bridge
+```
+
+Continuous Repository 复用通用 SQLite/PostgreSQL 控制面保存 Cursor、Cycle 和逐 Trace
+Assessment，并用数据库 Lease 串行化扫描。低质量只代表需要观察；只有显式 wrong-tool
+反馈中包含唯一 expected_tool 和 trigger 时才可生成候选。漂移批次不会替换健康 Reference，
+空批次不移动 Cursor。自动链路在 `pending_review` 结束，不获得 Review 或 Policy 发布权限，
+详见 `docs/continuous-shadow-evolution.md`。
+
 ## 6. 兼容规则
 
 - `/agent/query` 已有字段必须继续存在并保持语义。

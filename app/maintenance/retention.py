@@ -20,9 +20,15 @@ DEFAULT_RETENTION_DAYS = {
     "evolution_failure": 30,
     "evolution_cluster": 30,
     "evolution_candidate": 90,
+    "continuous_trace_assessment": 30,
+    "continuous_evolution_cycle": 90,
     "audit": 180,
 }
-PROTECTED_NAMESPACES = ("evolution_policy_bridge", "policy_state")
+PROTECTED_NAMESPACES = (
+    "evolution_policy_bridge",
+    "policy_state",
+    "continuous_evolution_state",
+)
 
 
 @dataclass(frozen=True)
